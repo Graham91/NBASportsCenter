@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>EGCB Sportscenter</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="assests/css/reset.css" />
+  <link rel="stylesheet" type="text/css" href="assests/css/style.css" />
+  <script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
+<body>
+    <div class="displayflex">
+        <div class="upperdiv"> 
+
+            <div id="outsideimagediv">
+                <div id="imagediv">
+                    <img id="image" src="https://i.imgur.com/SQ8IRGe.png">
+                </div>
+            </div>
+            <div class="upperdiv2"></div>
+            <div class="upperdiv3"></div>
+            <div class="upperdiv4"></div>
+            <div class="upperdiv5"></div>
+            <div class="upperdiv6"></div>
+        </div>
+        <div class="upperdiv7"></div>
+        <div class="upperdiv8"></div>
+        <div class="upperdiv9"></div>
+
+        <div id="colormain">
+            <div class="color1" id="leftbox">
+                <div class="color2">
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="grid-container">
+        <div class="grid-item"></div>
+        <div class="mainappdiv"></div>
+    
+      </div>
+      <footer>
+        <div class="upperdiv11"></div>
+        <div class="upperdiv10"></div>
+        <div class="upperdiv12"></div>
+      </footer>
+  </div>
+  <script>
+    // let data;
+    // $( document ).ready(function() {
+    // console.log( "ready!" ); 
+    // var url = window.location.pathname;
+    // var id = url.substring(url.lastIndexOf('/') + 1);
+    // console.log(id);
+    // $.ajax("/api/home/"+id, {
+    //     type: "GET"
+    //   }).then(function(data) {
+    //     console.log(data.db.gamestats)
+    //     if (data.db.gamestats === false){
+    //       $("#gamestats").empty()}
+    //     if (data.db.FavPlayer === null){
+    //       $("player").empty();
+    //     }
+    //   $("#imagediv").prepend('<img id="theImg" SameSite=None src="'+data.color.url+'" />');
+    //     $("#colormain").css("background-color", data.color.colors1[1]);
+    //     $(".color1").css("background-color", data.color.colors1[2]);
+    //     $(".color2").css("background-color", data.color.colors1[3]);
+    //     $("#welcomeid").html("Welcome: "+ data.db.UserID)
+    //     $("#favteam").html("Your favorite Team is: " + data.db.FavTeam);
+    //     $("#favplayer").html("Your favorite Player is: " + data.db.FavPlayer);
+
+    //     console.log(data.color.url);
+    //     console.log(data);});
+  
+    //   });
+
+    //     $(".gamestats").on("click", function(){
+    //       console.log("YOU A BUTT");
+    //       var url = window.location.pathname;
+    //         var id = url.substring(url.lastIndexOf('/') + 1);
+         
+    //             window.location.href="/sportscentergame/"+id;
+        
+        
+    //   });
+    //   $(".pref").on("click", function(){
+    //       console.log("YOU A BUTT");
+    //       var url = window.location.pathname;
+    //         var id = url.substring(url.lastIndexOf('/') + 1);
+         
+    //             window.location.href="/sportscenterpref/"+id;
+        
+        
+    //   });
+    $( document ).ready(function() {
+      let imagewidth = $("#image").width();
+      if (imagewidth < 180){
+          $("#image").css("height", "275px");
+          $("#imagediv").css("height", "305px");
+          imagewidth = $("#image").width();
+          console.log(imagewidth);
+
+
+      }
+      else if (imagewidth > 308){
+          imagewidth = 308;
+      }
+      let imagewidth2 = parseInt(imagewidth)+ 20;
+      let imagewidthstring = imagewidth2 + "px";
+      console.log(imagewidthstring);
+      $(".grid-item").css("width", imagewidthstring);
+    });
+  </script>
+</body>
+</html>
