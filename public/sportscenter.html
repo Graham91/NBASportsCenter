@@ -322,19 +322,63 @@
             $.ajax("/api/home/" + id, {
                 type: "GET"
             }).then(function (data) {
-                $("#imagediv").prepend('<img id="theImg" src="' + data.color.url + '" />');
                 logourl = data.color.url;
                 color124 = data.color.colors1[1];
                 color125 = data.color.colors1[3];
 
                 // // $("#theImg").css()
                 // var img = $('theImg');
-                //stuff needed to get the image right;
-                // var newImg = new Image;
-                // $(newImg).on("load", function() {
-                //     //all the stuff has to happen after.
-                //     img.src = this.src;
-                // });
+                // stuff needed to get the image right;
+                var newImg = new Image;
+                newImg.src = data.color.url;
+                $(newImg).attr('id', 'theImg');
+                $(newImg).on("load", function () {
+                    $("#imagediv").prepend(newImg);
+                    //all the stuff has to happen after.
+                    let imagewidth = $("#theImg").width();
+                    let imagewidth2 = parseInt(imagewidth) + 20;
+                    console.log(imagewidth);
+                    let left;
+                    let leftstring;
+                    if (imagewidth < 180) {
+                        $("#theImg").css("height", "275px");
+                        $("#imagediv").css("height", "305px");
+                        imagewidth = $("#theImg").width();
+                        // console.log(imagewidth);
+                        imagewidth2 = parseInt(imagewidth) + 60;
+                        left = (imagewidth2 - 200) / 2;
+                        leftstring = left + "px";
+                        let imagewidthstring = imagewidth2 + "px";
+                        $(".grid-item").css("width", imagewidthstring);
+                        $(".inner").css("width", imagewidthstring);
+                        $(".examplediv").css("left", leftstring);
+                        $(".examplediv1").css("left", leftstring);
+                        $(".examplediv2").css("left", leftstring);
+                    } else if (imagewidth > 308) {
+                        imagewidth = 308;
+                        imagewidth2 = parseInt(imagewidth) + 60;
+                        let imagewidthstring = imagewidth2 + "px";
+                        left = (imagewidth2 - 200) / 2;
+                        leftstring = left + "px";
+                        console.log(imagewidthstring);
+                        $(".grid-item").css("width", imagewidthstring);
+                        $(".inner").css("width", imagewidthstring);
+                        $(".examplediv").css("left", leftstring);
+                        $(".examplediv1").css("left", leftstring);
+                        $(".examplediv2").css("left", leftstring);
+                    } else {
+                        imagewidth2 = parseInt(imagewidth) + 60;
+                        let imagewidthstring = imagewidth2 + "px";
+                        left = (imagewidth2 - 200) / 2;
+                        leftstring = left + "px";
+                        console.log(imagewidthstring);
+                        $(".grid-item").css("width", imagewidthstring);
+                        $(".inner").css("width", imagewidthstring);
+                        $(".examplediv").css("left", leftstring);
+                        $(".examplediv1").css("left", leftstring);
+                        $(".examplediv2").css("left", leftstring);
+                    }
+                });
                 // newImg.src = data.color.url;
                 // $("#imagediv").prepend(newImg);
                 let blueborder2string = data.color.colors1[3] + " transparent transparent transparent";
@@ -357,49 +401,6 @@
                 // $("#welcomeid").html("Welcome: "+ data.db.UserID)
                 // $("#favteam").html("Your favorite Team is: " + data.db.FavTeam);
                 // $("#favplayer").html("Your favorite Player is: " + data.db.FavPlayer);
-                let imagewidth = $("#theImg").width();
-                let imagewidth2 = parseInt(imagewidth) + 20;
-                console.log(imagewidth);
-                let left;
-                let leftstring;
-                if (imagewidth < 180) {
-                    $("#theImg").css("height", "275px");
-                    $("#imagediv").css("height", "305px");
-                    imagewidth = $("#theImg").width();
-                    // console.log(imagewidth);
-                    imagewidth2 = parseInt(imagewidth) + 60;
-                    left = (imagewidth2 - 200) / 2;
-                    leftstring = left + "px";
-                    let imagewidthstring = imagewidth2 + "px";
-                    $(".grid-item").css("width", imagewidthstring);
-                    $(".inner").css("width", imagewidthstring);
-                    $(".examplediv").css("left", leftstring);
-                    $(".examplediv1").css("left", leftstring);
-                    $(".examplediv2").css("left", leftstring);
-                } else if (imagewidth > 308) {
-                    imagewidth = 308;
-                    imagewidth2 = parseInt(imagewidth) + 60;
-                    let imagewidthstring = imagewidth2 + "px";
-                    left = (imagewidth2 - 200) / 2;
-                    leftstring = left + "px";
-                    console.log(imagewidthstring);
-                    $(".grid-item").css("width", imagewidthstring);
-                    $(".inner").css("width", imagewidthstring);
-                    $(".examplediv").css("left", leftstring);
-                    $(".examplediv1").css("left", leftstring);
-                    $(".examplediv2").css("left", leftstring);
-                } else {
-                    imagewidth2 = parseInt(imagewidth) + 60;
-                    let imagewidthstring = imagewidth2 + "px";
-                    left = (imagewidth2 - 200) / 2;
-                    leftstring = left + "px";
-                    console.log(imagewidthstring);
-                    $(".grid-item").css("width", imagewidthstring);
-                    $(".inner").css("width", imagewidthstring);
-                    $(".examplediv").css("left", leftstring);
-                    $(".examplediv1").css("left", leftstring);
-                    $(".examplediv2").css("left", leftstring);
-                }
 
 
                 console.log(data.color.url);
