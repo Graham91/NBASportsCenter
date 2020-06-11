@@ -57,7 +57,10 @@
                 </tr>
             </table>
         </div>
+
         <div class="mainappdiv2 hide2">
+            <!-- <div class="relativediv"> -->
+
             <div id="imagedivbackground">
                 <div class="gradient">
                 </div>
@@ -65,8 +68,16 @@
             <div id="playerpicturebackground">
 
             </div>
+            <div class="playerInfoForIndiv">
+                <P id=playernameForIndiv></P>
+                <P id=playerpositionForIndiv></P>
+                <P id=playerheightForIndiv></P>
+                <P id=playerwieghtForIndiv></P>
+
+            </div>
+
             <div>
-                <table style="width:60%" class="individualPlayertable">
+                <table style="width:60%" class="individualPlayertable2">
                     <tr>
                         <th>
 
@@ -224,18 +235,13 @@
                         <td id="rpgC"></td>
                         <td id="rpg"></td>
                     </tr>
-                    <tr>
-                        <td>
-                            <div class="playstatsvalue">Blocks Per Game</div>
-                        </td>
-                        <td id="bpgC"></td>
-                        <td id="bpg"></td>
-                    </tr>
                 </table>
 
             </div>
-        </div>
 
+        </div>
+        <div id="imagedivbackground2">
+        </div>
 
     </div>
     <footer class="redback">
@@ -250,6 +256,7 @@
         let color124;
         let color125;
         let playerpicture;
+        let playerindex = [];
         $(document).ready(function () {
 
             console.log("ready!");
@@ -265,10 +272,13 @@
                 }).then(function (data) {
 
                     console.log(data);
+                    playerindex = data;
+                    console.log(playerindex);
 
-                    data.forEach(element => {
+                    data.forEach((element, index) => {
+                        console.log(index);
                         $("table tbody").append("<tr><td><div class='playerinfo'>" + element.player.number +
-                            "</div></td><td><div class='getplayerstats playerinfo2' id='" + element.player.image + "' name='" + element.player.url + "'>" +
+                            "</div></td><td><div class='getplayerstats playerinfo2' value=" + index + " id='" + element.player.image + "' name='" + element.player.url + "'>" +
                             element.player.name +
                             "</div></td><td><div class='playerinfo'>" +
                             element.player.position +
@@ -283,6 +293,8 @@
                     $('.getplayerstats').on("click", function () {
                         var target = event.target;
                         let playerurl = target.getAttribute("name");
+                        let playervalue = target.getAttribute("value")
+                        let playerindexnumber = parseInt(playervalue);
                         console.log(playerurl);
                         var parts = playerurl.split("/");
                         var playerid = parts[parts.length - 1];
@@ -294,20 +306,87 @@
                         };
                         console.log(playerstatsurl);
 
+
                         $.get("/api/individual/" + playerid)
                             .then(function (data) {
+                                let playerNameForIndivTable = playerindex[playerindexnumber].player.name;
+                                let playerPositionForIndivTable = playerindex[playerindexnumber].player.position;
+                                let playerNumberForIndivTable = playerindex[playerindexnumber].player.number;
+                                let playerwieghtForIndivTable = playerindex[playerindexnumber].player.weight;
+                                let playerheightForIndivTable = playerindex[playerindexnumber].player.height;
+
 
                                 console.log(data);
+                                const populatearray = [
+                                    { idkey: "#minC", info: data.statistics.careerSummary.min },
+                                    { idkey: "#min", info: data.statistics.latest.min },
+                                    { idkey: "#assistsC", info: data.statistics.careerSummary.assists },
+                                    { idkey: "#assists", info: data.statistics.latest.assists },
+                                    { idkey: "#blocksC", info: data.statistics.careerSummary.blocks },
+                                    { idkey: "#blocks", info: data.statistics.latest.blocks },
+                                    { idkey: '#gamesPlayedC', info: data.statistics.careerSummary.gamesPlayed },
+                                    { idkey: '#gamesPlayed', info: data.statistics.latest.gamesPlayed },
+                                    { idkey: '#gamesStartedC', info: data.statistics.careerSummary.gamesStarted },
+                                    { idkey: '#gamesStarted', info: data.statistics.latest.gamesStarted },
+                                    { idkey: '#totRebC', info: data.statistics.careerSummary.totReb },
+                                    { idkey: '#totReb', info: data.statistics.latest.totReb },
+                                    { idkey: '#offRebC', info: data.statistics.careerSummary.offReb },
+                                    { idkey: '#offReb', info: data.statistics.latest.offReb },
+                                    { idkey: '#defRebC', info: data.statistics.careerSummary.defReb },
+                                    { idkey: '#defReb', info: data.statistics.latest.defReb },
+                                    { idkey: '#fgpC', info: data.statistics.careerSummary.fgp },
+                                    { idkey: '#fgp', info: data.statistics.latest.fgp },
+                                    { idkey: '#tpmC', info: data.statistics.careerSummary.tpm },
+                                    { idkey: '#tpm', info: data.statistics.latest.tpm },
+                                    { idkey: '#tpaC', info: data.statistics.careerSummary.tpa },
+                                    { idkey: '#tpa', info: data.statistics.latest.tpa },
+                                    { idkey: '#stealsC', info: data.statistics.careerSummary.steals },
+                                    { idkey: '#steals', info: data.statistics.latest.steals },
+                                    { idkey: '#turnoversC', info: data.statistics.careerSummary.turnovers },
+                                    { idkey: '#turnovers', info: data.statistics.latest.turnovers },
+                                    { idkey: '#pFoulsC', info: data.statistics.careerSummary.pFouls },
+                                    { idkey: '#pFouls', info: data.statistics.latest.pFouls },
+                                    { idkey: '#pointsC', info: data.statistics.careerSummary.points },
+                                    { idkey: '#points', info: data.statistics.latest.points },
+                                    { idkey: '#ppgC', info: data.statistics.careerSummary.ppg },
+                                    { idkey: '#ppg', info: data.statistics.latest.ppg },
+                                    { idkey: '#tppC', info: data.statistics.careerSummary.tpp },
+                                    { idkey: '#tpp', info: data.statistics.latest.tpp },
+                                    { idkey: '#spgC', info: data.statistics.careerSummary.spg },
+                                    { idkey: '#spg', info: data.statistics.latest.spg },
+                                    { idkey: '#bpgC', info: data.statistics.careerSummary.bpg },
+                                    { idkey: '#bpg', info: data.statistics.latest.bpg },
+                                    { idkey: '#mpgC', info: data.statistics.careerSummary.mpg },
+                                    { idkey: '#mpg', info: data.statistics.latest.mpg },
+                                    { idkey: '#rpgC', info: data.statistics.careerSummary.rpg },
+                                    { idkey: '#rpg', info: data.statistics.latest.rpg }
+                                ];
+
+
+                                populatearray.forEach(element => {
+                                    $(element.idkey).html(element.info);
+                                });
+
                                 $(".mainappdiv").css("display", "none");
                                 $(".playerinfo").css("display", "none");
                                 $(".playerinfo2").css("display", "none");
 
                                 $(".mainappdiv2").css("display", "block");
+
+                                $(".mainappdiv2").css("background-image", "url(" + logourl + ")");
                                 console.log(logourl);
-                                $("#imagedivbackground").append('<img id="theImg55" src="' + logourl + '" />');
+                                // $("#imagedivbackground2").append('<img id="theImg55" src="' + logourl + '" />');
                                 $(".gradient").css("background", color125);
                                 $(".gradient").css("background", "linear-gradient(180deg, " + color125 + " 0%, " + color124 + " 100%)");
-                                $("#playerpicturebackground").append('<img id="playerpic" src="' + playerpicture + '" />')
+                                $("#playerpicturebackground").append('<img id="playerpic" src="' + playerpicture + '" />');
+                                console.log(playerNameForIndivTable)
+                                $("#playernameForIndiv").html(playerNameForIndivTable);
+                                $("#playerpositionForIndiv").html(playerPositionForIndivTable);
+                                $("#playerheightForIndiv").html(playerwieghtForIndivTable);
+                                $("#playerwieghtForIndiv").html(playerheightForIndivTable);
+
+
+
 
                             });
 

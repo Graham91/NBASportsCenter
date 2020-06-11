@@ -224,9 +224,7 @@ body {
   position: absolute;
   z-index: 1;
   left: 10px;
-
   top: 630px;
-
   height: 130px;
   width: 200px;
   background-color: white;
@@ -241,6 +239,9 @@ body {
   overflow-y: scroll;
 }
 .mainappdiv2 {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right 45px bottom;
   height: 450px;
   width: 1000px;
   margin: 65px;
@@ -253,7 +254,7 @@ table {
   font-family: "Times New Roman", Times, serif;
 }
 tr {
-  background-color: #dddddd;
+  /* background-color: #dddddd; */
 }
 th {
   background-color: black;
@@ -301,8 +302,14 @@ footer {
   height: 450px;
   z-index: 5;
   position: absolute;
-  right: 20%;
 }
+
+#imagedivbackground2 {
+  height: 450px;
+  width: 1000px;
+  margin: 65px;
+}
+
 .gradient {
   position: absolute;
   height: 450px;
@@ -329,9 +336,10 @@ footer {
 }
 
 .individualPlayertable {
+  background-color: rgba(0, 0, 0, 0);
   background: transparent;
   position: relative;
-  opacity: 40%;
+  /* opacity: 40%; */
   top: 20px;
   left: 160px;
   z-index: 15;
@@ -340,9 +348,6 @@ footer {
 }
 .playstatsvalue {
   color: black;
-  border-color: beige;
-  border-width: 3px;
-  border-style: inset;
 }
 
 .playerinfo {
@@ -359,4 +364,35 @@ footer {
   border-width: 5px;
   border-color: rgb(94, 90, 99);
   background-color: rgb(87, 83, 90);
+}
+.individualPlayertable2 {
+  background-color: rgba(255, 255, 255, 0.39);
+  position: relative;
+  /* opacity: 40%; */
+  top: 20px;
+  left: 160px;
+  z-index: 15;
+  width: 60%;
+  margin: 0 auto;
+}
+.individualPlayertable2 td {
+  color: black;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+}
+.playerInfoForIndiv {
+  position: absolute;
+  margin: 20px;
+  margin-top: 230px;
+  height: 200px;
+
+  z-index: 100;
+  background-color: white;
+  width: 290px;
+}
+.relativediv {
+  position: relative;
+  height: 450px;
+  width: 1000px;
 }
