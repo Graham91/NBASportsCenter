@@ -240,8 +240,6 @@
             </div>
 
         </div>
-        <div id="imagedivbackground2">
-        </div>
 
     </div>
     <footer class="redback">
@@ -267,6 +265,7 @@
             $(".inner").on("click", function () {
                 console.log("hi");
                 $(".hide1").css("display", "block");
+                $(".mainappdiv").css("border-color", color125);
                 $.ajax("/api/getplayers/" + id, {
                     type: "GET"
                 }).then(function (data) {
@@ -372,6 +371,7 @@
                                 $(".playerinfo2").css("display", "none");
 
                                 $(".mainappdiv2").css("display", "block");
+                                $(".mainappdiv2").css("border-color", color125);
 
                                 $(".mainappdiv2").css("background-image", "url(" + logourl + ")");
                                 console.log(logourl);
