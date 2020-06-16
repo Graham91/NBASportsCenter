@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML>
 <html>
 
@@ -12,151 +11,164 @@
 </head>
 
 <body>
-    <div id="main">
-      <div id="header">
-        <div id="logo">
-          <div id="logo_text">
-           
-            <h1><a href="index.html">EGCB<span class="logo_colour">Sports Center</span></a></h1>
-            <h2>If you want sports, we got the details</h2>
-          </div>
-        </div>
-        <div id="menubar">
-          <ul id="menu">
-            <li class="selected" id="home"><a>Home</a></li>
-            <li id="gamestats"><a>Live Feeds</a></li>
-            <li class='player'><a href="">Player Stats</a></li>
-            <li class='pref'><a href="">Preferences</a></li>
-          </ul>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+
+          <h1><a href="index.html">EGCB<span class="logo_colour">Sports Center</span></a></h1>
+          <h2>If you want sports, we got the details</h2>
         </div>
       </div>
-<div id="colormain1">
-    <div class="color12">
-        <div class="color22">
-            
-            <h2 class=instruction>Select any team from the dropdown menu to see its game scores for the current season!</h2>
-            <div class=banner-bar>
-              <br>
-              <br clear="clearfix">
-            </div>
-            <a href="https://www.nba.com">
-              <img src="https://i.imgur.com/mAhBtrA.jpg" alt="nba team logos" style="height:300px;" id="imageborder">
-            </a>
-            <div class="navbar">
-              <div class="dropdown">
-                  <select id="selectTeam">
-                      <option>Choose an NBA Team</option>
-                  </select>
-              </div>
-            
-            </div>
-            <br><br>
-            <div class="row">
-              <br>
-              <div class="teamName" id="gameList">
-        </div>
-        </div>
+      <div id="menubar">
+        <ul id="menu">
+          <li class="selected" id="home"><a>Home</a></li>
+          <li id="gamestats"><a>Live Feeds</a></li>
+          <li class='player'><a href="">Player Stats</a></li>
+          <li class='pref'><a href="">Preferences</a></li>
+        </ul>
+      </div>
     </div>
-</div>
-</div>
+    <div id="colormain1">
+      <div class="color12">
+        <div class="color22">
+
+          <h2 class=instruction>Select any team from the dropdown menu to see its game scores for the current season!
+          </h2>
+          <div class=banner-bar>
+            <br>
+            <br clear="clearfix">
+          </div>
+          <a href="https://www.nba.com">
+            <img src="https://i.imgur.com/mAhBtrA.jpg" alt="nba team logos" style="height:300px;" id="imageborder">
+          </a>
+          <div class="navbar">
+            <div class="dropdown">
+              <select id="selectTeam">
+                <option>Choose an NBA Team</option>
+              </select>
+            </div>
+
+          </div>
+          <br><br>
+          <div class="row">
+            <br>
+            <div class="teamName" id="gameList">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div id="content_footer"></div>
     <div id="footer">
       <p>Copyright &copy; EGCB Sports Cetner
     </div>
     <script>
-        $( document ).ready(function() {
-    console.log( "ready!" ); 
-    var url = window.location.pathname;
-    var id = url.substring(url.lastIndexOf('/') + 1);
-    console.log(id);
-    $.ajax("/api/home/"+id, {
-        type: "GET"
-      }).then(function(data) {
-    //   $("#imagediv").prepend('<img id="theImg" SameSite=None src="'+data.color.url+'" />');
-        $("#colormain1").css("background-color", data.color.colors1[1]);
-        $(".color12").css("background-color", data.color.colors1[2]);
-        $(".color22").css("background-color", data.color.colors1[3]);
-        $("#imageborder").css("border-color", data.color.colors1[1]);
-        
-        // $("#welcomeid").html("Welcome: "+ data.db.UserID)
-        // $("#favteam").html("Your favorite Team is: " + data.db.FavTeam);
+      $(document).ready(function () {
+        console.log("ready!");
+        var url = window.location.pathname;
+        var id = url.substring(url.lastIndexOf('/') + 1);
+        console.log(id);
+        $.ajax("/api/home/" + id, {
+          type: "GET"
+        }).then(function (data) {
+          //   $("#imagediv").prepend('<img id="theImg" SameSite=None src="'+data.color.url+'" />');
+          $("#colormain1").css("background-color", data.color.colors1[1]);
+          $(".color12").css("background-color", data.color.colors1[2]);
+          $(".color22").css("background-color", data.color.colors1[3]);
+          $("#imageborder").css("border-color", data.color.colors1[1]);
 
-        console.log(data.color.url);
-        console.log(data);})
-  
-});
-        var selectTeam = document.getElementById("selectTeam");
-        var selectGame = document.getElementById("selectGame");
+          // $("#welcomeid").html("Welcome: "+ data.db.UserID)
+          // $("#favteam").html("Your favorite Team is: " + data.db.FavTeam);
 
-        var queryTeamURL = "https://www.balldontlie.io/api/v1/teams/"
-        $.ajax({
-            url: queryTeamURL,
-            method: "GET",
-        }).then(function (res) {
-            handleResponse(res, selectTeam)
-        });
-
-        var handleResponse = function (res, dropdown) {
-            console.log(res);
-            for (var i = 0; i < res.data.length; i++) {
-                var team = res.data[i];
-                var el = document.createElement("option");
-                el.textContent = team.full_name;
-                el.value = team.id;
-                dropdown.appendChild(el);
-            }
-        }
-
-        $("#selectTeam").on("change", function () {
-            $("#gameList").empty();
-            var dropdownID = $(this).val();
-            console.log("option", dropdownID);
-
-            var queryGameURL = "https://www.balldontlie.io/api/v1/games?seasons[]=2019&team_ids[]=" + dropdownID
-            console.log("2222", queryGameURL);
-
-            // Performing our AJAX GET request
-            $.ajax({
-                url: queryGameURL,
-                method: "GET",
-
-            }).then(function (res) {
-                let selectedTeamScores = []
-                for (let index = 0; index < res.data.length; index++) {
-                    const homeTeamID = res.data[index].home_team.id;
-                    let homeTeamScore, homeTeamName, homeTeam, visitingTeamScore, visitingTeamName;
-                    if (homeTeamID == dropdownID) {
-                        homeTeam = true;
-                    }
-                    // if (homeTeam) {
-                        homeTeamName = res.data[index].home_team.full_name;
-                        visitingTeamName = res.data[index].visitor_team.full_name;
-                        homeTeamScore = res.data[index].home_team_score;
-                        visitingTeamScore = res.data[index].visitor_team_score;
-                   
-                    selectedTeamScores.push({
-                        first: homeTeamName,
-                        second: visitingTeamName,
-                        firstScore: homeTeamScore,
-                        secondScore: visitingTeamScore,
-                    })
-                }
-                console.log(selectedTeamScores);
-                let gameList = document.getElementById("gameList");
-                selectedTeamScores.map(function (game) {
-                    let gameRow = document.createElement("p")
-                    gameRow.innerText = "Home team: " + game.first + " " + game.firstScore + " vs " + "Visiting team: " + game.second + " " + game.secondScore;
-                    gameList.appendChild(gameRow);
-                })
-                // define if home team or visiting = selected team
-                // subtask- looping through each game and check if home or visiting
-                // return selected team score and competitor score
-            });
+          console.log(data.color.url);
+          console.log(data);
         })
-        $("#home").on("click", function(){
-            var url = window.location.pathname;
-    var id = url.substring(url.lastIndexOf('/') + 1);
-  window.location.href="/sportscenter/" + id;
-})
+
+      });
+      var selectTeam = document.getElementById("selectTeam");
+      var selectGame = document.getElementById("selectGame");
+
+      var queryTeamURL = "https://www.balldontlie.io/api/v1/teams/"
+      $.ajax({
+        url: queryTeamURL,
+        method: "GET",
+      }).then(function (res) {
+        console.log(res);
+        handleResponse(res, selectTeam)
+      });
+
+      var handleResponse = function (res, dropdown) {
+        console.log(res);
+        for (var i = 0; i < res.data.length; i++) {
+          var team = res.data[i];
+          var el = document.createElement("option");
+          el.textContent = team.full_name;
+          el.value = team.id;
+          dropdown.appendChild(el);
+        }
+      }
+
+      $("#selectTeam").on("change", function () {
+        $("#gameList").empty();
+        var dropdownID = $(this).val();
+        console.log("option", dropdownID);
+
+        var queryGameURL = "https://www.balldontlie.io/api/v1/games?seasons[]=2019&team_ids[]=" + dropdownID
+        console.log("2222", queryGameURL);
+
+        // Performing our AJAX GET request
+        let selectedTeamScores = []
+
+        $.ajax({
+          url: queryGameURL,
+          method: "GET",
+
+        }).then(function (res) {
+          let homeTeamScore, homeTeamName, homeTeam, visitingTeamScore, visitingTeamName;
+          for (let index = 0; index < 6; index++) {
+            const homeTeamID = res.data[index].home_team.id;
+            if (homeTeamID == dropdownID) {
+              homeTeam = true;
+            }
+            // if (homeTeam) {
+            homeTeamName = res.data[index].home_team.full_name;
+            visitingTeamName = res.data[index].visitor_team.full_name;
+            homeTeamScore = res.data[index].home_team_score;
+            visitingTeamScore = res.data[index].visitor_team_score;
+
+            selectedTeamScores.push({
+              gameyoutubesearch: "Home team: " + homeTeamName + " " + homeTeamScore + " vs " + "Visiting team: " + visitingTeamName + " " + visitingTeamScore,
+
+            })
+          }
+          console.log(selectedTeamScores);
+          let gameList = document.getElementById("gameList");
+          let serachinfo = "Home+team:" + homeTeamName + "+" + homeTeamScore + "+vs+" + "Visiting+team: " + visitingTeamName + "+" + visitingTeamScore;
+
+          let youtubeapi = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" + "zoo" + "&type=video&key=AIzaSyDFqW-mKPfwbTiosSlG1_wmSmE6D53a3cg";
+
+          $.ajax({
+            URL: youtubeapi,
+            method: "GET"
+          }).then(function (res) {
+            console.log("choin")
+            console.log(res);
+          })
+
+
+
+
+
+          // define if home team or visiting = selected team
+          // subtask- looping through each game and check if home or visiting
+          // return selected team score and competitor score
+        });
+      })
+      $("#home").on("click", function () {
+        var url = window.location.pathname;
+        var id = url.substring(url.lastIndexOf('/') + 1);
+        window.location.href = "/sportscenter/" + id;
+      })
     </script>
 </body>

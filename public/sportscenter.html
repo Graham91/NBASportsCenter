@@ -39,12 +39,26 @@
         </div>
 
     </div>
+    <!-- <iframe src=""></iframe>
+        <h3>Video Title</h3>
+        <p class="description">Video Description
+            <p> -->
     <div class="grid-container">
         <div class="grid-item">
             <div class="inner"></div>
-            <div class="examplediv" id="hi"></div>
-            <div class="examplediv1"></div>
-            <div class="examplediv2"></div>
+            <div class="boxDivForApps" id="box1">
+            </div>
+            <div class="boxDivForApps" id="box2">
+            </div>
+            <div class="boxDivForApps" id="box3">
+            </div>
+            <div class="boxDivForApps" id="box4">
+            </div>
+            <div class="boxDivForApps" id="box5">
+            </div>
+            <div id="arrowbuttondiv"></div>
+            <div id="arrowbuttondiv2"></div>
+
         </div>
         <div class="mainappdiv hide1">
             <table style="width:100%">
@@ -262,6 +276,83 @@
             var id = url.substring(url.lastIndexOf('/') + 1);
             console.log(id);
 
+            // function getVideo() {
+            //     $.ajax({
+            //         type: 'GET',
+            //         url: 'https://www.googleapis.com/youtube/v3/search',
+            //         data: {
+            //             key: 'AIzaSyDFqW- mKPfwbTiosSlG1_wmSmE6D53a3cg',
+            //             q: "cats",
+            //             part: 'snippet',
+            //             maxResults: 1,
+            //             type: 'video',
+            //             videoEmbeddable: true,
+            //         },
+            //         success: function (data) {
+            //             console.log(data);
+            //             embedVideo(data)
+            //         },
+            //         error: function (response) {
+            //             console.log("Request Failed");
+            //         }
+            //     });
+            // }
+            let selectedTeamScores = [];
+            var queryGameURL = "https://www.balldontlie.io/api/v1/games?seasons[]=2019&team_ids[]=" + 1;
+            console.log("2222", queryGameURL);
+            $.ajax({
+                url: queryGameURL,
+                method: "GET",
+
+            }).then(function (res) {
+                let homeTeamScore, homeTeamName, homeTeam, visitingTeamScore, visitingTeamName;
+                for (let index = 0; index < 6; index++) {
+
+
+                    // if (homeTeam) {
+                    homeTeamName = res.data[index].home_team.full_name;
+                    visitingTeamName = res.data[index].visitor_team.full_name;
+                    homeTeamScore = res.data[index].home_team_score;
+                    visitingTeamScore = res.data[index].visitor_team_score;
+
+                    selectedTeamScores.push({
+                        gameyoutubesearch: "Home team: " + homeTeamName + " " + homeTeamScore + " vs " + "Visiting team: " + visitingTeamName + " " + visitingTeamScore,
+
+                    })
+                    // $.ajax({
+                    //     type: 'GET',
+                    //     url: 'https://www.googleapis.com/youtube/v3/search',
+                    //     data: {
+                    //         key: 'AIzaSyDFqW- mKPfwbTiosSlG1_wmSmE6D53a3cg',
+                    //         q: selectedTeamScores[index].gameyoutubesearch,
+                    //         part: 'snippet',
+                    //         maxResults: 1,
+                    //         type: 'video',
+                    //         videoEmbeddable: true,
+                    //     },
+                    //     success: function (data) {
+                    //         console.log(data);
+                    //         $('iframe').attr('src', 'https://www.youtube.com/embed/' + data.items[0].id.videoId)
+                    //         $('h3').text(data.items[0].snippet.title)
+                    //         $('.description').text(data.items[0].snippet.description)
+                    //         // embedVideo(data)
+                    //     },
+                    //     error: function (response) {
+                    //         console.log("Request Failed");
+                    //     }
+                    // });
+
+                }
+                console.log(selectedTeamScores);
+            });
+            // function embedVideo(data) {
+            //     $('iframe').attr('src', 'https://www.youtube.com/embed/' + data.items[0].id.videoId)
+            //     $('h3').text(data.items[0].snippet.title)
+            //     $('.description').text(data.items[0].snippet.description)
+            // }
+            // getVideo();
+
+
             $(".inner").on("click", function () {
                 console.log("hi");
                 $(".hide1").css("display", "block");
@@ -410,6 +501,7 @@
                 // stuff needed to get the image right;
                 var newImg = new Image;
                 newImg.src = data.color.url;
+                console.log(newImg.src);
                 $(newImg).attr('id', 'theImg');
                 $(newImg).on("load", function () {
                     $("#imagediv").prepend(newImg);
@@ -419,6 +511,9 @@
                     console.log(imagewidth);
                     let left;
                     let leftstring;
+                    let buttonleft;
+                    let buttonleftstring;
+
                     if (imagewidth < 180) {
                         $("#theImg").css("height", "275px");
                         $("#imagediv").css("height", "305px");
@@ -427,12 +522,16 @@
                         imagewidth2 = parseInt(imagewidth) + 60;
                         left = (imagewidth2 - 200) / 2;
                         leftstring = left + "px";
+                        buttonleft = left + 60;
+                        buttonleftstring = buttonleft + "px";
                         let imagewidthstring = imagewidth2 + "px";
                         $(".grid-item").css("width", imagewidthstring);
                         $(".inner").css("width", imagewidthstring);
-                        $(".examplediv").css("left", leftstring);
-                        $(".examplediv1").css("left", leftstring);
-                        $(".examplediv2").css("left", leftstring);
+                        $(".boxDivForApps").css("left", leftstring);
+                        $("#arrowbuttondiv").css("top", "350px");
+                        $("#arrowbuttondiv").css("left", buttonleftstring);
+                        $("#arrowbuttondiv2").css("left", buttonleftstring);
+
                     } else if (imagewidth > 308) {
                         imagewidth = 308;
                         imagewidth2 = parseInt(imagewidth) + 60;
@@ -440,32 +539,39 @@
                         left = (imagewidth2 - 200) / 2;
                         leftstring = left + "px";
                         console.log(imagewidthstring);
+                        buttonleft = left + 60;
+                        buttonleftstring = buttonleft + "px";
                         $(".grid-item").css("width", imagewidthstring);
                         $(".inner").css("width", imagewidthstring);
-                        $(".examplediv").css("left", leftstring);
-                        $(".examplediv1").css("left", leftstring);
-                        $(".examplediv2").css("left", leftstring);
+                        $(".boxDivForApps").css("left", leftstring);
+                        $("#arrowbuttondiv").css("left", buttonleftstring);
+                        $("#arrowbuttondiv2").css("left", buttonleftstring);
                     } else {
                         imagewidth2 = parseInt(imagewidth) + 60;
                         let imagewidthstring = imagewidth2 + "px";
                         left = (imagewidth2 - 200) / 2;
                         leftstring = left + "px";
                         console.log(imagewidthstring);
+                        buttonleft = left + 60;
+                        buttonleftstring = buttonleft + "px";
                         $(".grid-item").css("width", imagewidthstring);
                         $(".inner").css("width", imagewidthstring);
-                        $(".examplediv").css("left", leftstring);
-                        $(".examplediv1").css("left", leftstring);
-                        $(".examplediv2").css("left", leftstring);
+                        $(".boxDivForApps").css("left", leftstring);
+                        $("#arrowbuttondiv").css("left", buttonleftstring);
+                        $("#arrowbuttondiv2").css("left", buttonleftstring);
                     }
                 });
                 // newImg.src = data.color.url;
                 // $("#imagediv").prepend(newImg);
                 let blueborder2string = data.color.colors1[3] + " transparent transparent transparent";
+
                 $(".redback").css("background-color", data.color.colors1[1]);
                 $(".redborder").css("border-color", data.color.colors1[1]);
                 $("#theImg").css("border-color", data.color.colors1[2]);
                 $(".blueborder").css("border-color", data.color.colors1[3]);
                 $(".blueborder3").css("border-color", "transparent transparent " + data.color.colors1[3] + " transparent");
+                $("#arrowbuttondiv").css("border-color", "transparent transparent " + data.color.colors1[3] + " transparent");
+                $("#arrowbuttondiv2").css("border-color", blueborder2string);
                 $(".blueborder2").css("border-color", blueborder2string);
                 $(".blueborder1").css("border-color", "transparent " + data.color.colors1[3] + " transparent transparent");
                 $(".blueback").css("background-color", data.color.colors1[3]);
@@ -489,25 +595,26 @@
         });
 
 
-        //     $(".gamestats").on("click", function(){
-        //       console.log("YOU A BUTT");
-        //       var url = window.location.pathname;
-        //         var id = url.substring(url.lastIndexOf('/') + 1);
+            //     $(".gamestats").on("click", function(){
+                //       console.log("YOU A BUTT");
+                //       var url = window.location.pathname;
+                //         var id = url.substring(url.lastIndexOf('/') + 1);
 
-        //             window.location.href="/sportscentergame/"+id;
-
-
-        //   });
-        //   $(".pref").on("click", function(){
-        //       console.log("YOU A BUTT");
-        //       var url = window.location.pathname;
-        //         var id = url.substring(url.lastIndexOf('/') + 1);
-
-        //             window.location.href="/sportscenterpref/"+id;
+                //             window.location.href="/sportscentergame/"+id;
 
 
-        //   });
+                //   });
+                //   $(".pref").on("click", function(){
+                    //       console.log("YOU A BUTT");
+                    //       var url = window.location.pathname;
+                    //         var id = url.substring(url.lastIndexOf('/') + 1);
+
+                    //             window.location.href="/sportscenterpref/"+id;
+
+
+                    //   });
     </script>
+    <script src=/assests/script/navigatorSideMenu.js></script>
 </body>
 
 </html>
