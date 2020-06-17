@@ -125,6 +125,16 @@ body {
   border-width: 15px;
   margin: 0;
 }
+#mediumscreenimage {
+  height: 160px;
+  text-align: center;
+  z-index: 0;
+  border-color: darkgrey;
+  border-style: outset;
+  border-width: 15px;
+  margin: 0;
+}
+
 #imagediv {
   padding-bottom: -5px;
   height: 230px;
