@@ -1,6 +1,7 @@
 let data;
 let logourl;
 let color124;
+let color123;
 let color125;
 let playerpicture;
 let playerindex = [];
@@ -9,73 +10,73 @@ let windowSize;
 let newImg;
 let outsideData;
 let runOnce = false;
-let runOnceMed = false;
 
-if ($(window).width() < 960) {
-  windowSize = "medium";
-  $(newImg).attr("id", "mediumscreenimage");
-} else {
-  windowSize = "large";
-  $(newImg).attr("id", "theImg");
-  eventFired = 1;
+function myFunction(x) {
+  if (x.matches) {
+    // If media query matches
+    windowSize = "Large";
+    imagetransition(windowSize);
+  } else {
+    windowSize = "medium";
+    imagetransition(windowSize);
+  }
 }
 
-$(window).on("resize", function () {
-  if (!eventFired) {
-    if ($(window).width() < 960) {
-      if (runOnceMed === false) {
-        windowSize = "medium";
-        newImg.parentNode.removeChild(newImg);
-        getimageandsizeformedium(outsideData);
-        runOnce = false;
-        runOnceMed = true;
-      }
-    } else {
-      if (runOnce === false) {
-        newImg.parentNode.removeChild(newImg);
-        windowSize = "large";
-        getimageandsize(outsideData);
-        runOnce = true;
-        runOnceMed = false;
-      }
-    }
-  }
-});
-function getimageandsizeformedium(data) {
-  newImg = new Image();
-  newImg.src = data.color.url;
-  console.log(newImg.src);
-  if (windowSize === "medium") {
-    $(newImg).attr("id", "mediumscreenimage");
-  }
-  $(newImg).on("load", function () {
-    $("#imagediv").prepend(newImg);
-    $("#imagediv").css("height", "190px");
-  });
-}
-function getimageandsize(data) {
-  newImg = new Image();
-  newImg.src = data.color.url;
-  console.log(newImg.src);
-  if (windowSize === "large") {
-    $(newImg).attr("id", "theImg");
-  }
-  $(newImg).on("load", function () {
-    $("#imagediv").prepend(newImg);
-    //all the stuff has to happen after.
+var x = window.matchMedia("(min-width: 1200px)");
+// Call listener function at run time
 
-    let imagewidth = $("#theImg").width();
-    let imagewidth2 = parseInt(imagewidth) + 20;
-    console.log(imagewidth);
-    let left;
-    let leftstring;
-    let buttonleft;
-    let buttonleftstring;
+x.addListener(myFunction); // Attach listener function on state changes
+newImg = new Image();
+
+function imagetransition(displaysize) {
+  if (displaysize === "Large") {
+    getimageandsize(outsideData, displaysize);
+  } else if (displaysize === "medium") {
+    getimageandsize(outsideData, displaysize);
+  }
+}
+function getimageandsize(data, displaysize) {
+  newImg.src = data.color.url;
+
+  if (displaysize === "medium") {
+    $(newImg).on("load", function () {
+      $(newImg).removeAttr("id", "theImg");
+      $(newImg).css("height", "");
+      $(newImg).attr("id", "mediumscreenimage");
+      $("#imagediv").css("height", "190px");
+      $(".grid-item").css("display", "none");
+      $("#imagediv").prepend(newImg);
+      $("#mediumscreenimage").css("border-color", color123);
+      //all the stuff has to happen after.
+      runOnce = false;
+    });
+  }
+  if (displaysize === "Large") {
+    $(newImg).on("load", function () {
+      $(newImg).attr("id", "theImg");
+      $("#imagediv").prepend(newImg);
+      $(".grid-item").css("display", "block");
+      //all the stuff has to happen after.
+      determineimageproportions();
+      $("#theImg").css("border-color", color123);
+    });
+  }
+}
+function determineimageproportions() {
+  let imagewidth = $("#theImg").width();
+  let imageHeight = $("#theImg").height();
+  let imagewidth2 = parseInt(imagewidth) + 20;
+
+  let left;
+  let leftstring;
+  let buttonleft;
+  let buttonleftstring;
+  if (runOnce === false) {
     if (imagewidth < 180) {
       $("#theImg").css("height", "275px");
       $("#imagediv").css("height", "305px");
       imagewidth = $("#theImg").width();
-      // console.log(imagewidth);
+
       imagewidth2 = parseInt(imagewidth) + 60;
       left = (imagewidth2 - 200) / 2;
       leftstring = left + "px";
@@ -88,6 +89,7 @@ function getimageandsize(data) {
       $("#arrowbuttondiv").css("top", "350px");
       $("#arrowbuttondiv").css("left", buttonleftstring);
       $("#arrowbuttondiv2").css("left", buttonleftstring);
+      runOnce = true;
     } else if (imagewidth > 308) {
       $("#imagediv").css("height", "");
       imagewidth = 308;
@@ -95,7 +97,7 @@ function getimageandsize(data) {
       let imagewidthstring = imagewidth2 + "px";
       left = (imagewidth2 - 200) / 2;
       leftstring = left + "px";
-      console.log(imagewidthstring);
+
       buttonleft = left + 60;
       buttonleftstring = buttonleft + "px";
       $(".grid-item").css("width", imagewidthstring);
@@ -110,7 +112,7 @@ function getimageandsize(data) {
       let imagewidthstring = imagewidth2 + "px";
       left = (imagewidth2 - 200) / 2;
       leftstring = left + "px";
-      console.log(imagewidthstring);
+
       buttonleft = left + 60;
       buttonleftstring = buttonleft + "px";
       $(".grid-item").css("width", imagewidthstring);
@@ -120,7 +122,7 @@ function getimageandsize(data) {
       $("#arrowbuttondiv").css("left", buttonleftstring);
       $("#arrowbuttondiv2").css("left", buttonleftstring);
     }
-  });
+  }
 }
 
 function playerinformation(id) {
@@ -359,19 +361,18 @@ $(document).ready(function () {
     outsideData = data;
     logourl = data.color.url;
     color124 = data.color.colors1[1];
+    color123 = data.color.colors1[2];
     color125 = data.color.colors1[3];
-    if (windowSize === "medium") {
-      getimageandsizeformedium(data);
-    } else {
-      getimageandsize(data);
-    }
+    myFunction(x);
+    getimageandsize(data, windowSize);
+    console.log(data.color.colors1[2]);
 
     let blueborder2string =
       data.color.colors1[3] + " transparent transparent transparent";
 
     $(".redback").css("background-color", data.color.colors1[1]);
     $(".redborder").css("border-color", data.color.colors1[1]);
-    $("#theImg").css("border-color", data.color.colors1[2]);
+    $("#theImg").css("border-color", color123);
     $(".blueborder").css("border-color", data.color.colors1[3]);
     $(".blueborder3").css(
       "border-color",
