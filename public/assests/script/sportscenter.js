@@ -9,7 +9,12 @@ var eventFired = 0;
 let windowSize;
 let newImg;
 let outsideData;
+let id;
 let runOnce = false;
+let gotPlayersYet = false;
+let appendonce = false;
+let playersApp;
+let playersAppState = "list";
 
 function myFunction(x) {
   if (x.matches) {
@@ -40,13 +45,29 @@ function getimageandsize(data, displaysize) {
 
   if (displaysize === "medium") {
     $(newImg).on("load", function () {
+      $(".hide1").css("display", "none");
       $(newImg).removeAttr("id", "theImg");
       $(newImg).css("height", "");
       $(newImg).attr("id", "mediumscreenimage");
       $("#imagediv").css("height", "190px");
       $(".grid-item").css("display", "none");
       $("#imagediv").prepend(newImg);
+      $(".centraldiv").css("display", "block");
       $("#mediumscreenimage").css("border-color", color123);
+      $(".largeScreenAppViewer").css("display", "none");
+      if (appendonce === false) {
+        $("#players1").append(playersApp);
+        appendonce = true;
+      }
+      getclicks();
+      if (playersAppState === "list") {
+        $(".hide2").css("display", "none");
+        $(".hide1").css("display", "block");
+      }
+      if (playersAppState === "individual") {
+        $(".hide1").css("display", "none");
+        $(".hide2").css("display", "block");
+      }
       //all the stuff has to happen after.
       runOnce = false;
     });
@@ -59,6 +80,9 @@ function getimageandsize(data, displaysize) {
       //all the stuff has to happen after.
       determineimageproportions();
       $("#theImg").css("border-color", color123);
+      $(".centraldiv").css("display", "none");
+      playersclickedonce = false;
+      getclicks();
     });
   }
 }
@@ -124,10 +148,47 @@ function determineimageproportions() {
     }
   }
 }
+function fillInPlayerFromteam(data) {
+  data.forEach((element, index) => {
+    $("table tbody").append(
+      "<tr><td><div class='playerinfo'>" +
+        element.player.number +
+        "</div></td><td><div class='getplayerstats playerinfo2' value=" +
+        index +
+        " id='" +
+        element.player.image +
+        "' name='" +
+        element.player.url +
+        "'>" +
+        element.player.name +
+        "</div></td><td><div class='playerinfo'>" +
+        element.player.position +
+        "</div></td><td><div class='playerinfo'>" +
+        element.player.height +
+        "</div></td><td><div class='playerinfo'>" +
+        element.player.weight +
+        "</div></tr>"
+    );
+  });
+}
+function getlargescreenAPPPLayers() {
+  $(".largeScreenAppViewer").css("display", "block");
 
-function playerinformation(id) {
-  console.log("hi");
+  $(".largeScreenAppViewer").append(playersApp);
+  $(".largeScreenAppViewer").append();
   $(".hide1").css("display", "block");
+  getclicks();
+  if (playersAppState === "list") {
+    $(".hide2").css("display", "none");
+    $(".hide1").css("display", "block");
+  }
+  if (playersAppState === "individual") {
+    $(".hide1").css("display", "none");
+    $(".hide2").css("display", "block");
+  }
+}
+function playerinformation(id, windowSize) {
+  console.log("hi");
   $(".mainappdiv").css("border-color", color125);
   $.ajax("/api/getplayers/" + id, {
     type: "GET",
@@ -135,144 +196,17 @@ function playerinformation(id) {
     console.log(data);
     playerindex = data;
     console.log(playerindex);
+    fillInPlayerFromteam(data);
+    playersApp = $(".playerApp").html();
+    console.log(playersApp);
+    console.log(windowSize);
+    gotPlayersYet = true;
 
-    data.forEach((element, index) => {
-      console.log(index);
-      $("table tbody").append(
-        "<tr><td><div class='playerinfo'>" +
-          element.player.number +
-          "</div></td><td><div class='getplayerstats playerinfo2' value=" +
-          index +
-          " id='" +
-          element.player.image +
-          "' name='" +
-          element.player.url +
-          "'>" +
-          element.player.name +
-          "</div></td><td><div class='playerinfo'>" +
-          element.player.position +
-          "</div></td><td><div class='playerinfo'>" +
-          element.player.height +
-          "</div></td><td><div class='playerinfo'>" +
-          element.player.weight +
-          "</div></tr>"
-      );
-    });
-    $(".getplayerstats").on("click", function () {
-      var target = event.target;
-      let playerurl = target.getAttribute("name");
-      let playervalue = target.getAttribute("value");
-      let playerindexnumber = parseInt(playervalue);
-      console.log(playerurl);
-      var parts = playerurl.split("/");
-      var playerid = parts[parts.length - 1];
-      playerpicture = target.getAttribute("id");
-
-      var playerstatsurl = {
-        url: playerid,
-        img: playerpicture,
-      };
-      console.log(playerstatsurl);
-
-      $.get("/api/individual/" + playerid).then(function (data) {
-        let playerNameForIndivTable =
-          playerindex[playerindexnumber].player.name;
-        let playerPositionForIndivTable =
-          playerindex[playerindexnumber].player.position;
-        let playerNumberForIndivTable =
-          playerindex[playerindexnumber].player.number;
-        let playerwieghtForIndivTable =
-          playerindex[playerindexnumber].player.weight;
-        let playerheightForIndivTable =
-          playerindex[playerindexnumber].player.height;
-
-        console.log(data);
-        const populatearray = [
-          { idkey: "#minC", info: data.statistics.careerSummary.min },
-          { idkey: "#min", info: data.statistics.latest.min },
-          { idkey: "#assistsC", info: data.statistics.careerSummary.assists },
-          { idkey: "#assists", info: data.statistics.latest.assists },
-          { idkey: "#blocksC", info: data.statistics.careerSummary.blocks },
-          { idkey: "#blocks", info: data.statistics.latest.blocks },
-          {
-            idkey: "#gamesPlayedC",
-            info: data.statistics.careerSummary.gamesPlayed,
-          },
-          { idkey: "#gamesPlayed", info: data.statistics.latest.gamesPlayed },
-          {
-            idkey: "#gamesStartedC",
-            info: data.statistics.careerSummary.gamesStarted,
-          },
-          {
-            idkey: "#gamesStarted",
-            info: data.statistics.latest.gamesStarted,
-          },
-          { idkey: "#totRebC", info: data.statistics.careerSummary.totReb },
-          { idkey: "#totReb", info: data.statistics.latest.totReb },
-          { idkey: "#offRebC", info: data.statistics.careerSummary.offReb },
-          { idkey: "#offReb", info: data.statistics.latest.offReb },
-          { idkey: "#defRebC", info: data.statistics.careerSummary.defReb },
-          { idkey: "#defReb", info: data.statistics.latest.defReb },
-          { idkey: "#fgpC", info: data.statistics.careerSummary.fgp },
-          { idkey: "#fgp", info: data.statistics.latest.fgp },
-          { idkey: "#tpmC", info: data.statistics.careerSummary.tpm },
-          { idkey: "#tpm", info: data.statistics.latest.tpm },
-          { idkey: "#tpaC", info: data.statistics.careerSummary.tpa },
-          { idkey: "#tpa", info: data.statistics.latest.tpa },
-          { idkey: "#stealsC", info: data.statistics.careerSummary.steals },
-          { idkey: "#steals", info: data.statistics.latest.steals },
-          {
-            idkey: "#turnoversC",
-            info: data.statistics.careerSummary.turnovers,
-          },
-          { idkey: "#turnovers", info: data.statistics.latest.turnovers },
-          { idkey: "#pFoulsC", info: data.statistics.careerSummary.pFouls },
-          { idkey: "#pFouls", info: data.statistics.latest.pFouls },
-          { idkey: "#pointsC", info: data.statistics.careerSummary.points },
-          { idkey: "#points", info: data.statistics.latest.points },
-          { idkey: "#ppgC", info: data.statistics.careerSummary.ppg },
-          { idkey: "#ppg", info: data.statistics.latest.ppg },
-          { idkey: "#tppC", info: data.statistics.careerSummary.tpp },
-          { idkey: "#tpp", info: data.statistics.latest.tpp },
-          { idkey: "#spgC", info: data.statistics.careerSummary.spg },
-          { idkey: "#spg", info: data.statistics.latest.spg },
-          { idkey: "#bpgC", info: data.statistics.careerSummary.bpg },
-          { idkey: "#bpg", info: data.statistics.latest.bpg },
-          { idkey: "#mpgC", info: data.statistics.careerSummary.mpg },
-          { idkey: "#mpg", info: data.statistics.latest.mpg },
-          { idkey: "#rpgC", info: data.statistics.careerSummary.rpg },
-          { idkey: "#rpg", info: data.statistics.latest.rpg },
-        ];
-
-        populatearray.forEach((element) => {
-          $(element.idkey).html(element.info);
-        });
-
-        $(".mainappdiv").css("display", "none");
-        $(".playerinfo").css("display", "none");
-        $(".playerinfo2").css("display", "none");
-
-        $(".mainappdiv2").css("display", "block");
-        $(".mainappdiv2").css("border-color", color125);
-
-        $(".mainappdiv2").css("background-image", "url(" + logourl + ")");
-        console.log(logourl);
-        // $("#imagedivbackground2").append('<img id="theImg55" src="' + logourl + '" />');
-        $(".gradient").css("background", color125);
-        $(".gradient").css(
-          "background",
-          "linear-gradient(180deg, " + color125 + " 0%, " + color124 + " 100%)"
-        );
-        $("#playerpicturebackground").append(
-          '<img id="playerpic" src="' + playerpicture + '" />'
-        );
-        console.log(playerNameForIndivTable);
-        $("#playernameForIndiv").html(playerNameForIndivTable);
-        $("#playerpositionForIndiv").html(playerPositionForIndivTable);
-        $("#playerheightForIndiv").html(playerwieghtForIndivTable);
-        $("#playerwieghtForIndiv").html(playerheightForIndivTable);
-      });
-    });
+    if (windowSize === "medium") {
+      $("#players1").append(playersApp);
+      getclicks();
+      appendonce = true;
+    }
   });
 }
 
@@ -341,15 +275,140 @@ function getHighlightvideos() {
   // }
   // getVideo();
 }
+let playersclickedonce = false;
+function getclicks() {
+  if (playersclickedonce === false) {
+    $(".getplayerstats").on("click", function () {
+      playersclickedonce = true;
+      let baseHtml = $(".individualPlayerApp").html();
+      playersAppState = "individual";
+      $("#players1").append(baseHtml);
+      $(".largeScreenAppViewer").append(baseHtml);
+      $(".playerinfo").css("display", "none");
+      $(".playerinfo2").css("display", "none");
+      $(".mainappdiv").css("display", "none");
+      $(".mainappdiv2").css("display", "block");
+      $(".mainappdiv2").css("border-color", color125);
+
+      var target = event.target;
+      let playerurl = target.getAttribute("name");
+      let playervalue = target.getAttribute("value");
+      let playerindexnumber = parseInt(playervalue);
+      console.log(playerurl);
+      var parts = playerurl.split("/");
+      var playerid = parts[parts.length - 1];
+      playerpicture = target.getAttribute("id");
+
+      var playerstatsurl = {
+        url: playerid,
+        img: playerpicture,
+      };
+      console.log(playerstatsurl);
+
+      $.get("/api/individual/" + playerid).then(function (data) {
+        let playerNameForIndivTable =
+          playerindex[playerindexnumber].player.name;
+        let playerPositionForIndivTable =
+          playerindex[playerindexnumber].player.position;
+        let playerNumberForIndivTable =
+          playerindex[playerindexnumber].player.number;
+        let playerwieghtForIndivTable =
+          playerindex[playerindexnumber].player.weight;
+        let playerheightForIndivTable =
+          playerindex[playerindexnumber].player.height;
+
+        console.log(data);
+        const populatearray = [
+          { idkey: ".minC", info: data.statistics.careerSummary.min },
+          { idkey: ".min", info: data.statistics.latest.min },
+          { idkey: ".assistsC", info: data.statistics.careerSummary.assists },
+          { idkey: ".assists", info: data.statistics.latest.assists },
+          { idkey: ".blocksC", info: data.statistics.careerSummary.blocks },
+          { idkey: ".blocks", info: data.statistics.latest.blocks },
+          {
+            idkey: ".gamesPlayedC",
+            info: data.statistics.careerSummary.gamesPlayed,
+          },
+          { idkey: ".gamesPlayed", info: data.statistics.latest.gamesPlayed },
+          {
+            idkey: ".gamesStartedC",
+            info: data.statistics.careerSummary.gamesStarted,
+          },
+          {
+            idkey: ".gamesStarted",
+            info: data.statistics.latest.gamesStarted,
+          },
+          { idkey: ".totRebC", info: data.statistics.careerSummary.totReb },
+          { idkey: ".totReb", info: data.statistics.latest.totReb },
+          { idkey: ".offRebC", info: data.statistics.careerSummary.offReb },
+          { idkey: ".offReb", info: data.statistics.latest.offReb },
+          { idkey: ".defRebC", info: data.statistics.careerSummary.defReb },
+          { idkey: ".defReb", info: data.statistics.latest.defReb },
+          { idkey: ".fgpC", info: data.statistics.careerSummary.fgp },
+          { idkey: ".fgp", info: data.statistics.latest.fgp },
+          { idkey: ".tpmC", info: data.statistics.careerSummary.tpm },
+          { idkey: ".tpm", info: data.statistics.latest.tpm },
+          { idkey: ".tpaC", info: data.statistics.careerSummary.tpa },
+          { idkey: ".tpa", info: data.statistics.latest.tpa },
+          { idkey: ".stealsC", info: data.statistics.careerSummary.steals },
+          { idkey: ".steals", info: data.statistics.latest.steals },
+          {
+            idkey: ".turnoversC",
+            info: data.statistics.careerSummary.turnovers,
+          },
+          { idkey: ".turnovers", info: data.statistics.latest.turnovers },
+          { idkey: ".pFoulsC", info: data.statistics.careerSummary.pFouls },
+          { idkey: ".pFouls", info: data.statistics.latest.pFouls },
+          { idkey: ".pointsC", info: data.statistics.careerSummary.points },
+          { idkey: ".points", info: data.statistics.latest.points },
+          { idkey: ".ppgC", info: data.statistics.careerSummary.ppg },
+          { idkey: ".ppg", info: data.statistics.latest.ppg },
+          { idkey: ".tppC", info: data.statistics.careerSummary.tpp },
+          { idkey: ".tpp", info: data.statistics.latest.tpp },
+          { idkey: ".spgC", info: data.statistics.careerSummary.spg },
+          { idkey: ".spg", info: data.statistics.latest.spg },
+          { idkey: ".bpgC", info: data.statistics.careerSummary.bpg },
+          { idkey: ".bpg", info: data.statistics.latest.bpg },
+          { idkey: ".mpgC", info: data.statistics.careerSummary.mpg },
+          { idkey: ".mpg", info: data.statistics.latest.mpg },
+          { idkey: ".rpgC", info: data.statistics.careerSummary.rpg },
+          { idkey: ".rpg", info: data.statistics.latest.rpg },
+        ];
+
+        populatearray.forEach((element) => {
+          $(element.idkey).html(element.info);
+        });
+
+        $(".mainappdiv2").css("background-image", "url(" + logourl + ")");
+        console.log(logourl);
+        // $("#imagedivbackground2").append('<img id="theImg55" src="' + logourl + '" />');
+        $(".gradient").css("background", color125);
+        $(".gradient").css(
+          "background",
+          "linear-gradient(180deg, " + color125 + " 0%, " + color124 + " 100%)"
+        );
+        $(".playerpicturebackground").append(
+          '<img class="playerpic" src="' + playerpicture + '" />'
+        );
+        console.log(playerNameForIndivTable);
+        $(".playernameForIndiv").html(playerNameForIndivTable);
+        $(".playerpositionForIndiv").html(playerPositionForIndivTable);
+        $(".playerheightForIndiv").html(playerwieghtForIndivTable);
+        $(".playerwieghtForIndiv").html(playerheightForIndivTable);
+      });
+    });
+  }
+}
 
 $(document).ready(function () {
   console.log("ready!");
   var url = window.location.pathname;
-  var id = url.substring(url.lastIndexOf("/") + 1);
+  id = url.substring(url.lastIndexOf("/") + 1);
   console.log(id);
 
   $(".inner").on("click", function () {
-    playerinformation(id);
+    getlargescreenAPPPLayers();
+    $(".largeScreenAppViewer").css("display", "block");
   });
   $("youtubevideos").on("click", function () {
     getHighlightvideos();
@@ -364,6 +423,7 @@ $(document).ready(function () {
     color123 = data.color.colors1[2];
     color125 = data.color.colors1[3];
     myFunction(x);
+    playerinformation(id, windowSize);
     getimageandsize(data, windowSize);
     console.log(data.color.colors1[2]);
 
@@ -389,7 +449,7 @@ $(document).ready(function () {
       "transparent " + data.color.colors1[3] + " transparent transparent"
     );
     $(".blueback").css("background-color", data.color.colors1[3]);
-
+    getclicks();
     // console.log(data.db.gamestats)
     // if (data.db.gamestats === false){
     //   $("#gamestats").empty()}
