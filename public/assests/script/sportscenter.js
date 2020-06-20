@@ -27,7 +27,7 @@ function myFunction(x) {
   }
 }
 
-var x = window.matchMedia("(min-width: 1200px)");
+var x = window.matchMedia("(min-width: 1280px)");
 // Call listener function at run time
 
 x.addListener(myFunction); // Attach listener function on state changes
@@ -49,7 +49,7 @@ function getimageandsize(data, displaysize) {
       $(newImg).removeAttr("id", "theImg");
       $(newImg).css("height", "");
       $(newImg).attr("id", "mediumscreenimage");
-      $("#imagediv").css("height", "190px");
+      $("#imagediv").css("height", "171px");
       $(".grid-item").css("display", "none");
       $("#imagediv").prepend(newImg);
       $(".centraldiv").css("display", "block");
@@ -89,60 +89,60 @@ function getimageandsize(data, displaysize) {
 function determineimageproportions() {
   let imagewidth = $("#theImg").width();
   let imageHeight = $("#theImg").height();
-  let imagewidth2 = parseInt(imagewidth) + 20;
+  let imagewidth2 = parseInt(imagewidth) + 18;
 
   let left;
   let leftstring;
   let buttonleft;
   let buttonleftstring;
   if (runOnce === false) {
-    if (imagewidth < 180) {
-      $("#theImg").css("height", "275px");
-      $("#imagediv").css("height", "305px");
+    if (imagewidth < 162) {
+      $("#theImg").css("height", "248px");
+      $("#imagediv").css("height", "275px");
       imagewidth = $("#theImg").width();
 
-      imagewidth2 = parseInt(imagewidth) + 60;
-      left = (imagewidth2 - 200) / 2;
+      imagewidth2 = parseInt(imagewidth) + 56;
+      left = (imagewidth2 - 180) / 2;
       leftstring = left + "px";
-      buttonleft = left + 60;
+      buttonleft = left + 54;
       buttonleftstring = buttonleft + "px";
       let imagewidthstring = imagewidth2 + "px";
       $(".grid-item").css("width", imagewidthstring);
       $(".inner").css("width", imagewidthstring);
       $(".boxDivForApps").css("left", leftstring);
-      $("#arrowbuttondiv").css("top", "350px");
+      $("#arrowbuttondiv").css("top", "315px");
       $("#arrowbuttondiv").css("left", buttonleftstring);
       $("#arrowbuttondiv2").css("left", buttonleftstring);
       runOnce = true;
-    } else if (imagewidth > 308) {
+    } else if (imagewidth > 278) {
       $("#imagediv").css("height", "");
-      imagewidth = 308;
-      imagewidth2 = parseInt(imagewidth) + 60;
+      imagewidth = 278;
+      imagewidth2 = parseInt(imagewidth) + 56;
       let imagewidthstring = imagewidth2 + "px";
-      left = (imagewidth2 - 200) / 2;
+      left = (imagewidth2 - 180) / 2;
       leftstring = left + "px";
 
-      buttonleft = left + 60;
+      buttonleft = left + 54;
       buttonleftstring = buttonleft + "px";
       $(".grid-item").css("width", imagewidthstring);
       $(".inner").css("width", imagewidthstring);
       $(".boxDivForApps").css("left", leftstring);
-      $("#arrowbuttondiv").css("top", "275px");
+      $("#arrowbuttondiv").css("top", "248px");
       $("#arrowbuttondiv").css("left", buttonleftstring);
       $("#arrowbuttondiv2").css("left", buttonleftstring);
     } else {
       $("#imagediv").css("height", "");
-      imagewidth2 = parseInt(imagewidth) + 60;
+      imagewidth2 = parseInt(imagewidth) + 56;
       let imagewidthstring = imagewidth2 + "px";
-      left = (imagewidth2 - 200) / 2;
+      left = (imagewidth2 - 180) / 2;
       leftstring = left + "px";
 
-      buttonleft = left + 60;
+      buttonleft = left + 54;
       buttonleftstring = buttonleft + "px";
       $(".grid-item").css("width", imagewidthstring);
       $(".inner").css("width", imagewidthstring);
       $(".boxDivForApps").css("left", leftstring);
-      $("#arrowbuttondiv").css("top", "275px");
+      $("#arrowbuttondiv").css("top", "248px");
       $("#arrowbuttondiv").css("left", buttonleftstring);
       $("#arrowbuttondiv2").css("left", buttonleftstring);
     }
