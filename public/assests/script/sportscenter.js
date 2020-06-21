@@ -52,6 +52,7 @@ function getimageandsize(data, displaysize) {
       $("#imagediv").css("height", "171px");
       $(".grid-item").css("display", "none");
       $("#imagediv").prepend(newImg);
+      $(".viewerContainers").css("display", "none");
       $(".centraldiv").css("display", "block");
       $("#mediumscreenimage").css("border-color", color123);
       $(".largeScreenAppViewer").css("display", "none");
@@ -75,6 +76,7 @@ function getimageandsize(data, displaysize) {
   if (displaysize === "Large") {
     $(newImg).on("load", function () {
       $(newImg).attr("id", "theImg");
+      $(".viewerContainers").css("display", "block");
       $("#imagediv").prepend(newImg);
       $(".grid-item").css("display", "block");
       //all the stuff has to happen after.
@@ -174,8 +176,8 @@ function fillInPlayerFromteam(data) {
 function getlargescreenAPPPLayers() {
   $(".largeScreenAppViewer").css("display", "block");
 
-  $(".largeScreenAppViewer").append(playersApp);
-  $(".largeScreenAppViewer").append();
+  $("#mainviewer1").append(playersApp);
+  // $(".largeScreenAppViewer").append();
   $(".hide1").css("display", "block");
   getclicks();
   if (playersAppState === "list") {
@@ -201,11 +203,16 @@ function playerinformation(id, windowSize) {
     console.log(playersApp);
     console.log(windowSize);
     gotPlayersYet = true;
+    getlargescreenAPPPLayers();
 
     if (windowSize === "medium") {
       $("#players1").append(playersApp);
       getclicks();
       appendonce = true;
+    }
+    if (windowSize === "large") {
+      $("#mainviewer1").append(baseHtml);
+      getclicks();
     }
   });
 }
@@ -283,7 +290,9 @@ function getclicks() {
       let baseHtml = $(".individualPlayerApp").html();
       playersAppState = "individual";
       $("#players1").append(baseHtml);
-      $(".largeScreenAppViewer").append(baseHtml);
+      // $(".largeScreenAppViewer").append(baseHtml);
+      $("#mainviewer1").append(baseHtml);
+
       $(".playerinfo").css("display", "none");
       $(".playerinfo2").css("display", "none");
       $(".mainappdiv").css("display", "none");
@@ -406,10 +415,9 @@ $(document).ready(function () {
   id = url.substring(url.lastIndexOf("/") + 1);
   console.log(id);
 
-  $(".inner").on("click", function () {
-    getlargescreenAPPPLayers();
-    $(".largeScreenAppViewer").css("display", "block");
-  });
+  getlargescreenAPPPLayers();
+  $(".largeScreenAppViewer").css("display", "block");
+
   $("youtubevideos").on("click", function () {
     getHighlightvideos();
   });

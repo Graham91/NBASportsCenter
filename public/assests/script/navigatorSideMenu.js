@@ -3,6 +3,20 @@ $(document).ready(function () {
   let wait;
   $("#box3").addClass("addclickevent");
 
+  $("#mainviewer1").addClass("top");
+  $("#mainviewer2").addClass("top");
+  $("#mainviewer3").addClass("center");
+  $("#mainviewer4").addClass("bottom");
+  $("#mainviewer5").addClass("bottom");
+  const mainViewerIdArray = [
+    "#mainviewer1",
+    "#mainviewer2",
+    "#mainviewer3",
+    "#mainviewer4",
+    "#mainviewer5",
+  ];
+  let locationIndex = 2;
+
   const elementarray = [
     { id: "#box1", position: "p1" },
     { id: "#box2", position: "p2" },
@@ -52,10 +66,51 @@ $(document).ready(function () {
     }
   }
   showdivs("middle");
+  function moveMainViewer(location, direction) {
+    let mainViewerID = mainViewerIdArray[location];
+    if (direction === "down") {
+      if (location === 4) {
+      } else {
+        console.log("upbottonclicked");
+        let moveUp = location + 1;
+        console.log(moveUp);
+        let newMainViewerID = mainViewerIdArray[moveUp];
+        console.log(newMainViewerID);
+        $(".fullscreendiv").css("z-index", "-10");
+        $(mainViewerID).removeClass("center");
+
+        $(mainViewerID).addClass("top");
+        $(newMainViewerID).removeClass("bottom");
+        $(newMainViewerID).addClass("center");
+        setTimeout(function () {
+          $(".fullscreendiv").css("z-index", "0");
+        }, 1000);
+        locationIndex++;
+      }
+    }
+    if (direction === "up") {
+      if (location === 0) {
+      } else {
+        console.log("downbottonclicked");
+        let moveDown = location - 1;
+        let newMainViewerID = mainViewerIdArray[moveDown];
+        $(".fullscreendiv").css("z-index", "-10");
+        $(mainViewerID).removeClass("center");
+        $(mainViewerID).addClass("bottom");
+        $(newMainViewerID).removeClass("top");
+        $(newMainViewerID).addClass("center");
+        setTimeout(function () {
+          $(".fullscreendiv").css("z-index", "0");
+        }, 1000);
+        locationIndex--;
+      }
+    }
+  }
 
   $("#arrowbuttondiv2").click(function () {
     console.log("in");
     clearTimeout(wait);
+    moveMainViewer(locationIndex, "down");
     $("#box3").removeClass("addclickevent");
     if (postitionOne[0] === "p4") {
       function findp3(box) {
@@ -126,6 +181,7 @@ $(document).ready(function () {
   $("#arrowbuttondiv").click(function () {
     console.log("in");
     clearTimeout(wait);
+    moveMainViewer(locationIndex, "up");
     $("#box3").removeClass("addclickevent");
     // console.log("in");
     if (postitionOne[0] === "p3") {

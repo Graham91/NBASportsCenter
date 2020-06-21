@@ -2,6 +2,7 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   min-width: 810px;
   overflow-x: hidden;
+  background-color: black;
 }
 .displayflex {
   display: flex;
@@ -142,7 +143,7 @@ body {
   top: 270px;
   height: 432px;
   width: 927px;
-  background-color: aquamarine;
+  background-color: white;
   left: 0;
   right: 0;
   margin-left: auto;
@@ -180,17 +181,71 @@ body {
 }
 
 .right {
+  top: 270px;
   right: -9999px;
-  position: fixed;
+  position: absolute;
 }
 
 .left {
+  top: 270px;
   left: -9999px;
-  position: fixed;
+  position: absolute;
 }
 
 .transition {
   transition: 0.5s ease-in-out;
+}
+.mainViewer {
+  position: absolute;
+  width: 800px;
+  height: 400px;
+  z-index: -10;
+}
+
+.center {
+  /* position can be changed by adjusting margins in both left and height positions*/
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  margin-top: auto;
+  margin-top: -200px;
+  margin-bottom: auto;
+  margin-left: 100px;
+  z-index: -20;
+  background-color: white(39, 23, 23);
+  height: 432px;
+  width: 927px;
+}
+
+.top {
+  top: -9999px;
+  position: fixed;
+  margin-left: 100px;
+  z-index: -8;
+}
+
+.bottom {
+  bottom: -9999px;
+  position: fixed;
+  margin-left: 100px;
+  z-index: -8;
+}
+
+.viewerContainers {
+  position: absolute;
+  top: 270px;
+  margin-left: 240px;
+  z-index: -10;
+}
+
+.fullscreendiv {
+  position: absolute;
+  height: 600px;
+  width: 100%;
+  overflow-y: hidden;
+  margin: 0px;
+  padding: 0px;
+  z-index: -10;
 }
 
 #leftbutton {
@@ -254,7 +309,6 @@ body {
 }
 .grid-container {
   grid-template-columns: auto auto auto;
-  background-color: white;
 }
 
 .grid-item {
@@ -328,12 +382,12 @@ body {
   background-color: white(39, 23, 23);
   height: 405px;
   width: 900px;
-  margin: 59px;
   border-width: 14px;
   border-style: outset;
   font-size: 27px;
   text-align: center;
   overflow-y: scroll;
+  z-index: 100;
 }
 .mainappdiv2 {
   background-repeat: no-repeat;
@@ -343,10 +397,10 @@ body {
   border-style: outset;
   height: 405px;
   width: 900px;
-  margin: 59px;
   font-size: 27px;
   text-align: center;
   overflow-y: scroll;
+  z-index: 100;
 }
 table {
   color: azure;
@@ -561,9 +615,9 @@ footer {
 }
 @media screen and (max-width: 1350px) {
   .mainappdiv {
-    margin-left: 30px;
+    margin-left: 0;
   }
   .mainappdiv2 {
-    margin-left: 30px;
+    margin-left: 0;
   }
 }
