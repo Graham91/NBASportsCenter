@@ -2,7 +2,7 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   min-width: 810px;
   overflow-x: hidden;
-  background-color: black;
+  background-color: lightgray;
 }
 .displayflex {
   display: flex;

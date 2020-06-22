@@ -15,6 +15,7 @@ let gotPlayersYet = false;
 let appendonce = false;
 let playersApp;
 let playersAppState = "list";
+let teamArticles;
 
 function myFunction(x) {
   if (x.matches) {
@@ -284,8 +285,8 @@ function getHighlightvideos() {
 }
 let playersclickedonce = false;
 function getclicks() {
-  if (playersclickedonce === false) {
-    $(".getplayerstats").on("click", function () {
+  $(".getplayerstats").on("click", function () {
+    if (playersclickedonce === false) {
       playersclickedonce = true;
       let baseHtml = $(".individualPlayerApp").html();
       playersAppState = "individual";
@@ -405,8 +406,60 @@ function getclicks() {
         $(".playerheightForIndiv").html(playerwieghtForIndivTable);
         $(".playerwieghtForIndiv").html(playerheightForIndivTable);
       });
+    }
+  });
+}
+const TeamNameTranslator = {
+  AtlantaHawks: "Alanta Hawks",
+  BostonCeltics: "Boston Celtics",
+  BrooklynNets: "Brooklyn Nets",
+  CharlotteHornets: "Charlotte Hornets",
+  ChicagoBulls: "Chicago Bulls",
+  ClevelandCavaliers: "Cleveland Cavaliers",
+  DallasMavericks: "Dallas Mavericks",
+  DenverNuggets: "Denver Nuggets",
+  DetroitPistons: "Detroit Pistons",
+  GoldenStateWarriors: ">Golden State Warriors",
+  HoustonRockets: ">Houston Rockets",
+  IndianaPacers: ">Indiana Pacers",
+  LAClippers: ">LA Clippers",
+  LALakers: "LA Lakers",
+  MemphisGrizzlies: "Memphis Grizzlies",
+  MiamiHeat: "Miami Heat",
+  MilwaukeeBucks: "Milwaukee Bucks",
+  MinnesotaTimberwolves: ">Minnesota Timberwolves",
+  NewOrleansPelicans: "New Orleans Pelicans",
+  NewYorkKnicks: "New York Knicks",
+  OklahomaCityThunder: "Oklahoma City Thunder",
+  OrlandoMagic: "Orlando Magic",
+  PhiladelphiaSixers: "Philadelphia Sixers",
+  PhoenixSuns: "Phoenix Suns",
+  PortlandTrailBlazers: "Portland Trail Blazer",
+  SacramentoKings: "Sacramento Kings",
+  SanAntonioSpurs: "San Antonio Spurs",
+  TorontoRaptors: "Toronto Raptors",
+  UtahJazz: "Utah Jazz",
+  WashingtonWizards: "Washington Wizards",
+};
+
+function getteamarticles(data) {
+  let keyforteam = data.db.FavTeam;
+  console.log(TeamNameTranslator[keyforteam]);
+  var url =
+    "http://newsapi.org/v2/everything?" +
+    "q=" +
+    TeamNameTranslator[keyforteam] +
+    "&" +
+    "sortBy=popularity&" +
+    "apiKey=3a86c5be23994784b1f40189188428ee";
+  var req = new Request(url);
+  fetch(req)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (myJson) {
+      teamArticles = myJson.articles;
     });
-  }
 }
 
 $(document).ready(function () {
@@ -433,6 +486,7 @@ $(document).ready(function () {
     myFunction(x);
     playerinformation(id, windowSize);
     getimageandsize(data, windowSize);
+    getteamarticles(data);
     console.log(data.color.colors1[2]);
 
     let blueborder2string =
