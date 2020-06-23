@@ -9,6 +9,10 @@ body {
   width: 100%;
   flex-direction: row;
 }
+.background {
+  position: relative;
+  min-height: 100vh;
+}
 .upperdiv {
   height: 162px;
   display: flex;
@@ -415,12 +419,17 @@ th {
   height: 36px;
 }
 footer {
+  position: absolute;
+  bottom: 0;
   display: flex;
   flex-wrap: wrap;
   margin-top: 0;
   width: 100%;
   height: 90px;
   background-color: red;
+}
+.footerspacer {
+  height: 90px;
 }
 .upperdiv10 {
   width: 0;

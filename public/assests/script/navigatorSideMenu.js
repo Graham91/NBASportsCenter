@@ -43,7 +43,7 @@ $(document).ready(function () {
     $(navIdString).addClass("blue");
   }
   sortimages();
-  console.log("working");
+  // console.log("working");
   function moveright() {
     // console.log("leftsidearray: " + leftsidearray + ", central" + centraldiv + ", Rightsidearray: " + rightsidearray);
     let centraldivcurrent = centraldiv;
@@ -82,16 +82,16 @@ $(document).ready(function () {
   }
 
   $("#leftbutton").click(function (event) {
-    console.log("leftbuttonclicked");
+    // console.log("leftbuttonclicked");
     moveright();
     moveDivsConditional("down", "mediumScreen");
   });
   $("#rightbutton").click(function (event) {
-    console.log("rightbuttonclicked");
+    // console.log("rightbuttonclicked");
     moveleft();
     moveDivsConditional("up", "mediumScreen");
   });
-  console.log("working");
+  // console.log("working");
   let wait;
   $("#box3").addClass("addclickevent");
 
@@ -119,7 +119,7 @@ $(document).ready(function () {
   $(".boxdiv").click(function (event) {
     let clicked = event.target;
     let clickedid = clicked.id;
-    console.log(clicked);
+    // console.log(clicked);
     $("#showDiv").html(clickedid);
   });
   function showdivs(locator) {
@@ -162,11 +162,11 @@ $(document).ready(function () {
     if (direction === "down") {
       if (location === 4) {
       } else {
-        console.log("upbottonclicked");
+        // console.log("upbottonclicked");
         let moveUp = location + 1;
-        console.log(moveUp);
+        // console.log(moveUp);
         let newMainViewerID = mainViewerIdArray[moveUp];
-        console.log(newMainViewerID);
+        // console.log(newMainViewerID);
         $(".fullscreendiv").css("z-index", "-10");
         $(mainViewerID).removeClass("center");
 
@@ -182,7 +182,7 @@ $(document).ready(function () {
     if (direction === "up") {
       if (location === 0) {
       } else {
-        console.log("downbottonclicked");
+        // console.log("downbottonclicked");
         let moveDown = location - 1;
         let newMainViewerID = mainViewerIdArray[moveDown];
         $(".fullscreendiv").css("z-index", "-10");
@@ -199,18 +199,24 @@ $(document).ready(function () {
   }
 
   $("#arrowbuttondiv2").click(function () {
-    moveUpButton();
-    console.log("your location right now:" + locationIndex);
-    moveleft();
+    if (locationIndex === 4) {
+    } else {
+      moveUpButton();
+      // console.log("your location right now:" + locationIndex);
+      moveleft();
+    }
   });
   $("#arrowbuttondiv").click(function () {
-    moveDownButton();
-    console.log("your location right now:" + locationIndex);
-    moveright();
+    if (locationIndex === 0) {
+    } else {
+      moveDownButton();
+      // console.log("your location right now:" + locationIndex);
+      moveright();
+    }
   });
 
   function moveDivsConditional(direction, screesize) {
-    console.log(screesize);
+    // console.log(screesize);
     if (screesize === "mediumScreen") {
       // console.log("your inside mediumscreen");
       if (direction === "up") {
@@ -241,7 +247,7 @@ $(document).ready(function () {
   }
 
   function moveUpButton() {
-    console.log("in");
+    // console.log("in");
     clearTimeout(wait);
     moveMainViewer(locationIndex, "down");
     $("#box3").removeClass("addclickevent");
@@ -312,7 +318,7 @@ $(document).ready(function () {
     }
   }
   function moveDownButton() {
-    console.log("in");
+    // console.log("in");
     clearTimeout(wait);
     moveMainViewer(locationIndex, "up");
     $("#box3").removeClass("addclickevent");
