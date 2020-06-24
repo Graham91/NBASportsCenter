@@ -504,7 +504,23 @@ $(document).ready(function () {
       "border-color",
       "transparent transparent " + data.color.colors1[3] + " transparent"
     );
+    $(".buttonright").css(
+      "background",
+      "radial-gradient(circle at 55px 10px," + color125 + ", rgb(63, 63, 63))"
+    );
+    $(".buttonleft").css(
+      "background",
+      "radial-gradient(circle at 15px 10px," + color125 + ", rgb(63, 63, 63)"
+    );
     $("#arrowbuttondiv2").css("border-color", blueborder2string);
+    $("#leftbutton").css(
+      "border-color",
+      "transparent " + color125 + " transparent transparent"
+    );
+    $("#rightbutton").css(
+      "border-color",
+      "transparent transparent transparent " + color125
+    );
     $(".blueborder2").css("border-color", blueborder2string);
     $(".blueborder1").css(
       "border-color",

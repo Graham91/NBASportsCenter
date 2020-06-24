@@ -91,6 +91,14 @@ $(document).ready(function () {
     moveleft();
     moveDivsConditional("up", "mediumScreen");
   });
+  $(".buttonright2").click(function () {
+    moveleft();
+    moveDivsConditional("up", "mediumScreen");
+  });
+  $(".buttonleft2").click(function () {
+    moveright();
+    moveDivsConditional("down", "mediumScreen");
+  });
   // console.log("working");
   let wait;
   $("#box3").addClass("addclickevent");
