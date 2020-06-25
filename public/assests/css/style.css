@@ -155,7 +155,7 @@ body {
 }
 
 .spacerdiv {
-  height: 540px;
+  height: 530px;
   width: 100%;
 }
 .bottomnav {
@@ -209,10 +209,9 @@ body {
 .center {
   /* position can be changed by adjusting margins in both left and height positions*/
   position: absolute;
-  top: 0px;
-  bottom: 0px;
-  margin-top: auto;
+  top: 0;
   margin-top: -200px;
+  bottom: 0px;
   margin-bottom: auto;
   margin-left: 100px;
   z-index: -20;
@@ -243,6 +242,7 @@ body {
 }
 
 .fullscreendiv {
+  overflow-x: hidden;
   position: absolute;
   height: 600px;
   width: 100%;
@@ -722,7 +722,24 @@ footer {
     margin: 0;
   }
 }
-
+@media screen and (min-height: 810px) {
+  .center {
+    top: calc(100vh - 820px);
+    margin-top: auto;
+  }
+  .fullscreendiv {
+    height: calc(100vh - 284px);
+  }
+  .grid-container {
+    height: calc(100vh - 284px);
+  }
+  .grid-item {
+    height: calc(100vh - 284px);
+  }
+  .inner {
+    height: calc(100vh - 284px);
+  }
+}
 @media screen and (min-width: 1280px) {
   .bottomnav {
     display: none;

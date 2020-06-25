@@ -80,6 +80,31 @@ $(document).ready(function () {
     // console.log("leftsidearray: " + leftsidearray + ", central" + centraldiv + ", Rightsidearray: " + rightsidearray);
     sortimages();
   }
+  function centerdivlocation() {
+    // if(window.height())
+    if (locationIndex === 2) {
+    }
+    if (locationIndex === 3) {
+      moveUpButton();
+      moveleft();
+    }
+    if (locationIndex === 4) {
+      moveUpButton();
+      moveleft();
+      moveUpButton();
+      moveleft();
+    }
+    if (locationIndex === 1) {
+      moveDownButton();
+      moveright();
+    }
+    if (locationIndex === 0) {
+      moveDownButton();
+      moveright();
+      moveDownButton();
+      moveright();
+    }
+  }
 
   $("#leftbutton").click(function (event) {
     // console.log("leftbuttonclicked");
@@ -255,6 +280,10 @@ $(document).ready(function () {
   }
 
   function moveUpButton() {
+    let divheight = $(".inner").height();
+    let leftoverspace = divheight - 351;
+    let divspaceing = leftoverspace / 4;
+    transitionheight = 117 + divspaceing;
     // console.log("in");
     clearTimeout(wait);
     moveMainViewer(locationIndex, "down");
@@ -290,7 +319,10 @@ $(document).ready(function () {
         postitionOne.push(element.position);
         var indexToRemove = 0;
 
-        $(element.id).animate({ top: "-=180px" }, "normal");
+        $(element.id).animate(
+          { top: "-=" + transitionheight + "px" },
+          "normal"
+        );
       });
       postitionOne.splice(0, 5);
       function findP4(box) {
@@ -326,6 +358,10 @@ $(document).ready(function () {
     }
   }
   function moveDownButton() {
+    let divheight = $(".inner").height();
+    let leftoverspace = divheight - 351;
+    let divspaceing = leftoverspace / 4;
+    let transitionheight = 117 + divspaceing;
     // console.log("in");
     clearTimeout(wait);
     moveMainViewer(locationIndex, "up");
@@ -362,7 +398,10 @@ $(document).ready(function () {
         postitionOne.push(element.position);
         var indexToRemove = 0;
 
-        $(element.id).animate({ top: "+=180px" }, "normal");
+        $(element.id).animate(
+          { top: "+=" + transitionheight + "px" },
+          "normal"
+        );
       });
       postitionOne.splice(0, 5);
 
