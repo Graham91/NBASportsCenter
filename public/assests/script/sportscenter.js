@@ -24,7 +24,15 @@ function myFunction(x) {
     imagetransition(windowSize);
   } else {
     windowSize = "medium";
-    imagetransition(windowSize);
+    let windowWidth = $(window).width();
+    console.log(windowWidth + "yeah baby");
+    if (windowWidth > 929) {
+      console.log("inegniues");
+      imagetransition(windowSize);
+    } else {
+      console.log("outgeniues");
+      $(".centraldiv").css("display", "none");
+    }
   }
 }
 
@@ -980,6 +988,12 @@ $(document).ready(function () {
     color124 = data.color.colors1[1];
     color123 = data.color.colors1[2];
     color125 = data.color.colors1[3];
+    let color1 = data.color.colors1[0];
+    let color2 = data.color.colors1[1];
+    let color3 = data.color.colors1[2];
+    let color4 = data.color.colors1[3];
+    let color5 = data.color.colors1[4];
+    let teamname = data.db.FavTeam;
     myFunction(x);
     playerinformation(id, windowSize);
     getimageandsize(data, windowSize);
@@ -988,6 +1002,8 @@ $(document).ready(function () {
 
     let blueborder2string =
       data.color.colors1[3] + " transparent transparent transparent";
+
+    $("body").css("background-image", "url(" + logourl + ")");
 
     $(".redback").css("background-color", data.color.colors1[1]);
     $(".redborder").css("border-color", data.color.colors1[1]);
@@ -1024,6 +1040,119 @@ $(document).ready(function () {
       "transparent " + data.color.colors1[3] + " transparent transparent"
     );
     $(".blueback").css("background-color", data.color.colors1[3]);
+
+    $(".shadowright")
+      .mouseup(function () {
+        $(".innerarrowrightTri").css("border-color", "white");
+        $(".shadowright1").css("display", "none");
+        $(".shadowright2").css("display", "none");
+        $(".shadowright3").css("display", "none");
+      })
+      .mousedown(function () {
+        $(".innerarrowrightTri").css("border-color", "grey");
+        $(".shadowright1").css("display", "block");
+        $(".shadowright2").css("display", "block");
+        $(".shadowright3").css("display", "block");
+      });
+    $(".shadowleft")
+      .mouseup(function () {
+        $(".innerarrowleftTri").css("border-color", "white");
+        $(".shadowleft1").css("display", "none");
+        $(".shadowleft2").css("display", "none");
+        $(".shadowleft3").css("display", "none");
+      })
+      .mousedown(function () {
+        $(".innerarrowleftTri").css("border-color", "grey");
+        $(".shadowleft1").css("display", "block");
+        $(".shadowleft2").css("display", "block");
+        $(".shadowleft3").css("display", "block");
+      });
+    $(".shadowbottom")
+      .mouseup(function () {
+        $(".shadowbottom1").css("display", "none");
+        $(".shadowbottom2").css("display", "none");
+        $(".shadowbottom3").css("display", "none");
+        $(".innerarrowdownTri").css("border-color", "white");
+      })
+      .mousedown(function () {
+        $(".innerarrowdownTri").css("border-color", "grey");
+        $(".shadowbottom1").css("display", "block");
+        $(".shadowbottom2").css("display", "block");
+        $(".shadowbottom3").css("display", "block");
+      });
+
+    $(".header").css("background-color", color2);
+    $(".header").css("color", color4);
+    $(".smallimage").attr("src", logourl);
+    $(".header").css("background-color", color2);
+    $(".smallcolor1").css("background-color", color1);
+    $(".smallcolor2").css("background-color", color2);
+    $(".smallcolor3").css("background-color", color3);
+    $(".smallcolor4").css("background-color", color4);
+    $(".smallcolor5").css("background-color", color5);
+    $(".leftBoxArrow").css("background-color", color3);
+    $(".leftBoxArrow").css("border-right-color", color2);
+    $(".rightBoxArrow").css("background-color", color3);
+    $(".rightBoxArrow").css("border-left-color", color2);
+    $(".downmenu").css("background-color", color3);
+    $(".downmenu").css("border-top-color", color2);
+    $(".downmenu").css("border-bottom-color", color3);
+    $(".smallimage").css("border-color", color3);
+    $(".outsideimagemargin").css("background-color", color2);
+    $(".backgroundifuser").css(
+      "background",
+      "linear-gradient(180deg, rgba(255, 255, 255, .6) 0%, " + color2 + " 100%)"
+    );
+    $(".shadowleft2").css(
+      "border-color",
+      "transparent " + color3 + " transparent transparent"
+    );
+    $(".blueoverlay1R").css(
+      "border-color",
+      "transparent transparent " + color2 + " transparent"
+    );
+    $(".blueoverlay1L").css(
+      "border-color",
+      "transparent transparent transparent " + color2
+    );
+    $(".blueoverlay2L").css("background-color", color2);
+    $(".blueoverlay2R").css("background-color", color2);
+    $(".brownoverlay1R").css(
+      "border-color",
+      "transparent transparent transparent " + color3
+    );
+    $(".brownoverlay1L").css(
+      "border-color",
+      "transparent " + color3 + " transparent transparent"
+    );
+    $(".blueoverlay3L").css("border-bottom-color", color2);
+    $(".blueoverlay3R").css("border-bottom-color", color2);
+    $(".blueoverlay4R").css(
+      "border-color",
+      "transparent transparent " + color2 + " transparent"
+    );
+    $(".blueoverlay4L").css(
+      "border-color",
+      "transparent transparent transparent " + color2
+    );
+    $(".redoverlay1R").css(
+      "border-color",
+      "transparent transparent " + color4 + " transparent"
+    );
+    $(".redoverlay1L").css(
+      "border-color",
+      "transparent transparent transparent " + color4
+    );
+    $(".redoverlay2L").css("border-bottom-color", color4);
+    $(".redoverlay2R").css("border-bottom-color", color4);
+    $(".redoverlay3R").css(
+      "border-color",
+      "transparent transparent " + color4 + " transparent"
+    );
+    $(".redoverlay3L").css(
+      "border-color",
+      "transparent transparent transparent " + color4
+    );
     getclicks();
     // console.log(data.db.gamestats)
     // if (data.db.gamestats === false){
