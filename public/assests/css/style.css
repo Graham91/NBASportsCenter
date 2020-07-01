@@ -139,6 +139,17 @@ body {
   border-width: 14px;
   margin: 0;
 }
+.smallcentraldiv {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  top: 190px;
+  width: 90%;
+  border: solid 4px white;
+}
 .centraldiv {
   position: absolute;
   z-index: 20;
@@ -185,13 +196,11 @@ body {
 }
 
 .right {
-  top: 270px;
   right: -9999px;
   position: absolute;
 }
 
 .left {
-  top: 270px;
   left: -9999px;
   position: absolute;
 }
@@ -1171,17 +1180,6 @@ footer {
 }
 .hideHtmlBase {
   display: none;
-}
-.smallcentraldiv {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
-  top: 180px;
-  width: 90%;
-  border: solid 4px white;
 }
 
 .innersmalldiv {

@@ -1,3 +1,4 @@
+//the rise for the bottom only works after height adjustments have been made.
 let data;
 let logourl;
 let color124;
@@ -534,11 +535,11 @@ function getteamarticles(data) {
 
 let locationIndex = 2;
 const playerselementarray = [
-  { id: "#players1", position: "#navbox1" },
-  { id: "#players2", position: "#navbox2" },
-  { id: "#players3", position: "#navbox3" },
-  { id: "#players4", position: "#navbox4" },
-  { id: "#players5", position: "#navbox5" },
+  { id: ".players1", position: "#navbox1" },
+  { id: ".players2", position: "#navbox2" },
+  { id: ".players3", position: "#navbox3" },
+  { id: ".players4", position: "#navbox4" },
+  { id: ".players5", position: "#navbox5" },
 ];
 // const postitionOne = ["p1", "p2", "p3", "p4", "p5"];
 
@@ -546,9 +547,9 @@ const playerselementarray = [
 //for each right click the first item in left is pull out and put in central div
 //if left side array is empty and right side is clicked the last item from rightsidearry gets put in central div and central div is push to right side
 //if array is empty
-let leftsidearray = ["#players1", "#players2"];
-let centraldiv = "#players3";
-let rightsidearray = ["#players4", "#players5"];
+let leftsidearray = [".players1", ".players2"];
+let centraldiv = ".players3";
+let rightsidearray = [".players4", ".players5"];
 function sortimages() {
   $(rightsidearray[1]).removeClass("transition");
   $(leftsidearray[0]).removeClass("transition");
@@ -654,6 +655,14 @@ $(".buttonright2").click(function () {
   moveDivsConditional("up", "mediumScreen");
 });
 $(".buttonleft2").click(function () {
+  moveright();
+  moveDivsConditional("down", "mediumScreen");
+});
+$(".shadowright").click(function () {
+  moveleft();
+  moveDivsConditional("up", "mediumScreen");
+});
+$(".shadowleft").click(function () {
   moveright();
   moveDivsConditional("down", "mediumScreen");
 });
