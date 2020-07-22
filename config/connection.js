@@ -14,11 +14,17 @@ if (process.env.JAWSDB_URL) {
     config.production
   );
 } else {
+  // sequelize = new Sequelize(
+  //   config.development.database,
+  //   config.development.username,
+  //   config.development.password,
+  //   config.development
+  // );
   sequelize = new Sequelize(
-    config.development.database,
-    config.development.username,
-    config.development.password,
-    config.development
+    config.production.database,
+    config.production.username,
+    config.production.password,
+    config.production
   );
 }
 /* var testConnection = connection.development;
