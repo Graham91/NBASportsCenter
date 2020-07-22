@@ -4,9 +4,23 @@ var mysql = require("mysql");
 
 var Sequelize = require("sequelize");
 
-var sequelize = new Sequelize(config.development.database, config.development.username, config.development.password, config.development);
+var sequelize;
 
-
+if (process.env.JAWSDB_URL) {
+  sequelize = new Sequelize(
+    config.production.database,
+    config.production.username,
+    config.production.password,
+    config.production
+  );
+} else {
+  sequelize = new Sequelize(
+    config.development.database,
+    config.development.username,
+    config.development.password,
+    config.development
+  );
+}
 /* var testConnection = connection.development;
 
 var ericVariable = mysql.createConnection({testConnection});
@@ -22,4 +36,4 @@ ericVariable.connect(function(err) {
 }); */
 // Export connection for our ORM to use.
 
-module.exports = {sequelize:sequelize}; 
+module.exports = { sequelize: sequelize };
