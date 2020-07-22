@@ -26,7 +26,12 @@ if (process.env.JAWSDB_URL) {
     config.production.password,
     config.production
   );
-}
+}{
+"username": "p7bqsabng0c840in",
+"password": "d42wz1yw60ifj17g",
+"database": "sgdy6okilap7wfj4",
+"host": "x40p5pp7n9rowyv6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+"port": 3306,}
 /* var testConnection = connection.development;
 
 var ericVariable = mysql.createConnection({testConnection});
