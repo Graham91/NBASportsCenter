@@ -17,6 +17,10 @@ let appendonce = false;
 let playersApp;
 let playersAppState = "list";
 let teamArticles;
+let appPlaceHolder;
+let appPlaceHolder2;
+let appPlaceHolder3;
+let appPlaceHolder4;
 
 function myFunction(x) {
   if (x.matches) {
@@ -57,6 +61,7 @@ $(window).resize(function () {
     //execute code here.
     centerdivlocation();
     //having a timeout issue;
+    // $(".center").css("top", "-30vh");
     setTimeout(function () {
       adjustleftsidevisualizer();
     }, 1500);
@@ -744,7 +749,6 @@ function moveMainViewer(location, direction) {
       // console.log(newMainViewerID);
       $(".fullscreendiv").css("z-index", "-10");
       $(mainViewerID).removeClass("center");
-
       $(mainViewerID).addClass("top");
       $(newMainViewerID).removeClass("bottom");
       $(newMainViewerID).addClass("center");
@@ -977,6 +981,20 @@ function moveDownButton() {
   }
 }
 $(document).ready(function () {
+  appPlaceHolder = $(".appPlaceHolder").html();
+  appPlaceHolder2 = $(".appPlaceHolder2").html();
+  appPlaceHolder3 = $(".appPlaceHolder3").html();
+  appPlaceHolder4 = $(".appPlaceHolder4").html();
+  $("#players2").append(appPlaceHolder);
+  $("#players3").append(appPlaceHolder2);
+  $("#players4").append(appPlaceHolder3);
+  $("#players5").append(appPlaceHolder4);
+  $("#mainviewer2").append(appPlaceHolder);
+  $("#mainviewer3").append(appPlaceHolder2);
+  $("#mainviewer4").append(appPlaceHolder3);
+  $("#mainviewer5").append(appPlaceHolder4);
+
+  mainviewer2;
   console.log("ready!");
   var url = window.location.pathname;
   id = url.substring(url.lastIndexOf("/") + 1);
@@ -1095,6 +1113,7 @@ $(document).ready(function () {
     $(".smallimage").attr("src", logourl);
     $(".header").css("background-color", color2);
     $(".smallcolor1").css("background-color", color1);
+    $(".appPlaceHolderinside").css("border-color", color4);
     $(".smallcolor2").css("background-color", color2);
     $(".smallcolor3").css("background-color", color3);
     $(".smallcolor4").css("background-color", color4);

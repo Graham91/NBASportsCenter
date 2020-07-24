@@ -4,13 +4,16 @@ body {
   overflow-x: hidden;
   background-color: lightgray;
 }
+
 .displayflex {
   display: flex;
   width: 100%;
   flex-direction: row;
 }
 .background {
+  /* overflow-y: hidden; */
   position: relative;
+  overflow-x: hidden;
   min-height: 100vh;
 }
 .upperdiv {
@@ -206,22 +209,23 @@ body {
 }
 
 .transition {
-  transition: 0.5s ease-in-out;
+  transition: 1s ease-in-out;
 }
 .mainViewer {
   position: absolute;
   width: 800px;
   height: 400px;
   z-index: -10;
+  background-color: white;
 }
 
 .center {
   /* position can be changed by adjusting margins in both left and height positions*/
   position: absolute;
-  top: 0;
-  margin-top: -200px;
-  bottom: 0px;
-  margin-bottom: auto;
+  bottom: -25vh;
+  /* margin-top: -200px; */
+  /* bottom: 0; */
+  /* margin-bottom: auto; */
   margin-left: 100px;
   z-index: -20;
   background-color: white(39, 23, 23);
@@ -230,15 +234,17 @@ body {
 }
 
 .top {
-  top: -9999px;
-  position: fixed;
+  /* margin-top: -200px; */
+  bottom: 9999px;
+  position: absolute;
   margin-left: 100px;
   z-index: -8;
 }
 
 .bottom {
+  /* margin-top: -200px; */
   bottom: -9999px;
-  position: fixed;
+  position: absolute;
   margin-left: 100px;
   z-index: -8;
 }
@@ -365,6 +371,7 @@ body {
   padding: 5px;
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
+  z-index: 100;
 }
 
 .innerarrowleftTri {
@@ -377,6 +384,7 @@ body {
   padding: 5px;
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
+  z-index: 100;
 }
 
 .innerarrowdownTri {
@@ -394,22 +402,22 @@ body {
 .blueoverlay1R {
   position: absolute;
   right: 20%;
-  top: 111px;
+  top: 113px;
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 0 0 27px 27px;
+  border-width: 0 0 25px 25px;
   border-color: transparent transparent #051d3c transparent;
 }
 
 .blueoverlay1L {
   position: absolute;
   left: 20%;
-  top: 111px;
+  top: 113px;
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 27px 0 0 27px;
+  border-width: 25px 0 0 25px;
   border-color: transparent transparent transparent #051d3c;
 }
 
@@ -457,7 +465,7 @@ body {
   position: absolute;
   top: 138px;
   height: 0;
-  width: calc(20% + 26px);
+  width: calc(20% + 25px);
   border-bottom-width: 9px;
   border-bottom-style: outset;
   border-bottom-color: #051d3c;
@@ -468,7 +476,7 @@ body {
   top: 138px;
   height: 0;
   right: 0;
-  width: calc(20% + 26px);
+  width: calc(20% + 25px);
   border-bottom-width: 9px;
   border-bottom-style: outset;
   border-bottom-color: #051d3c;
@@ -477,7 +485,7 @@ body {
 .blueoverlay4R {
   position: absolute;
   top: 138px;
-  right: calc(20% + 26px);
+  right: calc(20% + 25px);
   width: 0;
   height: 0;
   border-style: outset;
@@ -488,7 +496,7 @@ body {
 .blueoverlay4L {
   position: absolute;
   top: 138px;
-  left: calc(20% + 26px);
+  left: calc(20% + 25px);
   width: 0;
   height: 0;
   border-style: inset;
@@ -646,9 +654,8 @@ body {
   position: absolute;
   top: 114px;
   height: 24px;
-  width: calc(60% - 6px);
-
-  left: calc(20% + 3px);
+  width: calc(60% - 2px);
+  left: calc(20% + 1px);
 }
 
 .shadowbottom1 {
@@ -840,12 +847,26 @@ body {
   overflow-y: scroll;
   z-index: 100;
 }
+.appPlaceHolderinside {
+  background-color: white(39, 23, 23);
+  height: 405px;
+  width: 900px;
+  border-width: 14px;
+  border-style: outset;
+  font-size: 27px;
+  text-align: center;
+  overflow-y: scroll;
+  z-index: 100;
+  display: block;
+}
+
 .mainappdiv2 {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right 41px bottom;
   border-width: 14px;
   border-style: outset;
+  border-color: blue;
   height: 405px;
   width: 900px;
   font-size: 27px;
@@ -1277,6 +1298,11 @@ footer {
   }
   .mainappdiv2 {
     margin-left: 0;
+  }
+}
+@media screen and (min-width: 929px) {
+  .background {
+    overflow-y: hidden;
   }
 }
 @media screen and (max-width: 929px) {
