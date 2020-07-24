@@ -739,6 +739,7 @@ body {
   z-index: 5;
   position: relative;
   right: 18px;
+  background-color: white;
 }
 #outsideimagediv {
   /* display: flex; */
