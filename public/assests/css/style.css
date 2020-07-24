@@ -896,6 +896,7 @@ footer {
   width: 100%;
   height: 90px;
   background-color: red;
+  z-index: 200;
 }
 .footerspacer {
   height: 90px;
