@@ -713,8 +713,8 @@ body {
   border-width: 60px 30px 60px 0;
   border-color: transparent #007bff transparent transparent;
   position: absolute;
-  top: 230px;
-  left: 40px;
+  top: 400px;
+  left: 2%;
 }
 
 #rightbutton {
@@ -724,8 +724,8 @@ body {
   border-width: 60px 0 60px 30px;
   border-color: transparent transparent transparent #007bff;
   position: absolute;
-  top: 230px;
-  right: 40px;
+  top: 400px;
+  right: 2%;
 }
 
 #imagediv {
