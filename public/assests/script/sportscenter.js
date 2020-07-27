@@ -4,7 +4,7 @@ let logourl;
 let color124;
 let color123;
 let color125;
-let playerpicture;
+// let playerpicture;
 let playerindex = [];
 var eventFired = 0;
 let windowSize;
@@ -21,6 +21,7 @@ let appPlaceHolder;
 let appPlaceHolder2;
 let appPlaceHolder3;
 let appPlaceHolder4;
+let development = false;
 
 function myFunction(x) {
   if (x.matches) {
@@ -164,6 +165,7 @@ function adjustleftsidevisualizer() {
   // console.log(topmargin);
   // $(".center").css("margin-top", topmargin + "px");
 }
+
 function determineimageproportions() {
   let imagewidth = $("#theImg").width();
   let imageHeight = $("#theImg").height();
@@ -268,29 +270,206 @@ function getlargescreenAPPPLayers() {
 function playerinformation(id, windowSize) {
   console.log("hi");
   $(".mainappdiv").css("border-color", color125);
-  // $.ajax("/api/getplayers/" + id, {
-  //   type: "GET",
-  // }).then(function (data) {
-  //   console.log(data);
-  //   playerindex = data;
-  //   console.log(playerindex);
-  //   fillInPlayerFromteam(data);
-  playersApp = $(".playerApp").html();
-  console.log(playersApp);
-  console.log(windowSize);
-  gotPlayersYet = true;
-  getlargescreenAPPPLayers();
+  const teamarray = [
+    {
+      player: {
+        name: "Giannis Antetokounmpo",
+        position: "Forward",
+        height: "6 ft 11 in ",
+        weight: " 242 lbs",
+        number: "34",
+        image:
+          "//ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/203507.png",
+        url: "https://www.nba.com/players/giannis/antetokounmpo/203507",
+      },
+    },
+    {
+      player: {
+        name: "Thanasis Antetokounmpo",
+        position: "Forward",
+        height: "6 ft 6 in ",
+        weight: " 219 lbs",
+        number: "43",
+        image:
+          "//ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/203648.png",
+        url: "https://www.nba.com/players/thanasis/antetokounmpo/203648",
+      },
+    },
+    {
+      player: {
+        name: "Eric Bledsoe",
+        position: "Guard",
+        height: "6 ft 1 in ",
+        weight: " 214 lbs",
+        number: "6",
+        image:
+          "//ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/202339.png",
+        url: "https://www.nba.com/players/eric/bledsoe/202339",
+      },
+    },
+    {
+      player: {
+        name: "Sterling Brown",
+        position: "Guard-Forward",
+        height: "6 ft 5 in ",
+        weight: " 219 lbs",
+        number: "23",
+        image:
+          "//ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1628425.png",
+        url: "https://www.nba.com/players/sterling/brown/1628425",
+      },
+    },
+    {
+      player: {
+        name: "Pat Connaughton",
+        position: "Guard",
+        height: "6 ft 5 in ",
+        weight: " 209 lbs",
+        number: "24",
+        image:
+          "//ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1626192.png",
+        url: "https://www.nba.com/players/pat/connaughton/1626192",
+      },
+    },
+    {
+      player: {
+        name: "Donte DiVincenzo",
+        position: "Guard",
+        height: "6 ft 4 in ",
+        weight: " 203 lbs",
+        number: "0",
+        image:
+          "//ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1628978.png",
+        url: "https://www.nba.com/players/donte/divincenzo/1628978",
+      },
+    },
+    {
+      player: {
+        name: "George Hill",
+        position: "Guard",
+        height: "6 ft 3 in ",
+        weight: " 188 lbs",
+        number: "3",
+        image:
+          "//ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/201588.png",
+        url: "https://www.nba.com/players/george/hill/201588",
+      },
+    },
+    {
+      player: {
+        name: "Ersan Ilyasova",
+        position: "Forward",
+        height: "6 ft 9 in ",
+        weight: " 235 lbs",
+        number: "7",
+        image:
+          "//ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/101141.png",
+        url: "https://www.nba.com/players/ersan/ilyasova/101141",
+      },
+    },
+    {
+      player: {
+        name: "Kyle Korver",
+        position: "Guard-Forward",
+        height: "6 ft 7 in ",
+        weight: " 212 lbs",
+        number: "26",
+        image:
+          "//ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/2594.png",
+        url: "https://www.nba.com/players/kyle/korver/2594",
+      },
+    },
+    {
+      player: {
+        name: "Brook Lopez",
+        position: "Center",
+        height: "7 ft 0 in ",
+        weight: " 282 lbs",
+        number: "11",
+        image:
+          "//ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/201572.png",
+        url: "https://www.nba.com/players/brook/lopez/201572",
+      },
+    },
+    {
+      player: {
+        name: "Robin Lopez",
+        position: "Center",
+        height: "7 ft 0 in ",
+        weight: " 281 lbs",
+        number: "42",
+        image:
+          "//ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/201577.png",
+        url: "https://www.nba.com/players/robin/lopez/201577",
+      },
+    },
+    {
+      player: {
+        name: "Frank Mason",
+        position: "Guard",
+        height: "5 ft 11 in ",
+        weight: " 190 lbs",
+        number: "15",
+        image:
+          "//ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1628412.png",
+        url: "https://www.nba.com/players/frank/mason/1628412",
+      },
+    },
+    {
+      player: {
+        name: "Wesley Matthews",
+        position: "Guard",
+        height: "6 ft 4 in ",
+        weight: " 220 lbs",
+        number: "9",
+        image:
+          "//ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/202083.png",
+        url: "https://www.nba.com/players/wesley/matthews/202083",
+      },
+    },
+  ];
+  if (development) {
+    fillInPlayerFromteam(teamarray);
+    playersApp = $(".playerApp").html();
+    console.log(playersApp);
+    console.log(windowSize);
+    gotPlayersYet = true;
+    getlargescreenAPPPLayers();
 
-  if (windowSize === "medium") {
-    $("#players1").append(playersApp);
-    getclicks();
-    appendonce = true;
+    if (windowSize === "medium") {
+      $("#players1").append(playersApp);
+      getclicks();
+      appendonce = true;
+    }
+    if (windowSize === "large") {
+      $("#mainviewer1").append(baseHtml);
+      getclicks();
+    }
+  } else {
+    $.ajax("/api/getplayers/" + id, {
+      type: "GET",
+    }).then(function (data) {
+      console.log(data);
+      playerindex = data;
+      console.log(playerindex);
+      fillInPlayerFromteam(data);
+      playersApp = $(".playerApp").html();
+      console.log(playersApp);
+      console.log(windowSize);
+      gotPlayersYet = true;
+      getlargescreenAPPPLayers();
+
+      if (windowSize === "medium") {
+        $("#players1").append(playersApp);
+        getclicks();
+        appendonce = true;
+      }
+      if (windowSize === "large") {
+        $("#mainviewer1").append(baseHtml);
+        getclicks();
+      }
+    });
   }
-  if (windowSize === "large") {
-    $("#mainviewer1").append(baseHtml);
-    getclicks();
-  }
-  // });
 }
 
 function getHighlightvideos() {
@@ -360,6 +539,22 @@ function getHighlightvideos() {
   // getVideo();
 }
 let playersclickedonce = false;
+function getreturnclick() {
+  $(".returnButton").on("click", function () {
+    $(".mainappdiv2").css("display", "none");
+    $(".playerinfo").css("display", "block");
+    $(".playerinfo2").css("display", "block");
+    $(".mainappdiv").css("display", "block");
+    $("#players1").empty();
+    $("#mainviewer1").empty();
+    $(".playerpicturebackground").empty();
+    $("#mainviewer1").append(playersApp);
+    $("#players1").append(playersApp);
+    playersAppState = "list";
+    getclicks();
+    playersclickedonce = false;
+  });
+}
 function getclicks() {
   $(".getplayerstats").on("click", function () {
     if (playersclickedonce === false) {
@@ -375,6 +570,8 @@ function getclicks() {
       $(".mainappdiv").css("display", "none");
       $(".mainappdiv2").css("display", "block");
       $(".mainappdiv2").css("border-color", color125);
+      $(".returnButton").css("background-color", color125);
+      $(".returnButton").css("border-color", color125);
 
       var target = event.target;
       let playerurl = target.getAttribute("name");
@@ -383,7 +580,7 @@ function getclicks() {
       console.log(playerurl);
       var parts = playerurl.split("/");
       var playerid = parts[parts.length - 1];
-      playerpicture = target.getAttribute("id");
+      let playerpicture = target.getAttribute("id");
 
       var playerstatsurl = {
         url: playerid,
@@ -391,80 +588,216 @@ function getclicks() {
       };
       console.log(playerstatsurl);
 
-      $.get("/api/individual/" + playerid).then(function (data) {
-        let playerNameForIndivTable =
-          playerindex[playerindexnumber].player.name;
-        let playerPositionForIndivTable =
-          playerindex[playerindexnumber].player.position;
-        let playerNumberForIndivTable =
-          playerindex[playerindexnumber].player.number;
-        let playerwieghtForIndivTable =
-          playerindex[playerindexnumber].player.weight;
-        let playerheightForIndivTable =
-          playerindex[playerindexnumber].player.height;
-
-        console.log(data);
+      if (development) {
         const populatearray = [
-          { idkey: ".minC", info: data.statistics.careerSummary.min },
-          { idkey: ".min", info: data.statistics.latest.min },
-          { idkey: ".assistsC", info: data.statistics.careerSummary.assists },
-          { idkey: ".assists", info: data.statistics.latest.assists },
-          { idkey: ".blocksC", info: data.statistics.careerSummary.blocks },
-          { idkey: ".blocks", info: data.statistics.latest.blocks },
+          {
+            idkey: ".minC",
+            testnumbers: 69,
+          },
+          {
+            idkey: ".min",
+            testnumbers: 69,
+          },
+          {
+            idkey: ".assistsC",
+            testnumbers: 69,
+          },
+          {
+            idkey: ".assists",
+            testnumbers: 69,
+          },
+          {
+            idkey: ".blocksC",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".blocks",
+
+            testnumbers: 69,
+          },
           {
             idkey: ".gamesPlayedC",
-            info: data.statistics.careerSummary.gamesPlayed,
+
+            testnumbers: 69,
           },
-          { idkey: ".gamesPlayed", info: data.statistics.latest.gamesPlayed },
+          {
+            idkey: ".gamesPlayed",
+
+            testnumbers: 69,
+          },
           {
             idkey: ".gamesStartedC",
-            info: data.statistics.careerSummary.gamesStarted,
+
+            testnumbers: 69,
           },
           {
             idkey: ".gamesStarted",
-            info: data.statistics.latest.gamesStarted,
+
+            testnumbers: 69,
           },
-          { idkey: ".totRebC", info: data.statistics.careerSummary.totReb },
-          { idkey: ".totReb", info: data.statistics.latest.totReb },
-          { idkey: ".offRebC", info: data.statistics.careerSummary.offReb },
-          { idkey: ".offReb", info: data.statistics.latest.offReb },
-          { idkey: ".defRebC", info: data.statistics.careerSummary.defReb },
-          { idkey: ".defReb", info: data.statistics.latest.defReb },
-          { idkey: ".fgpC", info: data.statistics.careerSummary.fgp },
-          { idkey: ".fgp", info: data.statistics.latest.fgp },
-          { idkey: ".tpmC", info: data.statistics.careerSummary.tpm },
-          { idkey: ".tpm", info: data.statistics.latest.tpm },
-          { idkey: ".tpaC", info: data.statistics.careerSummary.tpa },
-          { idkey: ".tpa", info: data.statistics.latest.tpa },
-          { idkey: ".stealsC", info: data.statistics.careerSummary.steals },
-          { idkey: ".steals", info: data.statistics.latest.steals },
+          {
+            idkey: ".totRebC",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".totReb",
+            testnumbers: 69,
+          },
+          {
+            idkey: ".offRebC",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".offReb",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".defRebC",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".defReb",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".fgpC",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".fgp",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".tpmC",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".tpm",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".tpaC",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".tpa",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".stealsC",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".steals",
+
+            testnumbers: 69,
+          },
           {
             idkey: ".turnoversC",
-            info: data.statistics.careerSummary.turnovers,
+
+            testnumbers: 69,
           },
-          { idkey: ".turnovers", info: data.statistics.latest.turnovers },
-          { idkey: ".pFoulsC", info: data.statistics.careerSummary.pFouls },
-          { idkey: ".pFouls", info: data.statistics.latest.pFouls },
-          { idkey: ".pointsC", info: data.statistics.careerSummary.points },
-          { idkey: ".points", info: data.statistics.latest.points },
-          { idkey: ".ppgC", info: data.statistics.careerSummary.ppg },
-          { idkey: ".ppg", info: data.statistics.latest.ppg },
-          { idkey: ".tppC", info: data.statistics.careerSummary.tpp },
-          { idkey: ".tpp", info: data.statistics.latest.tpp },
-          { idkey: ".spgC", info: data.statistics.careerSummary.spg },
-          { idkey: ".spg", info: data.statistics.latest.spg },
-          { idkey: ".bpgC", info: data.statistics.careerSummary.bpg },
-          { idkey: ".bpg", info: data.statistics.latest.bpg },
-          { idkey: ".mpgC", info: data.statistics.careerSummary.mpg },
-          { idkey: ".mpg", info: data.statistics.latest.mpg },
-          { idkey: ".rpgC", info: data.statistics.careerSummary.rpg },
-          { idkey: ".rpg", info: data.statistics.latest.rpg },
+          {
+            idkey: ".turnovers",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".pFoulsC",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".pFouls",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".pointsC",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".points",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".ppgC",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".ppg",
+            testnumbers: 69,
+          },
+          {
+            idkey: ".tppC",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".tpp",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".spgC",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".spg",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".bpgC",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".bpg",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".mpgC",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".mpg",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".rpgC",
+
+            testnumbers: 69,
+          },
+          {
+            idkey: ".rpg",
+
+            testnumbers: 69,
+          },
         ];
-
         populatearray.forEach((element) => {
-          $(element.idkey).html(element.info);
+          $(element.idkey).html(element.testnumbers);
         });
-
         $(".mainappdiv2").css("background-image", "url(" + logourl + ")");
         console.log(logourl);
         // $("#imagedivbackground2").append('<img id="theImg55" src="' + logourl + '" />');
@@ -476,12 +809,267 @@ function getclicks() {
         $(".playerpicturebackground").append(
           '<img class="playerpic" src="' + playerpicture + '" />'
         );
-        console.log(playerNameForIndivTable);
-        $(".playernameForIndiv").html(playerNameForIndivTable);
-        $(".playerpositionForIndiv").html(playerPositionForIndivTable);
-        $(".playerheightForIndiv").html(playerwieghtForIndivTable);
-        $(".playerwieghtForIndiv").html(playerheightForIndivTable);
-      });
+        // console.log(playerNameForIndivTable);
+
+        $(".playernameForIndiv").html("Giannis Antetokounmpo");
+        $(".playerpositionForIndiv").html("Guard-Forward");
+        $(".playerheightForIndiv").html("219 lbs");
+        $(".playerwieghtForIndiv").html("6 ft 5 in");
+        getreturnclick();
+      } else {
+        $.get("/api/individual/" + playerid).then(function (data) {
+          let playerNameForIndivTable =
+            playerindex[playerindexnumber].player.name;
+          let playerPositionForIndivTable =
+            playerindex[playerindexnumber].player.position;
+          let playerNumberForIndivTable =
+            playerindex[playerindexnumber].player.number;
+          let playerwieghtForIndivTable =
+            playerindex[playerindexnumber].player.weight;
+          let playerheightForIndivTable =
+            playerindex[playerindexnumber].player.height;
+
+          console.log(data);
+          const populatearray = [
+            {
+              idkey: ".minC",
+              info: data.statistics.careerSummary.min,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".min",
+              info: data.statistics.latest.min,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".assistsC",
+              info: data.statistics.careerSummary.assists,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".assists",
+              info: data.statistics.latest.assists,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".blocksC",
+              info: data.statistics.careerSummary.blocks,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".blocks",
+              info: data.statistics.latest.blocks,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".gamesPlayedC",
+              info: data.statistics.careerSummary.gamesPlayed,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".gamesPlayed",
+              info: data.statistics.latest.gamesPlayed,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".gamesStartedC",
+              info: data.statistics.careerSummary.gamesStarted,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".gamesStarted",
+              info: data.statistics.latest.gamesStarted,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".totRebC",
+              info: data.statistics.careerSummary.totReb,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".totReb",
+              info: data.statistics.latest.totReb,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".offRebC",
+              info: data.statistics.careerSummary.offReb,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".offReb",
+              info: data.statistics.latest.offReb,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".defRebC",
+              info: data.statistics.careerSummary.defReb,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".defReb",
+              info: data.statistics.latest.defReb,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".fgpC",
+              info: data.statistics.careerSummary.fgp,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".fgp",
+              info: data.statistics.latest.fgp,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".tpmC",
+              info: data.statistics.careerSummary.tpm,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".tpm",
+              info: data.statistics.latest.tpm,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".tpaC",
+              info: data.statistics.careerSummary.tpa,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".tpa",
+              info: data.statistics.latest.tpa,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".stealsC",
+              info: data.statistics.careerSummary.steals,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".steals",
+              info: data.statistics.latest.steals,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".turnoversC",
+              info: data.statistics.careerSummary.turnovers,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".turnovers",
+              info: data.statistics.latest.turnovers,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".pFoulsC",
+              info: data.statistics.careerSummary.pFouls,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".pFouls",
+              info: data.statistics.latest.pFouls,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".pointsC",
+              info: data.statistics.careerSummary.points,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".points",
+              info: data.statistics.latest.points,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".ppgC",
+              info: data.statistics.careerSummary.ppg,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".ppg",
+              info: data.statistics.latest.ppg,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".tppC",
+              info: data.statistics.careerSummary.tpp,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".tpp",
+              info: data.statistics.latest.tpp,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".spgC",
+              info: data.statistics.careerSummary.spg,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".spg",
+              info: data.statistics.latest.spg,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".bpgC",
+              info: data.statistics.careerSummary.bpg,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".bpg",
+              info: data.statistics.latest.bpg,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".mpgC",
+              info: data.statistics.careerSummary.mpg,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".mpg",
+              info: data.statistics.latest.mpg,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".rpgC",
+              info: data.statistics.careerSummary.rpg,
+              testnumbers: 69,
+            },
+            {
+              idkey: ".rpg",
+              info: data.statistics.latest.rpg,
+              testnumbers: 69,
+            },
+          ];
+
+          populatearray.forEach((element) => {
+            $(element.idkey).html(element.info);
+          });
+
+          $(".mainappdiv2").css("background-image", "url(" + logourl + ")");
+          console.log(logourl);
+          // $("#imagedivbackground2").append('<img id="theImg55" src="' + logourl + '" />');
+          $(".gradient").css("background", color125);
+          $(".gradient").css(
+            "background",
+            "linear-gradient(180deg, " +
+              color125 +
+              " 0%, " +
+              color124 +
+              " 100%)"
+          );
+          $(".playerpicturebackground").append(
+            '<img class="playerpic" src="' + playerpicture + '" />'
+          );
+          console.log(playerNameForIndivTable);
+          $(".playernameForIndiv").html(playerNameForIndivTable);
+          $(".playerpositionForIndiv").html(playerPositionForIndivTable);
+          $(".playerheightForIndiv").html(playerwieghtForIndivTable);
+          $(".playerwieghtForIndiv").html(playerheightForIndivTable);
+          getreturnclick();
+        });
+      }
     }
   });
 }

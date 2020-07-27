@@ -705,7 +705,12 @@ body {
 .smallscreenborder {
   display: none;
 }
-
+.returnButton {
+  font-size: 0.8em;
+  margin-top: 10px;
+  padding: 10px;
+  border-width: 5px;
+}
 #leftbutton {
   width: 0;
   height: 0;
