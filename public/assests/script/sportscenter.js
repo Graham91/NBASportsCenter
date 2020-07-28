@@ -165,7 +165,29 @@ function adjustleftsidevisualizer() {
   // console.log(topmargin);
   // $(".center").css("margin-top", topmargin + "px");
 }
-
+function fillinsmalltable(data) {
+  data.forEach((element, index) => {
+    $(".innersmalldiv1").append(
+      "<div class='smallscreenIndividualwhole'><div class='playerpicturebackgroundsmall'><img class='smallscreenIndividualPlayerPicture' src='" +
+        element.player.image +
+        "'></div><p class='smallscreenIndividualPlayerNumber'>" +
+        element.player.number +
+        "</p><div class='smallscreenwordbox'><p class='smallscreenIndividualPlayerName'>" +
+        element.player.name +
+        "</p><p class='smallscreenIndividualPlayerPosition'>Position: " +
+        element.player.position +
+        "</p><p class='smallscreenIndividualPlayerWeight'>Weight: " +
+        element.player.weight +
+        "</p><p class='smallscreenIndividualPlayerHeight'>Height: " +
+        element.player.height +
+        "</p><div class='smallScreenPlayerStats' value='" +
+        index +
+        "name='" +
+        element.player.url +
+        "'>Player Stats</div></div>"
+    );
+  });
+}
 function determineimageproportions() {
   let imagewidth = $("#theImg").width();
   let imageHeight = $("#theImg").height();
@@ -429,6 +451,7 @@ function playerinformation(id, windowSize) {
     },
   ];
   if (development) {
+    fillinsmalltable(teamarray);
     fillInPlayerFromteam(teamarray);
     playersApp = $(".playerApp").html();
     console.log(playersApp);
@@ -453,6 +476,7 @@ function playerinformation(id, windowSize) {
       playerindex = data;
       console.log(playerindex);
       fillInPlayerFromteam(data);
+      fillinsmalltable(data);
       playersApp = $(".playerApp").html();
       console.log(playersApp);
       console.log(windowSize);
