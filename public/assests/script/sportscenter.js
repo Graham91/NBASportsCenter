@@ -968,6 +968,9 @@ function getsmalltablediv() {
       var playerid = parts[parts.length - 1];
       $.get("/api/individual/" + playerid).then(function (data) {
         productionaddplayerstats(data);
+        alert(
+          "Because I used Cheerio to gather this information from NBA.com please do not click to find stats more times than you need to test functionality. I want to respect there site, and I would perfer to not get cut off!"
+        );
       });
     }
   });
@@ -1066,6 +1069,9 @@ function getclicks() {
           $(".playerheightForIndiv").html(playerwieghtForIndivTable);
           $(".playerwieghtForIndiv").html(playerheightForIndivTable);
           getreturnclick();
+          alert(
+            "Because I used Cheerio to gather this information from NBA.com please do not click to find stats more times than you need to test functionality. I want to respect there site, and I would perfer to not get cut off!"
+          );
         });
       }
     }
