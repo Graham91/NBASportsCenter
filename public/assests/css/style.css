@@ -29,7 +29,9 @@ body {
     rgba(255, 255, 255, 1) 100%
   );
 }
-
+.individualPlayertable2 th {
+  background-color: white;
+}
 .individualPlayertable3 th {
   border: solid 2px white;
   padding: 2px;
