@@ -4,7 +4,47 @@ body {
   overflow-x: hidden;
   background-color: lightgray;
 }
+.playstatsvalue1 {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  text-align: center;
+  margin: auto;
+}
+.bottomsmallplayer {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  z-index: 100;
+}
+.individualPlayertable3 {
+  min-width: 700px;
+  overflow-x: auto;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: solid 2px white;
+  margin: 0;
+  background: rgb(255, 0, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
 
+.individualPlayertable3 th {
+  border: solid 2px white;
+  padding: 2px;
+  padding-top: 20px;
+  margin: 0;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.individualPlayertable3 td {
+  padding: 2px;
+  /* margin: 0; */
+  border: solid 2px white;
+  font-size: 0.9em;
+}
 .displayflex {
   display: flex;
   width: 100%;
@@ -680,7 +720,9 @@ body {
   opacity: 0.5;
   border-color: transparent black transparent transparent;
 }
-
+.displaynormal {
+  display: block;
+}
 .shadowbottom3 {
   display: none;
   position: absolute;
@@ -892,14 +934,14 @@ body {
   overflow-y: scroll;
   z-index: 100;
 }
-table {
+.mainscreenplayertable {
   color: azure;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 tr {
   /* background-color: #dddddd; */
 }
-th {
+.mainscreenplayertable th {
   background-color: white;
   color: black;
   height: 36px;
@@ -1249,6 +1291,10 @@ footer {
   height: 180px;
 }
 .smallscreenIndividualPlayerHeight {
+  font-size: 1em;
+}
+.smallScreenPlayerStats {
+  margin-top: 5px;
   font-size: 1em;
 }
 .smallscreenIndividualPlayerNumber {

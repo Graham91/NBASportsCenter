@@ -168,7 +168,7 @@ function adjustleftsidevisualizer() {
 function fillinsmalltable(data) {
   data.forEach((element, index) => {
     $(".innersmalldiv1").append(
-      "<div class='smallscreenIndividualwhole'><div class='playerpicturebackgroundsmall'><img class='smallscreenIndividualPlayerPicture' src='" +
+      "<div class='displaynormal'><div class='smallscreenIndividualwhole'><div class='playerpicturebackgroundsmall'><img class='smallscreenIndividualPlayerPicture' src='" +
         element.player.image +
         "'></div><p class='smallscreenIndividualPlayerNumber'>" +
         element.player.number +
@@ -182,12 +182,14 @@ function fillinsmalltable(data) {
         element.player.height +
         "</p><div class='smallScreenPlayerStats' value='" +
         index +
-        "name='" +
+        "' name='" +
         element.player.url +
-        "'>Player Stats</div></div>"
+        "'>&#9660 Player Stats</div></div></div><div class='bottomsmallplayer'></div>"
     );
+    $(".smallScreenPlayerStats").css("color", color125);
   });
 }
+
 function determineimageproportions() {
   let imagewidth = $("#theImg").width();
   let imageHeight = $("#theImg").height();
@@ -252,7 +254,7 @@ function determineimageproportions() {
 }
 function fillInPlayerFromteam(data) {
   data.forEach((element, index) => {
-    $("table tbody").append(
+    $(".mainscreenplayertable tbody").append(
       "<tr><td><div class='playerinfo'>" +
         element.player.number +
         "</div></td><td><div class='getplayerstats playerinfo2' value=" +
@@ -271,6 +273,358 @@ function fillInPlayerFromteam(data) {
         element.player.weight +
         "</div></tr>"
     );
+  });
+}
+function productionaddplayerstats(data) {
+  const populatearray = [
+    {
+      idkey: ".minC",
+      info: data.statistics.careerSummary.min,
+    },
+    {
+      idkey: ".min",
+      info: data.statistics.latest.min,
+    },
+    {
+      idkey: ".assistsC",
+      info: data.statistics.careerSummary.assists,
+    },
+    {
+      idkey: ".assists",
+      info: data.statistics.latest.assists,
+    },
+    {
+      idkey: ".blocksC",
+      info: data.statistics.careerSummary.blocks,
+    },
+    {
+      idkey: ".blocks",
+      info: data.statistics.latest.blocks,
+    },
+    {
+      idkey: ".gamesPlayedC",
+      info: data.statistics.careerSummary.gamesPlayed,
+    },
+    {
+      idkey: ".gamesPlayed",
+      info: data.statistics.latest.gamesPlayed,
+    },
+    {
+      idkey: ".gamesStartedC",
+      info: data.statistics.careerSummary.gamesStarted,
+    },
+    {
+      idkey: ".gamesStarted",
+      info: data.statistics.latest.gamesStarted,
+    },
+    {
+      idkey: ".totRebC",
+      info: data.statistics.careerSummary.totReb,
+    },
+    {
+      idkey: ".totReb",
+      info: data.statistics.latest.totReb,
+    },
+    {
+      idkey: ".offRebC",
+      info: data.statistics.careerSummary.offReb,
+    },
+    {
+      idkey: ".offReb",
+      info: data.statistics.latest.offReb,
+    },
+    {
+      idkey: ".defRebC",
+      info: data.statistics.careerSummary.defReb,
+    },
+    {
+      idkey: ".defReb",
+      info: data.statistics.latest.defReb,
+    },
+    {
+      idkey: ".fgpC",
+      info: data.statistics.careerSummary.fgp,
+    },
+    {
+      idkey: ".fgp",
+      info: data.statistics.latest.fgp,
+    },
+    {
+      idkey: ".tpmC",
+      info: data.statistics.careerSummary.tpm,
+    },
+    {
+      idkey: ".tpm",
+      info: data.statistics.latest.tpm,
+    },
+    {
+      idkey: ".tpaC",
+      info: data.statistics.careerSummary.tpa,
+    },
+    {
+      idkey: ".tpa",
+      info: data.statistics.latest.tpa,
+    },
+    {
+      idkey: ".stealsC",
+      info: data.statistics.careerSummary.steals,
+    },
+    {
+      idkey: ".steals",
+      info: data.statistics.latest.steals,
+    },
+    {
+      idkey: ".turnoversC",
+      info: data.statistics.careerSummary.turnovers,
+    },
+    {
+      idkey: ".turnovers",
+      info: data.statistics.latest.turnovers,
+    },
+    {
+      idkey: ".pFoulsC",
+      info: data.statistics.careerSummary.pFouls,
+    },
+    {
+      idkey: ".pFouls",
+      info: data.statistics.latest.pFouls,
+    },
+    {
+      idkey: ".pointsC",
+      info: data.statistics.careerSummary.points,
+    },
+    {
+      idkey: ".points",
+      info: data.statistics.latest.points,
+    },
+    {
+      idkey: ".ppgC",
+      info: data.statistics.careerSummary.ppg,
+    },
+    {
+      idkey: ".ppg",
+      info: data.statistics.latest.ppg,
+    },
+    {
+      idkey: ".tppC",
+      info: data.statistics.careerSummary.tpp,
+    },
+    {
+      idkey: ".tpp",
+      info: data.statistics.latest.tpp,
+    },
+    {
+      idkey: ".spgC",
+      info: data.statistics.careerSummary.spg,
+    },
+    {
+      idkey: ".spg",
+      info: data.statistics.latest.spg,
+    },
+    {
+      idkey: ".bpgC",
+      info: data.statistics.careerSummary.bpg,
+    },
+    {
+      idkey: ".bpg",
+      info: data.statistics.latest.bpg,
+    },
+    {
+      idkey: ".mpgC",
+      info: data.statistics.careerSummary.mpg,
+    },
+    {
+      idkey: ".mpg",
+      info: data.statistics.latest.mpg,
+    },
+    {
+      idkey: ".rpgC",
+      info: data.statistics.careerSummary.rpg,
+    },
+    {
+      idkey: ".rpg",
+      info: data.statistics.latest.rpg,
+    },
+  ];
+
+  populatearray.forEach((element) => {
+    $(element.idkey).html(element.info);
+  });
+}
+
+function developmentaddplayerstats() {
+  const populatearray = [
+    {
+      idkey: ".minC",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".min",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".assistsC",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".assists",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".blocksC",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".blocks",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".gamesPlayedC",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".gamesPlayed",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".gamesStartedC",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".gamesStarted",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".totRebC",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".totReb",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".offRebC",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".offReb",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".defRebC",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".defReb",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".fgpC",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".fgp",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".tpmC",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".tpm",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".tpaC",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".tpa",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".stealsC",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".steals",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".turnoversC",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".turnovers",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".pFoulsC",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".pFouls",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".pointsC",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".points",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".ppgC",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".ppg",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".tppC",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".tpp",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".spgC",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".spg",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".bpgC",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".bpg",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".mpgC",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".mpg",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".rpgC",
+      testnumbers: 69,
+    },
+    {
+      idkey: ".rpg",
+      testnumbers: 69,
+    },
+  ];
+  populatearray.forEach((element) => {
+    $(element.idkey).html(element.testnumbers);
   });
 }
 function getlargescreenAPPPLayers() {
@@ -458,6 +812,7 @@ function playerinformation(id, windowSize) {
     console.log(windowSize);
     gotPlayersYet = true;
     getlargescreenAPPPLayers();
+    getsmalltablediv();
 
     if (windowSize === "medium") {
       $("#players1").append(playersApp);
@@ -477,6 +832,7 @@ function playerinformation(id, windowSize) {
       console.log(playerindex);
       fillInPlayerFromteam(data);
       fillinsmalltable(data);
+      getsmalltablediv();
       playersApp = $(".playerApp").html();
       console.log(playersApp);
       console.log(windowSize);
@@ -565,19 +921,60 @@ function getHighlightvideos() {
 let playersclickedonce = false;
 function getreturnclick() {
   $(".returnButton").on("click", function () {
-    $(".mainappdiv2").css("display", "none");
-    $(".playerinfo").css("display", "block");
-    $(".playerinfo2").css("display", "block");
-    $(".mainappdiv").css("display", "block");
-    $("#players1").empty();
-    $("#mainviewer1").empty();
-    $(".playerpicturebackground").empty();
-    $("#mainviewer1").append(playersApp);
-    $("#players1").append(playersApp);
-    playersAppState = "list";
-    getclicks();
-    playersclickedonce = false;
+    returnplayerstatstolist();
   });
+}
+function returnplayerstatstolist() {
+  $(".mainappdiv2").css("display", "none");
+  $(".playerinfo").css("display", "block");
+  $(".playerinfo2").css("display", "block");
+  $(".mainappdiv").css("display", "block");
+  $("#players1").empty();
+  $("#mainviewer1").empty();
+  $(".playerpicturebackground").empty();
+  $("#mainviewer1").append(playersApp);
+  $("#players1").append(playersApp);
+  playersAppState = "list";
+  getclicks();
+  playersclickedonce = false;
+}
+function getsmalltablediv() {
+  let smalltable = $(".smallscreenindividualPlayerstats").html();
+  $(".smallScreenPlayerStats").on("click", function () {
+    $(".bottomsmallplayer").empty();
+    returnplayerstatstolist();
+    playertarget = event.target;
+    console.log(playertarget);
+    let parent = $(event.target).parent();
+    let parentdiv = parent.parent();
+    let parentdiv2 = parentdiv.parent();
+    // let tablediv = parentdiv2.child();
+    let tablediv = $(parentdiv2).find(".bottomsmallplayer");
+    let smplayerurl = playertarget.getAttribute("name");
+    let smplayervalue = playertarget.getAttribute("value");
+    tablediv.append(smalltable);
+    $(".individualPlayertable3").css("background", color125);
+    $(".individualPlayertable3").css(
+      "background",
+      "linear-gradient(0deg, " + color125 + " 0%, rgba(255, 255, 255, 1) 100%)"
+    );
+    if (development) {
+      developmentaddplayerstats();
+    } else {
+      let playerurl = playertarget.getAttribute("name");
+      // let playervalue = playertarget.getAttribute("value");
+      // let playerindexnumber = parseInt(playervalue);
+      var parts = playerurl.split("/");
+      var playerid = parts[parts.length - 1];
+      $.get("/api/individual/" + playerid).then(function (data) {
+        productionaddplayerstats(data);
+      });
+    }
+  });
+}
+function populatesmalltable(data) {
+  // let smplayerurl = target.getAttribute("name");
+  // let smplayervalue = target.getAttribute("value");
 }
 function getclicks() {
   $(".getplayerstats").on("click", function () {
@@ -613,215 +1010,7 @@ function getclicks() {
       console.log(playerstatsurl);
 
       if (development) {
-        const populatearray = [
-          {
-            idkey: ".minC",
-            testnumbers: 69,
-          },
-          {
-            idkey: ".min",
-            testnumbers: 69,
-          },
-          {
-            idkey: ".assistsC",
-            testnumbers: 69,
-          },
-          {
-            idkey: ".assists",
-            testnumbers: 69,
-          },
-          {
-            idkey: ".blocksC",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".blocks",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".gamesPlayedC",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".gamesPlayed",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".gamesStartedC",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".gamesStarted",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".totRebC",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".totReb",
-            testnumbers: 69,
-          },
-          {
-            idkey: ".offRebC",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".offReb",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".defRebC",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".defReb",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".fgpC",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".fgp",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".tpmC",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".tpm",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".tpaC",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".tpa",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".stealsC",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".steals",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".turnoversC",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".turnovers",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".pFoulsC",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".pFouls",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".pointsC",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".points",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".ppgC",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".ppg",
-            testnumbers: 69,
-          },
-          {
-            idkey: ".tppC",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".tpp",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".spgC",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".spg",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".bpgC",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".bpg",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".mpgC",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".mpg",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".rpgC",
-
-            testnumbers: 69,
-          },
-          {
-            idkey: ".rpg",
-
-            testnumbers: 69,
-          },
-        ];
-        populatearray.forEach((element) => {
-          $(element.idkey).html(element.testnumbers);
-        });
+        developmentaddplayerstats();
         $(".mainappdiv2").css("background-image", "url(" + logourl + ")");
         console.log(logourl);
         // $("#imagedivbackground2").append('<img id="theImg55" src="' + logourl + '" />');
@@ -854,222 +1043,7 @@ function getclicks() {
             playerindex[playerindexnumber].player.height;
 
           console.log(data);
-          const populatearray = [
-            {
-              idkey: ".minC",
-              info: data.statistics.careerSummary.min,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".min",
-              info: data.statistics.latest.min,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".assistsC",
-              info: data.statistics.careerSummary.assists,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".assists",
-              info: data.statistics.latest.assists,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".blocksC",
-              info: data.statistics.careerSummary.blocks,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".blocks",
-              info: data.statistics.latest.blocks,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".gamesPlayedC",
-              info: data.statistics.careerSummary.gamesPlayed,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".gamesPlayed",
-              info: data.statistics.latest.gamesPlayed,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".gamesStartedC",
-              info: data.statistics.careerSummary.gamesStarted,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".gamesStarted",
-              info: data.statistics.latest.gamesStarted,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".totRebC",
-              info: data.statistics.careerSummary.totReb,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".totReb",
-              info: data.statistics.latest.totReb,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".offRebC",
-              info: data.statistics.careerSummary.offReb,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".offReb",
-              info: data.statistics.latest.offReb,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".defRebC",
-              info: data.statistics.careerSummary.defReb,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".defReb",
-              info: data.statistics.latest.defReb,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".fgpC",
-              info: data.statistics.careerSummary.fgp,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".fgp",
-              info: data.statistics.latest.fgp,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".tpmC",
-              info: data.statistics.careerSummary.tpm,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".tpm",
-              info: data.statistics.latest.tpm,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".tpaC",
-              info: data.statistics.careerSummary.tpa,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".tpa",
-              info: data.statistics.latest.tpa,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".stealsC",
-              info: data.statistics.careerSummary.steals,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".steals",
-              info: data.statistics.latest.steals,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".turnoversC",
-              info: data.statistics.careerSummary.turnovers,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".turnovers",
-              info: data.statistics.latest.turnovers,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".pFoulsC",
-              info: data.statistics.careerSummary.pFouls,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".pFouls",
-              info: data.statistics.latest.pFouls,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".pointsC",
-              info: data.statistics.careerSummary.points,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".points",
-              info: data.statistics.latest.points,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".ppgC",
-              info: data.statistics.careerSummary.ppg,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".ppg",
-              info: data.statistics.latest.ppg,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".tppC",
-              info: data.statistics.careerSummary.tpp,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".tpp",
-              info: data.statistics.latest.tpp,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".spgC",
-              info: data.statistics.careerSummary.spg,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".spg",
-              info: data.statistics.latest.spg,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".bpgC",
-              info: data.statistics.careerSummary.bpg,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".bpg",
-              info: data.statistics.latest.bpg,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".mpgC",
-              info: data.statistics.careerSummary.mpg,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".mpg",
-              info: data.statistics.latest.mpg,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".rpgC",
-              info: data.statistics.careerSummary.rpg,
-              testnumbers: 69,
-            },
-            {
-              idkey: ".rpg",
-              info: data.statistics.latest.rpg,
-              testnumbers: 69,
-            },
-          ];
-
-          populatearray.forEach((element) => {
-            $(element.idkey).html(element.info);
-          });
+          productionaddplayerstats(data);
 
           $(".mainappdiv2").css("background-image", "url(" + logourl + ")");
           console.log(logourl);
