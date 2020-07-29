@@ -51,5 +51,5 @@ These are mostly accurate I have alot of unnecessary detail, because this was my
 This is an image showing how the site adjusts to the size and colors of the NBA team logos.
 ![](gitreadMeImages/imagesizeadjustments.png)
 
-This is an Image showing the mobile responsiveness of the site
-![](gitreadMeImages/mobile resposiveness.png)
+This is an Image showing the mobile responsiveness of the site.
+![](gitreadMeImages/mobileresposiveness.png)
