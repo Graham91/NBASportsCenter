@@ -48,8 +48,8 @@ The intention here was to create a sports-center onestop dashboard for following
 These are mostly accurate I have alot of unnecessary detail, because this was my first full stack project and I was still getting the hang of client and server side communication. I also included a sketch of how I thought it should look in the begining. 
 ![](gitreadMeImages/flowcharts.png)
 
-This is A image showing how the site adjusts to the size and colors of the NBA team logos.
+This is an image showing how the site adjusts to the size and colors of the NBA team logos.
 ![](gitreadMeImages/imagesizeadjustments.png)
 
-This is A Image showing the mobile responsiveness of the site
-![](gitreadMeImages/mobileresposiveness.png)
+This is an Image showing the mobile responsiveness of the site
+![](gitreadMeImages/mobile resposiveness.png)
