@@ -19,6 +19,8 @@ The intention here was to create a sports-center onestop dashboard for following
 * [mySQL](https://www.mysql.com/)
 * [Sequelize](https://sequelize.org/)
 * [jpeg-js](https://www.npmjs.com/package/jpeg-js)
+* [jquery](https://jquery.com/)
+* [Axios](https://www.axios.com/)
 
 
 ## Details of the Application and Challenges
@@ -31,10 +33,10 @@ The intention here was to create a sports-center onestop dashboard for following
  I am also Ultalizing A free balldontlie API. This particular API will get you the most recent played games from a specified team and their scores. this is good information but it is also sort of simple and lack luster, which is why I combined this Information with the Youtube API. When you open the site(not up quite yet) the balldontlie API is called and the recent games are then put through the youtube API which pulls up those particular highlight videos.   
 
 ## List of future developments/features
-There will be a home page with user name displayed(thinking it will look similar to the players stat app).
+* There will be a home page with user name displayed(thinking it will look similar to the players stat app).
  <br>
   <br>
-Currently testing out different free news API's so you can read up on your faovrite team and Player. Bothe of these will get there own application box.
+* Currently testing out different free news API's so you can read up on your faovrite team and Player. Both of these will get there own application box.
 
 
 
