@@ -942,36 +942,46 @@ function getsmalltablediv() {
   let smalltable = $(".smallscreenindividualPlayerstats").html();
   $(".smallScreenPlayerStats").on("click", function () {
     $(".bottomsmallplayer").empty();
-    returnplayerstatstolist();
     playertarget = event.target;
-    console.log(playertarget);
-    let parent = $(event.target).parent();
-    let parentdiv = parent.parent();
-    let parentdiv2 = parentdiv.parent();
-    // let tablediv = parentdiv2.child();
-    let tablediv = $(parentdiv2).find(".bottomsmallplayer");
-    let smplayerurl = playertarget.getAttribute("name");
-    let smplayervalue = playertarget.getAttribute("value");
-    tablediv.append(smalltable);
-    $(".individualPlayertable3").css("background", color125);
-    $(".individualPlayertable3").css(
-      "background",
-      "linear-gradient(0deg, " + color125 + " 0%, rgba(255, 255, 255, 1) 100%)"
-    );
-    if (development) {
-      developmentaddplayerstats();
+    let openOrcloseIndicator = $(playertarget).text();
+    console.log(openOrcloseIndicator);
+    if (openOrcloseIndicator === "▲ Player Stats") {
+      console.log("your in");
+      $(playertarget).html("&#9660 Player Stats");
     } else {
-      let playerurl = playertarget.getAttribute("name");
-      // let playervalue = playertarget.getAttribute("value");
-      // let playerindexnumber = parseInt(playervalue);
-      var parts = playerurl.split("/");
-      var playerid = parts[parts.length - 1];
-      $.get("/api/individual/" + playerid).then(function (data) {
-        productionaddplayerstats(data);
-        alert(
-          "Because I used Cheerio to gather this information from NBA.com please do not click to find stats more times than you need to test functionality. I want to respect there site, and I would perfer to not get cut off!"
-        );
-      });
+      returnplayerstatstolist();
+      console.log(playertarget);
+      let parent = $(event.target).parent();
+      let parentdiv = parent.parent();
+      let parentdiv2 = parentdiv.parent();
+      // let tablediv = parentdiv2.child();
+      let tablediv = $(parentdiv2).find(".bottomsmallplayer");
+      let smplayerurl = playertarget.getAttribute("name");
+      let smplayervalue = playertarget.getAttribute("value");
+      tablediv.append(smalltable);
+      $(".individualPlayertable3").css("background", color125);
+      $(".individualPlayertable3").css(
+        "background",
+        "linear-gradient(0deg, " +
+          color125 +
+          " 0%, rgba(255, 255, 255, 1) 100%)"
+      );
+      $(playertarget).html("&#9650 Player Stats");
+      if (development) {
+        developmentaddplayerstats();
+      } else {
+        let playerurl = playertarget.getAttribute("name");
+        // let playervalue = playertarget.getAttribute("value");
+        // let playerindexnumber = parseInt(playervalue);
+        var parts = playerurl.split("/");
+        var playerid = parts[parts.length - 1];
+        $.get("/api/individual/" + playerid).then(function (data) {
+          productionaddplayerstats(data);
+          alert(
+            "Because I used Cheerio to gather this information from NBA.com please do not click to find stats more times than you need to test functionality. I want to respect there site, and I would perfer to not get cut off!"
+          );
+        });
+      }
     }
   });
 }
