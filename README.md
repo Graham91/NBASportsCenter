@@ -45,4 +45,5 @@ The intention here was to create a sports-center onestop dashboard for following
 
  
 ## Screen Shots
-![alt text](https://github.com/Graham91/NBASportsCenter/gitreadMeImages/flowcharts.png)
+![alt text](https://github.com/Graham91/NBASportsCenter/blob/gitreadMeImages/flowcharts.png?raw=true)
+
