@@ -34,8 +34,7 @@ The intention here was to create a sports-center onestop dashboard for following
 
 ## List of future developments/features
 * There will be a home page with user name displayed(thinking it will look similar to the players stat app).
- <br>
-  <br>
+
 * Currently testing out different free news API's so you can read up on your faovrite team and Player. Both of these will get there own application box.
 
 
