@@ -21,7 +21,7 @@ let appPlaceHolder;
 let appPlaceHolder2;
 let appPlaceHolder3;
 let appPlaceHolder4;
-let development = false;
+let development = true;
 
 function myFunction(x) {
   if (x.matches) {
