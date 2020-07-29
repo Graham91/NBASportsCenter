@@ -22,12 +22,8 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   border: solid 2px white;
   margin: 0;
-  background: rgb(255, 0, 0);
-  background: linear-gradient(
-    0deg,
-    rgba(255, 0, 0, 1) 0%,
-    rgba(255, 255, 255, 1) 100%
-  );
+  background: white;
+  background: linear-gradient(0deg, white 0%, rgba(255, 255, 255, 1) 100%);
 }
 .individualPlayertable2 th {
   background-color: white;
@@ -63,8 +59,8 @@ body {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  background-color: red;
-  border-color: red;
+  background-color: white;
+  border-color: white;
   border-style: outset;
   border-width: 18px;
   flex-wrap: wrap;
@@ -74,7 +70,7 @@ body {
 .upperdiv2 {
   height: 162px;
   width: 198px;
-  background-color: red;
+  background-color: white;
   position: relative;
   right: 32px;
   z-index: 12;
@@ -85,7 +81,7 @@ body {
   height: 0;
   border-style: solid;
   border-width: 0 180px 180px 0;
-  border-color: transparent #007bff transparent transparent;
+  border-color: transparent white transparent transparent;
   position: relative;
   right: 32px;
   z-index: 15;
@@ -95,7 +91,7 @@ body {
   height: 0;
   border-style: outset;
   border-width: 0 18px 18px 0;
-  border-color: transparent #007bff transparent transparent;
+  border-color: transparent white transparent transparent;
   position: relative;
   right: 50px;
   top: 162px;
@@ -106,7 +102,7 @@ body {
   height: 0;
   border-style: inset;
   border-width: 18px 18px 0 0;
-  border-color: #007bff transparent transparent transparent;
+  border-color: white transparent transparent transparent;
   position: relative;
   right: 50px;
   top: 162px;
@@ -115,9 +111,9 @@ body {
 .upperdiv6 {
   height: 162px;
   width: 1px;
-  background-color: #007bff;
+  background-color: white;
   position: relative;
-  border-color: #007bff;
+  border-color: white;
   border-style: outset;
   border-width: 18px;
   position: relative;
@@ -130,9 +126,9 @@ body {
 .upperdiv7 {
   height: 162px;
   width: 180px;
-  background-color: #007bff;
+  background-color: white;
   position: relative;
-  border-color: #007bff;
+  border-color: white;
   border-style: outset;
   border-width: 18px;
   position: absolute;
@@ -147,7 +143,7 @@ body {
   height: 0;
   border-style: inset;
   border-width: 18px 18px 0 0;
-  border-color: #007bff transparent transparent transparent;
+  border-color: white transparent transparent transparent;
   position: absolute;
   flex-grow: 6;
 
@@ -158,7 +154,7 @@ body {
 .upperdiv9 {
   height: 162px;
   width: 18px;
-  background-color: #007bff;
+  background-color: white;
   position: relative;
   position: absolute;
   flex-grow: 6;
@@ -312,7 +308,7 @@ body {
 .header {
   widows: 100%;
   height: 72px;
-  background-color: #051d3c;
+  background-color: white;
   color: white;
   font-size: 3em;
   text-align: center;
@@ -327,27 +323,27 @@ body {
 .smallcolor1 {
   width: 20%;
 
-  background-color: #fafafa;
+  background-color: white;
 }
 
 .smallcolor2 {
   width: 20%;
-  background-color: #051d3c;
+  background-color: white;
 }
 
 .smallcolor3 {
   width: 20%;
-  background-color: #bb0c30;
+  background-color: white;
 }
 
 .smallcolor4 {
   width: 20%;
-  background-color: #bb9b5c;
+  background-color: white;
 }
 
 .smallcolor5 {
   width: 20%;
-  background-color: #5c6c7c;
+  background-color: white;
 }
 
 .boxarrowcontainer {
@@ -359,9 +355,9 @@ body {
   position: relative;
   border-right-width: 3px;
   border-right-style: solid;
-  border-right-color: #051d3c;
+  border-right-color: white;
   width: 50%;
-  background-color: #bb0c30;
+  background-color: white;
   height: 30px;
 }
 
@@ -369,9 +365,9 @@ body {
   position: relative;
   border-left-width: 3px;
   border-left-style: solid;
-  border-left-color: #051d3c;
+  border-left-color: white;
   width: 50%;
-  background-color: #bb0c30;
+  background-color: white;
 
   height: 30px;
 }
@@ -379,13 +375,13 @@ body {
 .downmenu {
   position: relative;
   height: 24px;
-  background-color: #bb0c30;
+  background-color: white;
   border-top-width: 6px;
   border-top-style: solid;
-  border-top-color: #051d3c;
+  border-top-color: white;
   border-bottom-width: 9px;
   border-bottom-style: outset;
-  border-bottom-color: #bb0c30;
+  border-bottom-color: white;
   width: 100%;
 }
 
@@ -396,11 +392,7 @@ body {
   height: 100%;
   width: 100%;
   background: rgb(0, 0, 0);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.6) 0%,
-    #051d3c 100%
-  );
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, white 100%);
 }
 
 .innerarrowrightTri {
@@ -449,7 +441,7 @@ body {
   height: 0;
   border-style: solid;
   border-width: 0 0 25px 25px;
-  border-color: transparent transparent #051d3c transparent;
+  border-color: transparent transparent white transparent;
 }
 
 .blueoverlay1L {
@@ -460,7 +452,7 @@ body {
   height: 0;
   border-style: solid;
   border-width: 25px 0 0 25px;
-  border-color: transparent transparent transparent #051d3c;
+  border-color: transparent transparent transparent white;
 }
 
 .blueoverlay2L {
@@ -469,7 +461,7 @@ body {
   left: 0;
   height: 60px;
   top: 78px;
-  background-color: #051d3c;
+  background-color: white;
 }
 
 .blueoverlay2R {
@@ -478,7 +470,7 @@ body {
   right: 0;
   height: 60px;
   top: 78px;
-  background-color: #051d3c;
+  background-color: white;
 }
 
 .brownoverlay1R {
@@ -489,7 +481,7 @@ body {
   height: 0;
   border-style: solid;
   border-width: 15px 0 15px 15px;
-  border-color: transparent transparent transparent #bb0c30;
+  border-color: transparent transparent transparent white;
 }
 
 .brownoverlay1L {
@@ -500,7 +492,7 @@ body {
   height: 0;
   border-style: solid;
   border-width: 15px 15px 15px 0;
-  border-color: transparent #bb0c30 transparent transparent;
+  border-color: transparent white transparent transparent;
 }
 
 .blueoverlay3L {
@@ -510,7 +502,7 @@ body {
   width: calc(20% + 25px);
   border-bottom-width: 9px;
   border-bottom-style: outset;
-  border-bottom-color: #051d3c;
+  border-bottom-color: white;
 }
 
 .blueoverlay3R {
@@ -521,7 +513,7 @@ body {
   width: calc(20% + 25px);
   border-bottom-width: 9px;
   border-bottom-style: outset;
-  border-bottom-color: #051d3c;
+  border-bottom-color: white;
 }
 
 .blueoverlay4R {
@@ -532,7 +524,7 @@ body {
   height: 0;
   border-style: outset;
   border-width: 0 0 9px 9px;
-  border-color: transparent transparent #051d3c transparent;
+  border-color: transparent transparent white transparent;
 }
 
 .blueoverlay4L {
@@ -543,7 +535,7 @@ body {
   height: 0;
   border-style: inset;
   border-width: 9px 0 0 9px;
-  border-color: transparent transparent transparent #051d3c;
+  border-color: transparent transparent transparent white;
 }
 
 .redoverlay1R {
@@ -554,7 +546,7 @@ body {
   height: 0;
   border-style: solid;
   border-width: 0 0 80px 80px;
-  border-color: transparent transparent #bb9b5c transparent;
+  border-color: transparent transparent white transparent;
 }
 
 .redoverlay1L {
@@ -566,7 +558,7 @@ body {
   height: 0;
   border-style: solid;
   border-width: 80px 0 0 80px;
-  border-color: transparent transparent transparent #bb9b5c;
+  border-color: transparent transparent transparent white;
 }
 
 .redoverlay2L {
@@ -577,7 +569,7 @@ body {
   width: 80px;
   border-bottom-width: 9px;
   border-bottom-style: outset;
-  border-bottom-color: #bb9b5c;
+  border-bottom-color: white;
 }
 
 .redoverlay2R {
@@ -588,7 +580,7 @@ body {
   width: 80px;
   border-bottom-width: 9px;
   border-bottom-style: outset;
-  border-bottom-color: #bb9b5c;
+  border-bottom-color: white;
 }
 
 .redoverlay3R {
@@ -599,7 +591,7 @@ body {
   height: 0;
   border-style: outset;
   border-width: 0 0 9px 9px;
-  border-color: transparent transparent #bb9b5c transparent;
+  border-color: transparent transparent white transparent;
 }
 
 .redoverlay3L {
@@ -610,7 +602,7 @@ body {
   height: 0;
   border-style: inset;
   border-width: 9px 0 0 9px;
-  border-color: transparent transparent transparent #bb9b5c;
+  border-color: transparent transparent transparent white;
 }
 
 .shadowleft {
@@ -638,7 +630,7 @@ body {
   position: absolute;
   border-style: solid;
   border-width: 12px 12px 12px 0;
-  border-color: transparent #bb0c30 transparent transparent;
+  border-color: transparent white transparent transparent;
 }
 
 .shadowleft3 {
@@ -755,7 +747,7 @@ body {
   width: 80%;
   position: relative;
   margin: 20px auto;
-  background-color: blueviolet;
+  background-color: white;
 }
 
 .smallscreenborder {
@@ -772,7 +764,7 @@ body {
   height: 0;
   border-style: solid;
   border-width: 60px 30px 60px 0;
-  border-color: transparent #007bff transparent transparent;
+  border-color: transparent white transparent transparent;
   position: absolute;
   top: 400px;
   left: 2%;
@@ -783,7 +775,7 @@ body {
   height: 0;
   border-style: solid;
   border-width: 60px 0 60px 30px;
-  border-color: transparent transparent transparent #007bff;
+  border-color: transparent transparent transparent white;
   position: absolute;
   top: 400px;
   right: 2%;
@@ -793,7 +785,7 @@ body {
   padding-bottom: -5px;
   height: 207px;
   margin: 0 auto;
-  border-color: red;
+  border-color: white;
   border-style: outset;
   border-width: 14px;
   display: inline-block;
@@ -928,7 +920,7 @@ body {
   background-position: right 41px bottom;
   border-width: 14px;
   border-style: outset;
-  border-color: blue;
+  border-color: white;
   height: 405px;
   width: 900px;
   font-size: 27px;
@@ -956,7 +948,7 @@ footer {
   margin-top: 0;
   width: 100%;
   height: 90px;
-  background-color: red;
+  background-color: white;
   z-index: 200;
 }
 .footerspacer {
@@ -967,7 +959,7 @@ footer {
   height: 0;
   border-style: solid;
   border-width: 0 0 90px 90px;
-  border-color: transparent transparent #007bff transparent;
+  border-color: transparent transparent white transparent;
   position: relative;
 
   z-index: 15;
@@ -976,13 +968,13 @@ footer {
   margin-top: 0;
   width: 720px;
   height: 90px;
-  background-color: red;
+  background-color: white;
 }
 .upperdiv12 {
   margin-top: 0;
   width: 9px;
   height: 90px;
-  background-color: #007bff;
+  background-color: white;
   flex-grow: 6;
 }
 .hide1 {
@@ -1007,7 +999,7 @@ footer {
   position: absolute;
   height: 405px;
   width: 884px;
-  background-color: blue;
+  background-color: white;
   z-index: 7;
   opacity: 70%;
 }
@@ -1026,13 +1018,13 @@ footer {
   width: 70px;
   color: rgb(70, 70, 70);
   font-weight: bolder;
-  background-color: rgb(103, 103, 255);
+  background-color: white;
   border-radius: 29px 0px 0px 29px;
   border-style: solid;
   border-color: darkgray;
   border-width: 4px;
   border-width: 4px 2px 4px 4px;
-  background: radial-gradient(circle at 15px 10px, #5cabff, rgb(63, 63, 63));
+  background: radial-gradient(circle at 15px 10px, white, rgb(63, 63, 63));
 }
 
 .buttonleft2 {
@@ -1043,7 +1035,7 @@ footer {
   line-height: 34px;
   text-align: center;
   font-size: 3.5em;
-  background-color: rgb(103, 103, 255);
+  background-color: white;
   border-radius: 29px 0px 0px 29px;
   background: radial-gradient(
     circle at 65px 10px,
@@ -1107,12 +1099,12 @@ footer {
   font-weight: bolder;
   color: rgb(70, 70, 70);
   text-align: center;
-  background-color: blue;
+  background-color: white;
   border-radius: 0px 29px 29px 0px;
   border-style: solid;
   border-color: darkgray;
   border-width: 4px 4px 4px 2px;
-  background: radial-gradient(circle at 55px 10px, #5cabff, rgb(63, 63, 63));
+  background: radial-gradient(circle at 55px 10px, white, rgb(63, 63, 63));
 }
 
 .centerGradient {
@@ -1152,7 +1144,7 @@ footer {
   height: 0;
   border-style: solid;
   border-width: 0 36px 18px 36px;
-  border-color: transparent transparent #007bff transparent;
+  border-color: transparent transparent white transparent;
 }
 
 #arrowbuttondiv2 {
@@ -1164,7 +1156,7 @@ footer {
   height: 0;
   border-style: solid;
   border-width: 18px 36px 0 36px;
-  border-color: #007bff transparent transparent transparent;
+  border-color: white transparent transparent transparent;
 }
 .individualPlayertable {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -1332,7 +1324,7 @@ footer {
   width: 80%;
   position: relative;
   margin: 20px auto;
-  background-color: blueviolet;
+  background-color: white;
 }
 
 .smallscreenborder {
