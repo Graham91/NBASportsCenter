@@ -52,4 +52,4 @@ This is A image showing how the site adjusts to the size and colors of the NBA t
 ![](gitreadMeImages/imagesizeadjustments.png)
 
 This is A Image showing the mobile responsiveness of the site
-![](gitreadMeImages/mobileresponsiveness.png)
+![](gitreadMeImages/mobileresposiveness.png)
