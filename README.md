@@ -37,8 +37,10 @@ The intention here was to create a sports-center onestop dashboard for following
 
 * Currently testing out different free news API's so you can read up on your faovrite team and Player. Both of these will get there own application box.
 
+* I have the Entire site set up to adjust to the five colors offer by Jpeg.js. I would like to create a color preferences pages where you can select which color goes where in the design. I would then save this information in the user database. 
 
 
-### Link to the Live Project on Heroku: https://not-reddit-seenit.herokuapp.com/
+
+### Link to the Live Project on Heroku: https://nbasportscenter.herokuapp.com/
 
  
