@@ -18,11 +18,12 @@ The intention here was to create a sports-center onestop dashboard for following
 * [Express js](https://expressjs.com/)
 * [mySQL](https://www.mysql.com/)
 * [Sequelize](https://sequelize.org/)
-
+* [jpeg-js](https://www.npmjs.com/package/jpeg-js)
 
 
 ## Details of the Application and Challenges
  NBA logos are not all the same size nor are they the same color. In order for the design to be pleasing visually to the user, color matching software was utalized as well as an image measuring system I designed that adjusts the size and placement of the websites elements to work with different size ratios for team logos.  The site is also highly mobile responsive. 
+ <br>
  The site utalizes several api's to gather its information. When I first began the my API search I wanted an API that would give me all the players on a given team as well as their stats. This does not exist at least not for free. So I built one using Cherrio. When the site loads I scrap NBA.com for all the players names, numbers, mugshot, heights, weights and a player ID number that is used by there site. These are then displayed to the user in a table. If you click a players name the id number is used to access current stats information for each player. This scraping system can give you current stats and images for every player from every team in the NBA. It is important to me that this site only be used for academic purposes for this reason. 
  I am also Ultalizing A free balldontlie API. This particular API will get you the most recent played games from a specified team and their scores. this is good information but it is also sort of simple and lack luster, which is why I combined this Information with the Youtube API. When you open the site(not up quite yet) the balldontlie API is called and the recent games are then put through the youtube API which pulls up those particular highlight videos.   
 
