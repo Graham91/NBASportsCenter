@@ -30,7 +30,10 @@ The intention here was to create a sports-center onestop dashboard for following
  The site utalizes several api's to gather its information. When I first began the my API search I wanted an API that would give me all the players on a given team as well as their stats. This does not exist at least not for free. So I built one using Cherrio. When the site loads I scrap NBA.com for all the players names, numbers, mugshot, heights, weights and a player ID number that is used by there site. These are then displayed to the user in a table. If you click a players name the id number is used to access current stats information for each player. This scraping system can give you current stats and images for every player from every team in the NBA. It is important to me that this site only be used for academic purposes for this reason. 
   <br>
    <br>
- I am also Ultalizing A free balldontlie API. This particular API will get you the most recent played games from a specified team and their scores. this is good information but it is also sort of simple and lack luster, which is why I combined this Information with the Youtube API. When you open the site(not up quite yet) the balldontlie API is called and the recent games are then put through the youtube API which pulls up those particular highlight videos.   
+ I am also Ultalizing A free balldontlie API. This particular API will get you the most recent played games from a specified team and their scores. this is good information but it is also sort of simple and lack luster, which is why I combined this Information with the Youtube API. When you open the site(not up quite yet) the balldontlie API is called and the recent games are then put through the youtube API which pulls up those particular highlight videos. 
+ <br>
+   <br>
+Another Challenge I ran into was that since I used a scraper I didn't want to be making a ton of request while in testing. To fix this I created A filler system where you can indicate if you are using the product in develoment or production. If it is in dev mode the scraper won't run and filler information will be used instead. 
 
 ## List of future developments/features
 * There will be a home page with user name displayed(thinking it will look similar to the players stat app).
@@ -52,4 +55,4 @@ This is an image showing how the site adjusts to the size and colors of the NBA 
 ![](gitreadMeImages/imagesizeadjustments.png)
 
 This is an Image showing the mobile responsiveness of the site.
-![](gitreadMeImages/mobileresposiveness.png)
+![](gitreadMeImages/mobileresposiveness.png) 
