@@ -852,65 +852,182 @@ function playerinformation(id, windowSize) {
   }
 }
 
-function getHighlightvideos() {
-  let selectedTeamScores = [];
-  var queryGameURL =
-    "https://www.balldontlie.io/api/v1/games?seasons[]=2019&team_ids[]=" + 1;
-  console.log("2222", queryGameURL);
-  $.ajax({
-    url: queryGameURL,
-    method: "GET",
-  }).then(function (res) {
-    let homeTeamScore,
-      homeTeamName,
-      homeTeam,
-      visitingTeamScore,
-      visitingTeamName;
-    for (let index = 0; index < 6; index++) {
-      // if (homeTeam) {
-      homeTeamName = res.data[index].home_team.full_name;
-      visitingTeamName = res.data[index].visitor_team.full_name;
-      homeTeamScore = res.data[index].home_team_score;
-      visitingTeamScore = res.data[index].visitor_team_score;
-
-      selectedTeamScores.push({
-        gameyoutubesearch:
-          "Home team: " +
-          homeTeamName +
-          " " +
-          homeTeamScore +
-          " vs " +
-          "Visiting team: " +
-          visitingTeamName +
-          " " +
-          visitingTeamScore,
-      });
-      console.log(selectedTeamScores);
-      // $.ajax({
-      //     type: 'GET',
-      //     url: 'https://www.googleapis.com/youtube/v3/search',
-      //     data: {
-      //         key: 'AIzaSyDFqW- mKPfwbTiosSlG1_wmSmE6D53a3cg',
-      //         q: selectedTeamScores[index].gameyoutubesearch,
-      //         part: 'snippet',
-      //         maxResults: 1,
-      //         type: 'video',
-      //         videoEmbeddable: true,
-      //     },
-      //     success: function (data) {
-      //         console.log(data);
-      //         $('iframe').attr('src', 'https://www.youtube.com/embed/' + data.items[0].id.videoId)
-      //         $('h3').text(data.items[0].snippet.title)
-      //         $('.description').text(data.items[0].snippet.description)
-      //         // embedVideo(data)
-      //     },
-      //     error: function (response) {
-      //         console.log("Request Failed");
-      //     }
-      // });
+function getHighlightvideos(data) {
+  let keyforteam = data.db.FavTeam;
+  if (development) {
+    let videoid = "1ShMSFtBoEM";
+    let videotitle =
+      "HAWKS at PISTONS | FULL GAME HIGHLIGHTS | October 24, 2019";
+    let videodescription =
+      "HAWKS at PISTONS | FULL GAME HIGHLIGHTS | October 24, 2019 Trae Young (38 PTS, 9 AST, 7 REB) scored 26 of his 38 PTS in the first half to lead the ...";
+    for (let index = 0; index < 3; index++) {
+      let currentvideoappId = "videoapp" + index;
+      let currentvideoapp = ".videoapp" + index;
+      let currenttitleid1 = "videotitle" + index;
+      let currenttitleid = ".videotitle" + index;
+      let currentvideodescription1 = "videodescription" + index;
+      let currentvideodescription = ".videodescription" + index;
+      $("<div>", {
+        class: currentvideoappId,
+      }).appendTo(".videodiv");
+      $(currentvideoapp).addClass("videoapp");
+      $("<iframe>", {
+        src: "https://www.youtube.com/embed/" + videoid,
+        class: "myFrame",
+        frameborder: 0,
+      }).appendTo(currentvideoapp);
+      console.log(currentvideoapp);
+      $("<p>", {
+        class: currenttitleid1,
+      }).appendTo(currentvideoapp);
+      $(currenttitleid).addClass("videotitle");
+      $("<p>", {
+        class: currentvideodescription1,
+      }).appendTo(currentvideoapp);
+      $(currentvideodescription).addClass("videodescrition");
+      // $("iframe").attr("src", "https://www.youtube.com/embed/" + videoid);
+      $(currenttitleid).text(videotitle);
+      $(currentvideodescription).text(videodescription);
     }
-    console.log(selectedTeamScores);
-  });
+  } else {
+    const balldontlieteamnumber = {
+      AtlantaHawks: 1,
+      BostonCeltics: 2,
+      BrooklynNets: 3,
+      CharlotteHornets: 4,
+      ChicagoBulls: 5,
+      ClevelandCavaliers: 6,
+      DallasMavericks: 7,
+      DenverNuggets: 8,
+      DetroitPistons: 9,
+      GoldenStateWarriors: 10,
+      HoustonRockets: 11,
+      IndianaPacers: 12,
+      LAClippers: 13,
+      LALakers: 14,
+      MemphisGrizzlies: 15,
+      MiamiHeat: 16,
+      MilwaukeeBucks: 17,
+      MinnesotaTimberwolves: 18,
+      NewOrleansPelicans: 19,
+      NewYorkKnicks: 20,
+      OklahomaCityThunder: 21,
+      OrlandoMagic: 22,
+      PhiladelphiaSixers: 23,
+      PhoenixSuns: 24,
+      PortlandTrailBlazers: 25,
+      SacramentoKings: 26,
+      SanAntonioSpurs: 27,
+      TorontoRaptors: 28,
+      UtahJazz: 29,
+      WashingtonWizards: 30,
+    };
+    var queryTeamURL = "https://www.balldontlie.io/api/v1/teams/";
+    $.ajax({
+      url: queryTeamURL,
+      method: "GET",
+    }).then(function (response) {
+      console.log(response);
+    });
+    let selectedTeamScores = [];
+    var queryGameURL =
+      "https://www.balldontlie.io/api/v1/games?start_date=2020-03-03&team_ids[]=" +
+      balldontlieteamnumber[keyforteam];
+    $.ajax({
+      url: queryGameURL,
+      method: "GET",
+    }).then(function (res) {
+      console.log(res);
+      let gameobject = [];
+      let gamearray = [];
+
+      res.data.forEach((element) => {
+        let visitingTeamScore = element.visitor_team_score;
+        if (visitingTeamScore === 0) {
+        } else {
+          gamearray.push(element.id);
+        }
+        let homeTeamName = element.home_team.full_name;
+        let visitingTeamName = element.visitor_team.full_name;
+        let date = element.date.substring(0, 10);
+        let gameyoutubesearch =
+          visitingTeamName +
+          " at " +
+          homeTeamName +
+          " | FULL GAME HIGHLIGHTS  | 2020 NBA";
+        let gameElement = {
+          nameid: element.id,
+          gameyoutubesearch: gameyoutubesearch,
+        };
+        gameobject.push(gameElement);
+      });
+      console.log(gameobject);
+      console.log(gamearray);
+      gamearray.sort(function (a, b) {
+        return b - a;
+      });
+      console.log(gamearray);
+      let newgameobject = [];
+      gamearray.forEach((element) => {
+        var result = gameobject.filter((obj) => {
+          return obj.nameid === element;
+        });
+        console.log(result[0]);
+        newgameobject.push(result[0].gameyoutubesearch);
+      });
+      console.log(newgameobject);
+      for (let index = 0; index < 3; index++) {
+        console.log(newgameobject[index]);
+        $.ajax({
+          type: "GET",
+          url: "https://www.googleapis.com/youtube/v3/search",
+          data: {
+            key: "AIzaSyCOiobg1h3qe_5MFlLRS4W0JtcZ4gmkZB0",
+            q: newgameobject[index],
+            part: "snippet",
+            maxResults: 1,
+            type: "video",
+            videoEmbeddable: true,
+          },
+          success: function (data) {
+            console.log(data);
+            let currentvideoappId = "videoapp" + index;
+            let currentvideoapp = ".videoapp" + index;
+            let currenttitleid1 = "videotitle" + index;
+            let currenttitleid = ".videotitle" + index;
+            let currentvideodescription1 = "videodescription" + index;
+            let currentvideodescription = ".videodescription" + index;
+            $("<div>", {
+              class: currentvideoappId,
+            }).appendTo(".videodiv");
+            $(currentvideoapp).addClass("videoapp");
+            $("<iframe>", {
+              src: "https://www.youtube.com/embed/" + data.items[0].id.videoId,
+              class: "myFrame",
+              frameborder: 0,
+            }).appendTo(currentvideoapp);
+            console.log(currentvideoapp);
+            $("<p>", {
+              class: currenttitleid1,
+            }).appendTo(currentvideoapp);
+            $(currenttitleid).addClass("videotitle");
+            $("<p>", {
+              class: currentvideodescription1,
+            }).appendTo(currentvideoapp);
+            $(currentvideodescription).addClass("videodescrition");
+            // $("iframe").attr("src", "https://www.youtube.com/embed/" + videoid);
+            $(currenttitleid).text(data.items[0].snippet.title);
+            $(currentvideodescription).text(data.items[0].snippet.description);
+            // embedVideo(data)
+          },
+          error: function (response) {
+            console.log("Request Failed");
+          },
+        });
+      }
+    });
+  }
+
   // function embedVideo(data) {
   //     $('iframe').attr('src', 'https://www.youtube.com/embed/' + data.items[0].id.videoId)
   //     $('h3').text(data.items[0].snippet.title)
@@ -1605,9 +1722,7 @@ $(document).ready(function () {
   getlargescreenAPPPLayers();
   $(".largeScreenAppViewer").css("display", "block");
 
-  $("youtubevideos").on("click", function () {
-    getHighlightvideos();
-  });
+  $("youtubevideos").on("click", function () {});
 
   $.ajax("/api/home/" + id, {
     type: "GET",
@@ -1633,7 +1748,11 @@ $(document).ready(function () {
       data.color.colors1[3] + " transparent transparent transparent";
 
     $("body").css("background-image", "url(" + logourl + ")");
-
+    $(".gradient").css("background", color125);
+    $(".gradient").css(
+      "background",
+      "linear-gradient(180deg, " + color125 + " 0%, " + color124 + " 100%)"
+    );
     $(".redback").css("background-color", data.color.colors1[1]);
     $(".redborder").css("border-color", data.color.colors1[1]);
     $("#theImg").css("border-color", color123);
@@ -1716,6 +1835,7 @@ $(document).ready(function () {
     $(".header").css("background-color", color2);
     $(".smallcolor1").css("background-color", color1);
     $(".appPlaceHolderinside").css("border-color", color4);
+    $(".appPlaceHolderinside2").css("border-color", color4);
     $(".smallcolor2").css("background-color", color2);
     $(".smallcolor3").css("background-color", color3);
     $(".smallcolor4").css("background-color", color4);
@@ -1784,6 +1904,7 @@ $(document).ready(function () {
       "transparent transparent transparent " + color4
     );
     getclicks();
+    getHighlightvideos(data);
     // console.log(data.db.gamestats)
     // if (data.db.gamestats === false){
     //   $("#gamestats").empty()}

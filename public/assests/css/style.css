@@ -10,6 +10,23 @@ body {
   text-align: center;
   margin: auto;
 }
+.videoapp {
+  position: relative;
+  margin: 10px;
+  min-height: 270px;
+  z-index: 500;
+  background-color: rgba(255, 255, 255, 0.315);
+  border: solid 3px white;
+}
+.videotitle {
+  font-size: 1em;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+.videodescrition {
+  font-size: 0.5em;
+  margin-right: 10px;
+}
 .bottomsmallplayer {
   position: relative;
   width: 100%;
@@ -670,6 +687,12 @@ body {
   background-color: black;
   opacity: 0.5;
 }
+.myFrame {
+  float: left;
+  height: 230px;
+  width: 400px;
+  margin: 20px;
+}
 
 .shadowright3 {
   display: none;
@@ -913,6 +936,17 @@ body {
   z-index: 100;
   display: block;
 }
+.appPlaceHolderinside2 {
+  background-color: white(39, 23, 23);
+  height: 405px;
+  width: 900px;
+  border-width: 14px;
+  border-style: outset;
+  font-size: 27px;
+  overflow-y: scroll;
+  z-index: 100;
+  display: block;
+}
 
 .mainappdiv2 {
   background-repeat: no-repeat;
@@ -994,16 +1028,30 @@ footer {
   width: 900px;
   margin: 59px;
 }
-
+.videoAppMainTitle {
+  position: absolute;
+  text-align: center;
+  padding-top: 10px;
+  height: 40px;
+  width: 883px;
+  background-color: white;
+  z-index: 1000;
+}
+.titleSpacer {
+  height: 50px;
+}
 .gradient {
   position: absolute;
   height: 405px;
-  width: 884px;
+  width: 883px;
   background-color: white;
   z-index: 7;
   opacity: 70%;
 }
 
+.videodiv {
+  position: relative;
+}
 .playerpicturebackground {
   background-color: darkgrey;
   margin: 18px;
@@ -1262,10 +1310,12 @@ footer {
   margin: 10px;
   border: solid 6px white;
 }
+
 .innersmalldiv1 {
   margin: 10px;
   border: solid 6px white;
 }
+
 .playerpicturebackgroundsmall {
   background-color: darkgrey;
   margin: 18px;
@@ -1318,7 +1368,13 @@ footer {
   width: calc(100% - 32px);
   opacity: 0.5;
 }
-
+.innersmalldivbackgroundvideo {
+  position: absolute;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  opacity: 0.5;
+}
 .spacertest {
   height: 50px;
   width: 80%;
@@ -1408,6 +1464,28 @@ footer {
     top: 7px;
   }
 }
+@media screen and (max-width: 850px) {
+  .myFrame {
+    float: none;
+  }
+  .videodescrition {
+    margin-top: 0px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+  .videotitle {
+    margin-top: 0px;
+    margin-left: 20px;
+  }
+}
+@media screen and (max-width: 515px) {
+  .myFrame {
+    width: 350px;
+    height: 200px;
+    max-width: 90%;
+  }
+}
+
 @media screen and (max-width: 929px) {
   .smallscreenborder {
     display: block;
@@ -1438,6 +1516,12 @@ footer {
   }
   .displayflex {
     display: none;
+  }
+  .videotitle {
+    font-size: 1.5em;
+  }
+  .videodescrition {
+    font-size: 0.7em;
   }
 }
 @media screen and (max-width: 500px) {
