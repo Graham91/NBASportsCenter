@@ -21,7 +21,7 @@ let appPlaceHolder;
 let appPlaceHolder2;
 let appPlaceHolder3;
 let appPlaceHolder4;
-let development = false;
+let development = true;
 
 function myFunction(x) {
   if (x.matches) {
@@ -32,11 +32,9 @@ function myFunction(x) {
     windowSize = "medium";
     let windowWidth = $(window).width();
     console.log(windowWidth + "yeah baby");
-    if (windowWidth > 929) {
-      console.log("inegniues");
+    if (windowWidth > 910) {
       imagetransition(windowSize);
     } else {
-      console.log("outgeniues");
       $(".centraldiv").css("display", "none");
     }
   }
@@ -54,6 +52,14 @@ $(window).resize(function () {
   if ($(window).width() != lastWidth) {
     adjustcenterdivmargins();
     lastwidth = $(window).width();
+    // console.log(windowSize);
+    // if (lastwidth < 1280) {
+    //   imagetransition("medium");
+    // }
+    // if (lastwidth > 1270) {
+    //   imagetransition("Large");
+    // }
+    myFunction(x);
   }
 });
 

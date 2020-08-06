@@ -1425,6 +1425,14 @@ footer {
     display: none;
   }
 }
+/* @media screen and (min-width: 1280px) {
+  .largeScreenAppViewer {
+    display: none;
+  }
+  .grid-item {
+    display: none;
+  }
+} */
 @media screen and (max-width: 1060px) {
   #leftbutton {
     display: none;
