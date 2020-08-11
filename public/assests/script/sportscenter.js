@@ -1185,7 +1185,6 @@ function getHighlightvideos(data) {
       url: queryGameURL,
       method: "GET",
     }).then(function (res) {
-      console.log(res);
       let gameobject = [];
       let gamearray = [];
 
@@ -1224,6 +1223,7 @@ function getHighlightvideos(data) {
         newgameobject.push(result[0].gameyoutubesearch);
       });
       console.log(newgameobject);
+      let errorindex = 0;
       for (let index = 0; index < 3; index++) {
         console.log(newgameobject[index]);
         $.ajax({
@@ -1267,9 +1267,43 @@ function getHighlightvideos(data) {
             $(currenttitleid).text(data.items[0].snippet.title);
             $(currentvideodescription).text(data.items[0].snippet.description);
             // embedVideo(data)
+            errorindex++;
           },
           error: function (response) {
-            console.log("Request Failed");
+            let videoid = "1ShMSFtBoEM";
+            let videotitle =
+              "YOUTUBE QUOTA REACHED | VIDEO PLACE HOLDER | October 24, 2019";
+            let videodescription =
+              "HAWKS at PISTONS | FULL GAME HIGHLIGHTS | October 24, 2019 Trae Young (38 PTS, 9 AST, 7 REB) scored 26 of his 38 PTS in the first half to lead the ...";
+
+            let currentvideoappId = "videoapp" + errorindex;
+            let currentvideoapp = ".videoapp" + errorindex;
+            let currenttitleid1 = "videotitle" + errorindex;
+            let currenttitleid = ".videotitle" + errorindex;
+            let currentvideodescription1 = "videodescription" + errorindex;
+            let currentvideodescription = ".videodescription" + errorindex;
+            $("<div>", {
+              class: currentvideoappId,
+            }).appendTo(".videodiv");
+            $(currentvideoapp).addClass("videoapp");
+            $("<iframe>", {
+              src: "https://www.youtube.com/embed/" + videoid,
+              class: "myFrame",
+              frameborder: 0,
+            }).appendTo(currentvideoapp);
+            console.log(currentvideoapp);
+            $("<p>", {
+              class: currenttitleid1,
+            }).appendTo(currentvideoapp);
+            $(currenttitleid).addClass("videotitle");
+            $("<p>", {
+              class: currentvideodescription1,
+            }).appendTo(currentvideoapp);
+            $(currentvideodescription).addClass("videodescrition");
+            // $("iframe").attr("src", "https://www.youtube.com/embed/" + videoid);
+            $(currenttitleid).text(videotitle);
+            $(currentvideodescription).text(videodescription);
+            errorindex++;
           },
         });
       }
