@@ -947,6 +947,17 @@ body {
   z-index: 100;
   display: block;
 }
+.appPlaceHolderinside4 {
+  background-color: white(39, 23, 23);
+  height: 405px;
+  width: 900px;
+  border-width: 14px;
+  border-style: outset;
+  font-size: 27px;
+  overflow-y: scroll;
+  z-index: 100;
+  display: block;
+}
 
 .mainappdiv2 {
   background-repeat: no-repeat;
@@ -1348,7 +1359,39 @@ footer {
   font-size: 2em;
   color: white;
 }
+.articleimage {
+  width: 400px;
+  margin: 10px;
+  float: left;
+}
 
+.articletitle {
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 0px;
+  font-size: 1em;
+  text-align: left;
+}
+
+.indivarticles {
+  position: relative;
+  margin: 10px;
+  display: grid;
+  grid-template-columns: auto auto;
+  z-index: 500;
+  background-color: rgba(255, 255, 255, 0.315);
+  border: solid 2px white;
+}
+.articlehyperlink {
+  font-size: 0.5em;
+  text-align: left;
+}
+.articledescription {
+  margin-right: 10px;
+  margin-top: 10px;
+  font-size: 0.5em;
+  text-align: left;
+}
 .smallscreentitle {
   margin: 0;
   position: relative;
@@ -1485,12 +1528,38 @@ footer {
     margin-top: 0px;
     margin-left: 20px;
   }
+
+  .indivarticles {
+    display: block;
+  }
+  .articleimage {
+    width: 400px;
+    margin: 10px;
+    float: none;
+  }
+  .articletitle {
+    margin-top: 0px;
+    margin-left: 10px;
+  }
+
+  .articlehyperlink {
+    margin-left: 10px;
+    padding-bottom: 10px;
+  }
+  .articledescription {
+    margin-left: 10px;
+  }
 }
 @media screen and (max-width: 515px) {
   .myFrame {
     width: 350px;
     height: 200px;
     max-width: 90%;
+  }
+}
+@media screen and (max-width: 550px) {
+  .articleimage {
+    width: calc(100% - 20px);
   }
 }
 
@@ -1529,6 +1598,16 @@ footer {
     font-size: 1.5em;
   }
   .videodescrition {
+    font-size: 0.7em;
+  }
+  .articletitle {
+    font-size: 1.5em;
+  }
+
+  .articlehyperlink {
+    font-size: 0.7em;
+  }
+  .articledescription {
     font-size: 0.7em;
   }
 }

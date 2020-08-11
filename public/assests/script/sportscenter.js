@@ -857,7 +857,249 @@ function playerinformation(id, windowSize) {
     });
   }
 }
+function isInArray(value, array) {
+  return array.indexOf(value) > -1;
+}
+const TeamNameTranslator = {
+  AtlantaHawks: "Alanta Hawks",
+  BostonCeltics: "Boston Celtics",
+  BrooklynNets: "Brooklyn Nets",
+  CharlotteHornets: "Charlotte Hornets",
+  ChicagoBulls: "Chicago Bulls",
+  ClevelandCavaliers: "Cleveland Cavaliers",
+  DallasMavericks: "Dallas Mavericks",
+  DenverNuggets: "Denver Nuggets",
+  DetroitPistons: "Detroit Pistons",
+  GoldenStateWarriors: ">Golden State Warriors",
+  HoustonRockets: ">Houston Rockets",
+  IndianaPacers: ">Indiana Pacers",
+  LAClippers: ">LA Clippers",
+  LALakers: "LA Lakers",
+  MemphisGrizzlies: "Memphis Grizzlies",
+  MiamiHeat: "Miami Heat",
+  MilwaukeeBucks: "Milwaukee Bucks",
+  MinnesotaTimberwolves: "Minnesota Timberwolves",
+  NewOrleansPelicans: "New Orleans Pelicans",
+  NewYorkKnicks: "New York Knicks",
+  OklahomaCityThunder: "Oklahoma City Thunder",
+  OrlandoMagic: "Orlando Magic",
+  PhiladelphiaSixers: "Philadelphia Sixers",
+  PhoenixSuns: "Phoenix Suns",
+  PortlandTrailBlazers: "Portland Trail Blazer",
+  SacramentoKings: "Sacramento Kings",
+  SanAntonioSpurs: "San Antonio Spurs",
+  TorontoRaptors: "Toronto Raptors",
+  UtahJazz: "Utah Jazz",
+  WashingtonWizards: "Washington Wizards",
+};
 
+function getteamarticles(topdata) {
+  let keyforteam = topdata.db.FavTeam;
+  let teamsearchterm = TeamNameTranslator[keyforteam];
+  let index = 0;
+  let articletitlesarray = [];
+  if (development) {
+    const articlesfordevelopment = [
+      {
+        title:
+          "Kevin Durant reluctantly reveals his NBA Finals prediction for 2020",
+        description:
+          'Kevin Durant picked the LA Clippers to beat the Los Angeles Lakers in the 2020 Western Conference finals. The former Warriors supertar recently was a guest on the "Play For Keeps" podcast, and he hasn ...',
+        url:
+          "https://www.nbcsports.com/bayarea/warriors/kevin-durant-reluctantly-reveals-his-nba-finals-prediction-2020",
+        image: "https://images.gnews.io/e1a05142abff3ce044081ca71e85ffac",
+        publishedAt: "2020-08-06 10:31:00 UTC",
+        source: { name: "NBC Sports", url: "https://www.nbcsports.com" },
+      },
+      {
+        title: "NBA: Kyle Lowry leads Toronto Raptors to win over LA Lakers",
+        description:
+          "Kyle Lowry starred in the Toronto Raptors' 107-92 victory over the Los Angeles Lakers in Orlando. The 34-year-old finished with 33 points, 14 rebounds and six assists while London-born OG Anunoby ...",
+        url: "https://www.bbc.co.uk/sport/basketball/53627301",
+        image: "https://images.gnews.io/8d423c5c5225bb25477cd07032304da0",
+        publishedAt: "2020-08-02 01:15:00 UTC",
+        source: { name: "BBC", url: "https://www.bbc.co.uk" },
+      },
+      {
+        title: "NBA: Kyle Lowry leads Toronto Raptors to win over LA Lakers",
+        description:
+          "Kyle Lowry starred in the Toronto Raptors' 107-92 victory over the Los Angeles Lakers in Orlando. The 34-year-old finished with 33 points, 14 rebounds and six assists while London-born OG Anunoby ...",
+        url: "https://www.bbc.com/sport/basketball/53627301",
+        image: "https://images.gnews.io/8d423c5c5225bb25477cd07032304da0",
+        publishedAt: "2020-08-02 00:53:00 UTC",
+        source: { name: "BBC", url: "https://www.bbc.com" },
+      },
+      {
+        title:
+          "NBA roundup: Kyle Lowry helps Toronto Raptors to impressive win over LA Lakers",
+        description:
+          "Kyle Lowry led the way for Toronto with 33 points as the Raptors outplayed the Lakers on both sides of the court. Anthony Davis was unable to repeat his dominance from the Lakers' previous outing ...",
+        url:
+          "https://www.sportsmole.co.uk/basketball/denver-nuggets/news/nba-roundup-kyle-lowry-helps-toronto-raptors-to-impressive-win-over-la-lakers_408795.html",
+        image: "https://images.gnews.io/fa68f940cc288e3efdbd3ed12b526f70",
+        publishedAt: "2020-08-02 00:48:00 UTC",
+        source: { name: "Sports Mole", url: "https://www.sportsmole.co.uk" },
+      },
+      {
+        title:
+          "Kyle Lowry fires for Toronto as Raptors repel lacklustre LA Lakers",
+        description:
+          "Kyle Lowry led the way for Toronto with 33 points as the Raptors outplayed the Lakers on both sides of the court. Anthony Davis was unable to repeat his dominance from the Lakers’ previous outing ...",
+        url:
+          "https://sports.yahoo.com/kyle-lowry-fires-toronto-raptors-060906071.html",
+        image: "https://images.gnews.io/6b5675aaae56020281c4afa9143819f3",
+        publishedAt: "2020-08-01 23:23:00 UTC",
+        source: { name: "YAHOO!", url: "https://sports.yahoo.com" },
+      },
+      {
+        title:
+          "NBA Bubble update: AD and LeBron keep themselves entertained on the Lakers bench, Marcus Smart fails to complete Tacko Fall's practice challenge",
+        description:
+          "LA Lakers' superstar LeBron James was seen enjoying his time on the bench during yesterday's NBA scrimmage Marcus Smart and Tacko Fall play the fool during practice in the NBA bubble. With the season ...",
+        url:
+          "https://www.sportskeeda.com/basketball/nba-bubble-update-ad-and-lebron-keep-themselves-entertained-on-the-lakers-bench-marcus-smart-fails-to-complete-tacko-falls-practice-challenge",
+        image: "https://images.gnews.io/e8df8d7028efa569932dc04bbe72d6bd",
+        publishedAt: "2020-07-28 01:01:00 UTC",
+        source: { name: "Sportskeeda", url: "https://www.sportskeeda.com" },
+      },
+      {
+        title:
+          "LA Lakers legend Magic Johnson endorses LeBron James for the MVP award, while choosing Anthony Davis as the DPOY",
+        description:
+          "LeBron James will win his 5th MVP award according to . LeBron James has led the LA Lakers to the #1 seed in the Western Conference. The LA Lakers are not short on legendary players in franchise ...",
+        url:
+          "https://www.sportskeeda.com/basketball/news-la-lakers-legend-magic-johnson-endorses-lebron-james-mvp-while-choosing-anthony-davis-dpoy",
+        image: "https://images.gnews.io/ab5a39455960c35516ee5bc5f5f13eb2",
+        publishedAt: "2020-07-21 10:04:00 UTC",
+        source: { name: "Sportskeeda", url: "https://www.sportskeeda.com" },
+      },
+      {
+        title:
+          "Barkley: Trail Blazers will beat LA Lakers if they get into playoffs",
+        description:
+          "One of those teams is the Portland Trail Blazers. On the topic of Rip City's favorite basketball team, both Shaquille O'Neal and Barkley gave Portland fans plenty of hope. Shaq kept it short and sweet ...",
+        url:
+          "https://www.nbcsports.com/northwest/portland-trail-blazers/barkley-trail-blazers-will-beat-la-lakers-if-they-get-playoffs",
+        image: "https://images.gnews.io/817eb9c8844e686606afc16957320255",
+        publishedAt: "2020-07-17 09:46:00 UTC",
+        source: { name: "NBC Sports", url: "https://www.nbcsports.com" },
+      },
+      {
+        title:
+          "Barkley: Trail Blazers will beat LA Lakers if they get into playoffs",
+        description:
+          "One of those teams is the Portland Trail Blazers. On the topic of Rip City's favorite basketball team, both Shaquille O'Neal and Barkley gave Portland fans plenty of hope. Shaq kept it short and sweet ...",
+        url:
+          "https://sports.yahoo.com/barkley-trail-blazers-beat-la-160902966.html",
+        image: "https://images.gnews.io/255aa2e32f203f0bde5501d7e793f391",
+        publishedAt: "2020-07-17 09:45:00 UTC",
+        source: { name: "YAHOO!", url: "https://sports.yahoo.com" },
+      },
+      {
+        title: "Michael Beasley won't return to Brooklyn Nets - reports",
+        description:
+          "Beasley played 26 games (two starts) for the Los Angeles Lakers last season, averaging 7.0 points and 2.3 rebounds, before being traded with Ivica Zubac to the LA Clippers for Mik ...",
+        url:
+          "https://www.skysports.com/nba/news/36244/12030274/michael-beasley-wont-return-to-brooklyn-nets-reports",
+        image: "https://images.gnews.io/4081b2e21cb678b87bc5cb4921c8589b",
+        publishedAt: "2020-07-16 23:17:00 UTC",
+        source: { name: "Sky Sports", url: "https://www.skysports.com" },
+      },
+    ];
+    articlesfordevelopment.forEach((element) => {
+      if (isInArray(element.title, articletitlesarray)) {
+      } else {
+        articletitlesarray.push(element.title);
+
+        let currentarticle = "currentarticle" + index;
+        let currentarticleclass = ".currentarticle" + index;
+        let currentarticleinfo = "currentarticleinfo" + index;
+        let currentarticleclassinfo = ".currentarticleinfo" + index;
+
+        $("<div>", {
+          class: currentarticle,
+        }).appendTo(".articles");
+        $(currentarticleclass).addClass("indivarticles");
+        $("<img>", {
+          src: element.image,
+          class: "articleimage",
+        }).appendTo(currentarticleclass);
+        $("<div>", {
+          class: currentarticleinfo,
+        }).appendTo(currentarticleclass);
+        $("<p>", {
+          class: "articletitle",
+          html: element.title,
+        }).appendTo(currentarticleclassinfo);
+        $("<p>", {
+          class: "articledescription",
+          html: element.description,
+        }).appendTo(currentarticleclassinfo);
+        $("<a>", {
+          href: element.url,
+          class: "articlehyperlink",
+          html: "Read More...",
+          target: "blank",
+        }).appendTo(currentarticleclassinfo);
+
+        index++;
+      }
+    });
+  } else {
+    topdata;
+    fetch(
+      "https://gnews.io/api/v3/search?q=" +
+        teamsearchterm +
+        "&image=required&token=b6b3c24e214550c7788617171bae4976"
+    )
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data);
+        let articles = data.articles;
+
+        articles.forEach((element) => {
+          if (isInArray(element.title, articletitlesarray)) {
+          } else {
+            articletitlesarray.push(element.title);
+
+            let currentarticle = "currentarticle" + index;
+            let currentarticleclass = ".currentarticle" + index;
+            let currentarticleinfo = "currentarticleinfo" + index;
+            let currentarticleclassinfo = ".currentarticleinfo" + index;
+            $("<div>", {
+              class: currentarticle,
+            }).appendTo(".articles");
+            $(currentarticleclass).addClass("indivarticles");
+            $("<img>", {
+              src: element.image,
+              class: "articleimage",
+            }).appendTo(currentarticleclass);
+            $("<div>", {
+              class: currentarticleinfo,
+            }).appendTo(currentarticleclass);
+            $("<p>", {
+              class: "articletitle",
+              html: element.title,
+            }).appendTo(currentarticleclassinfo);
+            $("<p>", {
+              class: "articledescription",
+              html: element.description,
+            }).appendTo(currentarticleclassinfo);
+            $("<a>", {
+              href: element.url,
+              class: "articlehyperlink",
+              html: "Read More...",
+              target: "blank",
+            }).appendTo(currentarticleclassinfo);
+
+            index++;
+          }
+        });
+      });
+  }
+}
 function getHighlightvideos(data) {
   let keyforteam = data.db.FavTeam;
   if (development) {
@@ -1210,58 +1452,23 @@ function getclicks() {
     }
   });
 }
-const TeamNameTranslator = {
-  AtlantaHawks: "Alanta Hawks",
-  BostonCeltics: "Boston Celtics",
-  BrooklynNets: "Brooklyn Nets",
-  CharlotteHornets: "Charlotte Hornets",
-  ChicagoBulls: "Chicago Bulls",
-  ClevelandCavaliers: "Cleveland Cavaliers",
-  DallasMavericks: "Dallas Mavericks",
-  DenverNuggets: "Denver Nuggets",
-  DetroitPistons: "Detroit Pistons",
-  GoldenStateWarriors: ">Golden State Warriors",
-  HoustonRockets: ">Houston Rockets",
-  IndianaPacers: ">Indiana Pacers",
-  LAClippers: ">LA Clippers",
-  LALakers: "LA Lakers",
-  MemphisGrizzlies: "Memphis Grizzlies",
-  MiamiHeat: "Miami Heat",
-  MilwaukeeBucks: "Milwaukee Bucks",
-  MinnesotaTimberwolves: ">Minnesota Timberwolves",
-  NewOrleansPelicans: "New Orleans Pelicans",
-  NewYorkKnicks: "New York Knicks",
-  OklahomaCityThunder: "Oklahoma City Thunder",
-  OrlandoMagic: "Orlando Magic",
-  PhiladelphiaSixers: "Philadelphia Sixers",
-  PhoenixSuns: "Phoenix Suns",
-  PortlandTrailBlazers: "Portland Trail Blazer",
-  SacramentoKings: "Sacramento Kings",
-  SanAntonioSpurs: "San Antonio Spurs",
-  TorontoRaptors: "Toronto Raptors",
-  UtahJazz: "Utah Jazz",
-  WashingtonWizards: "Washington Wizards",
-};
 
-function getteamarticles(data) {
-  let keyforteam = data.db.FavTeam;
-  console.log(TeamNameTranslator[keyforteam]);
-  var url =
-    "http://newsapi.org/v2/everything?" +
-    "q=" +
-    TeamNameTranslator[keyforteam] +
-    "&" +
-    "sortBy=popularity&" +
-    "apiKey=3a86c5be23994784b1f40189188428ee";
-  var req = new Request(url);
-  fetch(req)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (myJson) {
-      teamArticles = myJson.articles;
-    });
-}
+//   var url =
+//     "http://newsapi.org/v2/everything?" +
+//     "q=" +
+//     TeamNameTranslator[keyforteam] +
+//     "&" +
+//     "sortBy=popularity&" +
+//     "apiKey=3a86c5be23994784b1f40189188428ee";
+//   var req = new Request(url);
+//   fetch(req)
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .then(function (myJson) {
+//       teamArticles = myJson.articles;
+//     });
+// }
 
 let locationIndex = 2;
 const playerselementarray = [
@@ -1747,6 +1954,7 @@ $(document).ready(function () {
     myFunction(x);
     playerinformation(id, windowSize);
     getimageandsize(data, windowSize);
+    // getteamarticles(data);
     getteamarticles(data);
     console.log(data.color.colors1[2]);
 
@@ -1842,6 +2050,7 @@ $(document).ready(function () {
     $(".smallcolor1").css("background-color", color1);
     $(".appPlaceHolderinside").css("border-color", color4);
     $(".appPlaceHolderinside2").css("border-color", color4);
+    $(".appPlaceHolderinside4").css("border-color", color4);
     $(".smallcolor2").css("background-color", color2);
     $(".smallcolor3").css("background-color", color3);
     $(".smallcolor4").css("background-color", color4);
