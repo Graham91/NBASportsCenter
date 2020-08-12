@@ -1403,7 +1403,16 @@ footer {
   background-color: white;
   text-align: center;
 }
-
+.articleimage:before {
+  content: " ";
+  display: block;
+  position: relative;
+  height: 250px;
+  width: 400px;
+  background-color: white;
+  background-size: 400px;
+  background-image: url(https://i.imgur.com/Rm7TxyD.png);
+}
 .innersmalldivbackground {
   position: absolute;
   background-color: white;
