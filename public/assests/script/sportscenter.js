@@ -281,6 +281,22 @@ function fillInPlayerFromteam(data) {
     );
   });
 }
+function startclock() {
+  let date = new Date();
+  let h = date.getHours();
+  let m = date.getMinutes();
+  let s = date.getSeconds();
+
+  h = h > 12 ? h - 12 : h;
+  h = h < 10 ? "0" + h : h;
+  m = m < 10 ? "0" + m : m;
+  s = s < 10 ? "0" + s : s;
+
+  let time = h + ":" + m + ":" + s;
+  $(".clock").html(time);
+  setTimeout(startclock, 1000);
+}
+function imputteamconferencedata() {}
 function productionaddplayerstats(data) {
   const populatearray = [
     {
@@ -998,7 +1014,18 @@ const articlesfordevelopment = [
     source: { name: "Sky Sports", url: "https://www.skysports.com" },
   },
 ];
+function fillinHome(data) {
+  let conference = data.Conference;
+  let wins = data.teamstats.win;
+  let losses = data.teamstats.loss;
+  let seat = data.teamstats.divRank;
+  let name = data.db.UserID;
 
+  $(".winsLosses").html(wins + " / " + losses);
+  $(".conference").html(conference);
+  $(".conferenceSeat").html(seat);
+  $(".playernameForIndivcustomer").html(name);
+}
 function getPLayerArticles(topdata) {
   let articletitlesarray = [];
   let index = 0;
@@ -1063,7 +1090,7 @@ function getPLayerArticles(topdata) {
       })
       .then(function (data) {
         console.log(data);
-        if (data.errors[0] === "you have reached your max request per day") {
+        if (!"errors" in data) {
           articlesfordevelopment.forEach((element) => {
             if (isInArray(element.title, articletitlesarray)) {
             } else {
@@ -1211,7 +1238,7 @@ function getteamarticles(topdata) {
       })
       .then(function (data) {
         console.log(data);
-        if (data.errors[0] === "you have reached your max request per day") {
+        if (!"errors" in data) {
           articlesfordevelopment.forEach((element) => {
             if (isInArray(element.title, articletitlesarray)) {
             } else {
@@ -2187,6 +2214,8 @@ $(document).ready(function () {
     // getteamarticles(data);
     getteamarticles(data);
     getPLayerArticles(data);
+    startclock();
+    fillinHome(data);
 
     console.log(data.color.colors1[2]);
 
@@ -2195,7 +2224,20 @@ $(document).ready(function () {
 
     $("body").css("background-image", "url(" + logourl + ")");
     $(".gradient").css("background", color125);
+
+    $(".teaminformationmain").css("border-color", color125);
+
+    $(".hometeamtitle").css("background", color125);
+    $(".teaminfosectionheader").css("background", color125);
+    $(".teaminfosectionheader").css("color", color124);
+    $(".videoAppMainTitle").css("background", color125);
+    $(".clock").css("border-color", color125);
+
     $(".gradient").css(
+      "background",
+      "linear-gradient(180deg, " + color125 + " 0%, " + color124 + " 100%)"
+    );
+    $(".gradienthome").css(
       "background",
       "linear-gradient(180deg, " + color125 + " 0%, " + color124 + " 100%)"
     );

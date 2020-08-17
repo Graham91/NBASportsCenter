@@ -62,10 +62,13 @@ module.exports = function (app) {
       let teamstring = data.FavTeam;
       let teamstring1 = teamlocations[teamstring];
 
+      let getteaminfo = teamstring1[3];
+
       let currentteam = "../NBATEAM/NBAlogos/" + teamstring1[0] + ".png";
-      console.log(currentteam);
+      // console.log(currentteam);
       let currentteamonlineurl = teamstring1[1];
-      console.log("2nd: " + colorarray15);
+      let currentteamConfernece = teamstring1[4];
+      // console.log("2nd: " + colorarray15);
 
       getColors(path.join(__dirname, currentteam)).then((colors) => {
         colorarray = colors.map((color) => color.hex());
@@ -79,15 +82,25 @@ module.exports = function (app) {
           url: currentteamonlineurl,
         };
 
-        let infoobject = {
-          db: data,
-          color: teamobj,
-        };
-        console.log(infoobject);
+        // console.log(infoobject);
         console.log("3rd: " + colorarray15);
-        // res.sendFile(teamcolor.url);
-        // res.sendFile(teamcolor.url);
-        res.send(infoobject);
+        axios
+          .get("https://data.nba.net/prod/v1/current/standings_all.json")
+          .then(function (response1) {
+            teamstatsinfo = response1.data.league.standard.teams.find(
+              (x) => x.teamId === getteaminfo
+            );
+            console.log("these are the teamstats" + teamstatsinfo);
+            let infoobject = {
+              db: data,
+              color: teamobj,
+              teamstats: teamstatsinfo,
+              Conference: currentteamConfernece,
+            };
+            // res.sendFile(teamcolor.url);
+            // res.sendFile(teamcolor.url);
+            res.send(infoobject);
+          });
       });
     });
   });
@@ -98,16 +111,18 @@ module.exports = function (app) {
         id: req.params.id,
       },
     }).then(function (data) {
-      console.log(data);
+      // console.log(data);
       let teamstring = data.FavTeam;
       let teamstring1 = teamlocations[teamstring];
 
       var results = [];
 
       let getplayers = teamstring1[2];
-
+      let teamstatsinfo;
       axios.get(getplayers).then(function (response) {
         var $ = cheerio.load(response.data);
+        // var teamstats = $("team_info_stats").find("team_info_stats_container");
+        // console.log(teamstats);
 
         $("section.nba-player-index__trending-item").each(function (
           i,
@@ -150,7 +165,6 @@ module.exports = function (app) {
               url: url1,
             },
           });
-          console.log(results);
         });
         res.send(results);
       });
