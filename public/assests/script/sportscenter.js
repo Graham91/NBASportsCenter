@@ -1020,11 +1020,14 @@ function fillinHome(data) {
   let losses = data.teamstats.loss;
   let seat = data.teamstats.divRank;
   let name = data.db.UserID;
+  let favteamfinder = data.db.FavTeam;
+  let teamName = TeamNameTranslator[favteamfinder];
 
   $(".winsLosses").html(wins + " / " + losses);
   $(".conference").html(conference);
   $(".conferenceSeat").html(seat);
   $(".playernameForIndivcustomer").html(name);
+  $(".hometeamtitle").html(teamName);
 }
 function getPLayerArticles(topdata) {
   let articletitlesarray = [];
