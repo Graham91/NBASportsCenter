@@ -50,7 +50,14 @@ body {
   width: 35px;
   height: 215px;
 }
-
+.customerinformationsmallscreen {
+  min-width: 400px;
+  margin-left: 20px;
+  font-size: 1.1em;
+  position: relative;
+  z-index: 400;
+  /* margin-top: 20px; */
+}
 .customerheadshot {
   background-image: url("https://i.imgur.com/uEZiOub.png");
   background-size: 100%;
@@ -58,6 +65,14 @@ body {
   width: 270px;
   height: 220px;
   margin: auto;
+}
+
+.smallscreenhomecustomerinfo {
+  margin-left: 20px;
+  margin-top: 20px;
+  font-size: 1.5em;
+  display: grid;
+  grid-template-columns: auto auto;
 }
 
 .hometeamtitle {
@@ -77,11 +92,21 @@ body {
   width: 416px;
   border: solid 2px white;
 }
+.teaminformationmainsmall {
+  position: relative;
+  z-index: 500;
+  text-align: center;
+  font-size: 1.5em;
+  width: 416px;
+  border: solid 2px white;
+  margin: 20px auto;
+}
 
 .teaminformationmainflex {
   width: 416px;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .teaminfosectionheader {
@@ -1485,6 +1510,10 @@ footer {
   margin: 10px;
   border: solid 6px white;
 }
+.innersmalldiv2 {
+  margin: 10px;
+  border: solid 6px white;
+}
 
 .playerpicturebackgroundsmall {
   background-color: darkgrey;
@@ -1551,6 +1580,9 @@ footer {
   font-size: 0.5em;
   text-align: left;
 }
+.blacktext {
+  color: black;
+}
 .smallscreentitle {
   margin: 0;
   position: relative;
@@ -1560,6 +1592,7 @@ footer {
   width: calc(100% - 16px);
   padding: 10px;
   background-color: white;
+  color: white;
   text-align: center;
 }
 .articleimage:before {
@@ -1582,8 +1615,8 @@ footer {
 .innersmalldivbackgroundvideo {
   position: absolute;
   background-color: white;
-  height: 100%;
-  width: 100%;
+  height: calc(100% - 32px);
+  width: calc(100% - 32px);
   opacity: 0.5;
 }
 .spacertest {
@@ -1683,6 +1716,33 @@ footer {
     top: 7px;
   }
 }
+@media screen and (max-width: 520px) {
+  .teaminformationmainsmall {
+    width: 100%;
+  }
+  .teaminformationmainflex {
+    width: 100%;
+  }
+  .hometeamtitle {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 330px) {
+  .customerheadshot {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 750px) {
+  .smallscreenhomecustomerinfo {
+    display: block;
+    margin-left: 0px;
+  }
+  .customerinformationsmallscreen {
+    text-align: center;
+    min-width: 10px;
+    margin-left: 0px;
+  }
+}
 @media screen and (max-width: 850px) {
   .myFrame {
     float: none;
@@ -1718,7 +1778,7 @@ footer {
     margin-left: 10px;
   }
 }
-@media screen and (max-width: 515px) {
+@media screen and (max-width: 550px) {
   .myFrame {
     width: 350px;
     height: 200px;

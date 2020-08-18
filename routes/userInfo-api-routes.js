@@ -8,6 +8,7 @@ const getColors = require("get-image-colors");
 var cheerio = require("cheerio");
 var axios = require("axios");
 let colorarray15 = [];
+let development = false;
 
 // let teamstring = require('./string.js');
 
@@ -83,24 +84,40 @@ module.exports = function (app) {
         };
 
         // console.log(infoobject);
-        console.log("3rd: " + colorarray15);
-        axios
-          .get("https://data.nba.net/prod/v1/current/standings_all.json")
-          .then(function (response1) {
-            teamstatsinfo = response1.data.league.standard.teams.find(
-              (x) => x.teamId === getteaminfo
-            );
-            console.log("these are the teamstats" + teamstatsinfo);
-            let infoobject = {
-              db: data,
-              color: teamobj,
-              teamstats: teamstatsinfo,
-              Conference: currentteamConfernece,
-            };
-            // res.sendFile(teamcolor.url);
-            // res.sendFile(teamcolor.url);
-            res.send(infoobject);
-          });
+        if (development) {
+          let teamstatsdev = {
+            win: 65,
+            loss: 23,
+            divRank: 5,
+          };
+
+          let infoobject = {
+            db: data,
+            color: teamobj,
+            teamstats: teamstatsdev,
+            Conference: currentteamConfernece,
+          };
+          res.send(infoobject);
+        } else {
+          console.log("3rd: " + colorarray15);
+          axios
+            .get("https://data.nba.net/prod/v1/current/standings_all.json")
+            .then(function (response1) {
+              teamstatsinfo = response1.data.league.standard.teams.find(
+                (x) => x.teamId === getteaminfo
+              );
+              console.log("these are the teamstats" + teamstatsinfo);
+              let infoobject = {
+                db: data,
+                color: teamobj,
+                teamstats: teamstatsinfo,
+                Conference: currentteamConfernece,
+              };
+              // res.sendFile(teamcolor.url);
+              // res.sendFile(teamcolor.url);
+              res.send(infoobject);
+            });
+        }
       });
     });
   });

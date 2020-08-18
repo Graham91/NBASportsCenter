@@ -2229,6 +2229,7 @@ $(document).ready(function () {
     $(".gradient").css("background", color125);
 
     $(".teaminformationmain").css("border-color", color125);
+    $(".teaminformationmainsmall").css("border-color", color125);
 
     $(".hometeamtitle").css("background", color125);
     $(".teaminfosectionheader").css("background", color125);
@@ -2325,6 +2326,12 @@ $(document).ready(function () {
     $(".smallimage").attr("src", logourl);
     $(".header").css("background-color", color2);
     $(".smallcolor1").css("background-color", color1);
+    $(".smallcentraldiv").css("border-color", color125);
+    $(".innersmalldiv2").css("border-color", color125);
+    $(".innersmalldiv1").css("border-color", color125);
+    $(".innersmalldiv").css("border-color", color125);
+    $(".smallscreentitle").css("background-color", color125);
+
     $(".appPlaceHolderinside").css("border-color", color4);
     $(".appPlaceHolderinside2").css("border-color", color4);
     $(".appPlaceHolderinside4").css("border-color", color4);
