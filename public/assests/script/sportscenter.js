@@ -2417,6 +2417,10 @@ $(document).ready(function () {
 
     console.log(data.color.url);
     console.log(data);
+    setTimeout(function () {
+      $(".loadingbackground").css("display", "none");
+      $(".loadingGif").css("display", "none");
+    }, 2000);
   });
 });
 

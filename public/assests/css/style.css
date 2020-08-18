@@ -765,6 +765,25 @@ body {
   border-bottom-color: white;
 }
 
+.loadingGif {
+  height: 200px;
+  position: fixed;
+  z-index: 990;
+  left: calc(50vw - 100px);
+  top: calc(50vh - 100px);
+  margin: 0 auto;
+  border: solid 1px black;
+}
+
+.loadingbackground {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  z-index: 990;
+  margin: 0;
+}
+
 .redoverlay3R {
   position: absolute;
   top: 138px;
