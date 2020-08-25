@@ -43,7 +43,7 @@ Another Challenge I ran into was that since I used a scraper I didn't want to be
 * Currently the Home application pulls up Team standing, conference, win loss record and the User's name. I Am planning on allowing the user to update their height and weight as well as add an picture of him or her self. 
 
 * I have the Entire site set up to adjust to the five colors offer by Jpeg.js. I would like to create a color preferences pages where you can select which color goes where in the design. I would then save this information in the user database. I have yet to added a platform for the user to interact with there preferences but that will be my next project to tackle. 
-[Video of undeployed Color Preferences]https://youtu.be/_norcypejPU 
+Video of undeployed Color Preferences: https://youtu.be/_norcypejPU 
 
 * One more thing I need to add is a html to screen shot system to take screen shots of the apps for the largest screen version. I have utalized this technology in the past using react but and looking for a way to implement it with jquery. I think I may have to send the html back to the server and process it there. then send it through the imgur npm package and then send the imgur Urls up to the site. the end result will be the currently white naviagtional squares on the left will have images of the apps as well as a short description underneath to give direction to the navigator. This must be done in real time because the apps are all different colors and I rather not create a huge document of urls for each team. Which bring up another idea from the inception of this site, which was that it could be used for mulitple sports leauges.
 
