@@ -1618,6 +1618,8 @@ function populatesmalltable(data) {
   // let smplayervalue = target.getAttribute("value");
 }
 function getclicks() {
+  $(".mainappdiv").css("border-color", color125);
+
   $(".getplayerstats").on("click", function () {
     if (playersclickedonce === false) {
       playersclickedonce = true;
@@ -1631,6 +1633,7 @@ function getclicks() {
       $(".playerinfo2").css("display", "none");
       $(".mainappdiv").css("display", "none");
       $(".mainappdiv2").css("display", "block");
+
       $(".mainappdiv2").css("border-color", color125);
       $(".returnButton").css("background-color", color125);
       $(".returnButton").css("border-color", color125);
@@ -2185,7 +2188,7 @@ function addcolorstosite(colorarray) {
   color124 = colorarray[1];
   color123 = colorarray[2];
   color125 = colorarray[3];
-  $(".preferencesimage").css("border-color", color3);
+  // $(".preferencesimage").css("border-color", color3);
   $("#mediumscreenimage").css("border-color", color123);
   $(".smallScreenPlayerStats").css("color", color125);
   $(".mainappdiv").css("border-color", color125);
@@ -2205,8 +2208,8 @@ function addcolorstosite(colorarray) {
   $(".currentcolor5").css("color", color5);
   $(".preferences1").css("border-color", color4);
   $(".preferences2").css("border-color", color3);
-  $(".mainColorBox").css("border-color", color3);
-  $(".colorchoices").css("border-color", color3);
+  // $(".mainColorBox").css("border-color", color3);
+  // $(".colorchoices").css("border-color", color3);
   $(".preferences3").css("border-color", color2);
   $(".preferencesTab1").css("border-color", color4);
   $(".preferencesTab2").css("border-color", color3);
@@ -2496,9 +2499,9 @@ $(document).ready(function () {
   }).then(function (data) {
     outsideData = data;
     logourl = data.color.url;
-    color124 = data.color.colors1[1];
-    color123 = data.color.colors1[2];
-    color125 = data.color.colors1[3];
+    // color124 = data.color.colors1[1];
+    // color123 = data.color.colors1[2];
+    // color125 = data.color.colors1[3];
     let color1 = data.color.colors1[0];
     let color2 = data.color.colors1[1];
     let color3 = data.color.colors1[2];

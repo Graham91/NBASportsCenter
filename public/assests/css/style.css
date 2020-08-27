@@ -241,7 +241,7 @@ body {
   left: 39px;
   top: 310px;
   height: 140px;
-  border: inset 6px white;
+  border: inset 6px rgb(134, 134, 134);
 }
 
 .upperdiv {
@@ -947,7 +947,7 @@ body {
   width: 550px;
   height: 450px;
   margin: 15px auto;
-  border: inset 6px black;
+  border: inset 6px rgb(151, 151, 151);
   background-color: rgb(151, 151, 151);
   /* filter: brightness(80); */
 }
@@ -956,7 +956,7 @@ body {
   margin: 5px auto;
   width: 60px;
   height: 232px;
-  border: inset 6px black;
+  border: inset 6px rgb(134, 134, 134);
   background-color: rgb(134, 134, 134);
   /* filter: brightness(80); */
 }
