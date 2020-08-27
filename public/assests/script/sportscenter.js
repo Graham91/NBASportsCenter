@@ -1,3 +1,5 @@
+// const { text } = require("express");
+
 //the rise for the bottom only works after height adjustments have been made.
 let data;
 let logourl;
@@ -22,6 +24,7 @@ let appPlaceHolder2;
 let appPlaceHolder3;
 let appPlaceHolder4;
 let development = false;
+let newcolorarray;
 
 function myFunction(x) {
   if (x.matches) {
@@ -2172,7 +2175,298 @@ function moveDownButton() {
     myFunction();
   }
 }
+
+function addcolorstosite(colorarray) {
+  let color1 = colorarray[0];
+  let color2 = colorarray[1];
+  let color3 = colorarray[2];
+  let color4 = colorarray[3];
+  let color5 = colorarray[4];
+  color124 = colorarray[1];
+  color123 = colorarray[2];
+  color125 = colorarray[3];
+  $(".preferencesimage").css("border-color", color3);
+  $("#mediumscreenimage").css("border-color", color123);
+  $(".smallScreenPlayerStats").css("color", color125);
+  $(".mainappdiv").css("border-color", color125);
+  $("#theImg").css("border-color", color123);
+  $(".mainappdiv2").css("border-color", color125);
+  $(".returnButton").css("background-color", color125);
+  $(".returnButton").css("border-color", color125);
+  $(".currentcolor1").css("border-color", color1);
+  $(".currentcolor2").css("border-color", color2);
+  $(".currentcolor3").css("border-color", color3);
+  $(".currentcolor4").css("border-color", color4);
+  $(".currentcolor5").css("border-color", color5);
+  $(".currentcolor1").css("color", color1);
+  $(".currentcolor2").css("color", color2);
+  $(".currentcolor3").css("color", color3);
+  $(".currentcolor4").css("color", color4);
+  $(".currentcolor5").css("color", color5);
+  $(".preferences1").css("border-color", color4);
+  $(".preferences2").css("border-color", color3);
+  $(".mainColorBox").css("border-color", color3);
+  $(".colorchoices").css("border-color", color3);
+  $(".preferences3").css("border-color", color2);
+  $(".preferencesTab1").css("border-color", color4);
+  $(".preferencesTab2").css("border-color", color3);
+  $(".preferencesTab3").css("border-color", color2);
+  $(".gradient").css("background", color4);
+  $(".teaminformationmain").css("border-color", color4);
+  $(".teaminformationmainsmall").css("border-color", color4);
+  $(".hometeamtitle").css("background", color4);
+  $(".teaminfosectionheader").css("background", color4);
+  $(".teaminfosectionheader").css("color", color5);
+  $(".videoAppMainTitle").css("background", color4);
+  $(".videoAppMainTitle").css("color", color5);
+  $(".clock").css("border-color", color4);
+  $(".gradient").css(
+    "background",
+    "linear-gradient(180deg, " + color4 + " 0%, " + color2 + " 100%)"
+  );
+  $(".gradienthome").css(
+    "background",
+    "linear-gradient(180deg, " + color4 + " 0%, " + color2 + " 100%)"
+  );
+  $(".redback").css("background-color", color2);
+  $(".redborder").css("border-color", color2);
+  $("#theImg").css("border-color", color3);
+  $(".blueborder").css("border-color", color4);
+  $(".blueborder3").css(
+    "border-color",
+    "transparent transparent " + color4 + " transparent"
+  );
+  $("#arrowbuttondiv").css(
+    "border-color",
+    "transparent transparent " + color1 + " transparent"
+  );
+  $(".buttonright").css(
+    "background",
+    "radial-gradient(circle at 55px 10px," + color1 + ", rgb(63, 63, 63))"
+  );
+  $(".buttonleft").css(
+    "background",
+    "radial-gradient(circle at 15px 10px," + color1 + ", rgb(63, 63, 63)"
+  );
+  $("#arrowbuttondiv2").css(
+    "border-color",
+    color1 + " transparent transparent transparent"
+  );
+  $("#leftbutton").css(
+    "border-color",
+    "transparent " + color1 + " transparent transparent"
+  );
+  $("#rightbutton").css(
+    "border-color",
+    "transparent transparent transparent " + color1
+  );
+  $(".blueborder2").css(
+    "border-color",
+    color4 + " transparent transparent transparent"
+  );
+  $(".blueborder1").css(
+    "border-color",
+    "transparent " + color4 + " transparent transparent"
+  );
+  $(".blueback").css("background-color", color4);
+  $(".header").css("background-color", color2);
+  $(".header").css("color", color5);
+  $(".header").css("background-color", color2);
+  $(".preferencesbuttonbackground").css("background-color", color4);
+  $(".preferencesbutton").css("background-color", color4);
+  $(".preferencesbuttonbackground").css("border-color", color4);
+  $(".preferencesbutton").css("border-color", color4);
+  $(".smallcolor1").css("background-color", color1);
+  $(".smallcentraldiv").css("border-color", color4);
+  $(".innersmalldiv2").css("border-color", color4);
+  $(".innersmalldiv1").css("border-color", color4);
+  $(".innersmalldiv").css("border-color", color4);
+  $(".smallscreentitle").css("background-color", color4);
+  $(".smallscreentitle").css("color", color5);
+  $(".appPlaceHolderinside").css("border-color", color4);
+  $(".appPlaceHolderinside2").css("border-color", color4);
+  $(".appPlaceHolderinside4").css("border-color", color4);
+  $(".smallcolor2").css("background-color", color2);
+  $(".smallcolor3").css("background-color", color3);
+  $(".smallcolor4").css("background-color", color4);
+  $(".smallcolor5").css("background-color", color5);
+  $(".leftBoxArrow").css("background-color", color3);
+  $(".leftBoxArrow").css("border-right-color", color2);
+  $(".rightBoxArrow").css("background-color", color3);
+  $(".rightBoxArrow").css("border-left-color", color2);
+  $(".downmenu").css("background-color", color3);
+  $(".downmenu").css("border-top-color", color2);
+  $(".downmenu").css("border-bottom-color", color3);
+  $(".smallimage").css("border-color", color3);
+  $(".outsideimagemargin").css("background-color", color2);
+  $(".backgroundifuser").css(
+    "background",
+    "linear-gradient(180deg, rgba(255, 255, 255, .6) 0%, " + color2 + " 100%)"
+  );
+  $(".shadowleft2").css(
+    "border-color",
+    "transparent " + color3 + " transparent transparent"
+  );
+  $(".blueoverlay1R").css(
+    "border-color",
+    "transparent transparent " + color2 + " transparent"
+  );
+  $(".blueoverlay1L").css(
+    "border-color",
+    "transparent transparent transparent " + color2
+  );
+  $(".blueoverlay2L").css("background-color", color2);
+  $(".blueoverlay2R").css("background-color", color2);
+  $(".brownoverlay1R").css(
+    "border-color",
+    "transparent transparent transparent " + color3
+  );
+  $(".brownoverlay1L").css(
+    "border-color",
+    "transparent " + color3 + " transparent transparent"
+  );
+  $(".blueoverlay3L").css("border-bottom-color", color2);
+  $(".blueoverlay3R").css("border-bottom-color", color2);
+  $(".blueoverlay4R").css(
+    "border-color",
+    "transparent transparent " + color2 + " transparent"
+  );
+  $(".blueoverlay4L").css(
+    "border-color",
+    "transparent transparent transparent " + color2
+  );
+  $(".redoverlay1R").css(
+    "border-color",
+    "transparent transparent " + color4 + " transparent"
+  );
+  $(".redoverlay1L").css(
+    "border-color",
+    "transparent transparent transparent " + color4
+  );
+  $(".redoverlay2L").css("border-bottom-color", color4);
+  $(".redoverlay2R").css("border-bottom-color", color4);
+  $(".redoverlay3R").css(
+    "border-color",
+    "transparent transparent " + color4 + " transparent"
+  );
+  $(".redoverlay3L").css(
+    "border-color",
+    "transparent transparent transparent " + color4
+  );
+}
 $(document).ready(function () {
+  function setupcolorpreferencespage(colorarray) {
+    for (let index = 1; index < 6; index++) {
+      let classfinder = ".color" + index + "choices";
+      colorarray.forEach((element) => {
+        $(classfinder).append(
+          "<div class='individualcolor' id='color" +
+            index +
+            element +
+            "' style='background-color: " +
+            element +
+            ";'></div>"
+        );
+      });
+    }
+  }
+  function updatecolorarray(colorid) {
+    var colormainidentity = colorid.charAt(5);
+    var color = colorid.slice(6);
+
+    let indexforcolorarray = parseInt(colormainidentity) - 1;
+    newcolorarray[indexforcolorarray] = color;
+    addcolorstosite(newcolorarray);
+    // addcolorstosite(newcolorarray);
+  }
+  // setupcolorpreferencespage(data.color.colors1);
+  const hoverimagepreferences = [];
+  $(".color1choices").hover(
+    function () {
+      $(".preferencesimage1").css("z-index", "998");
+    },
+    function () {
+      $(".preferencesimage0").css("z-index", "991");
+      $(".preferencesimage1").css("z-index", "990");
+      $(".preferencesimage2").css("z-index", "990");
+      $(".preferencesimage3").css("z-index", "990");
+      $(".preferencesimage4").css("z-index", "990");
+      $(".preferencesimage5").css("z-index", "990");
+    }
+  );
+  $(".color2choices").hover(
+    function () {
+      $(".preferencesimage2").css("z-index", "998");
+    },
+    function () {
+      $(".preferencesimage0").css("z-index", "991");
+      $(".preferencesimage1").css("z-index", "990");
+      $(".preferencesimage2").css("z-index", "990");
+      $(".preferencesimage3").css("z-index", "990");
+      $(".preferencesimage4").css("z-index", "990");
+      $(".preferencesimage5").css("z-index", "990");
+    }
+  );
+  $(".color3choices").hover(
+    function () {
+      $(".preferencesimage3").css("z-index", "998");
+    },
+    function () {
+      $(".preferencesimage0").css("z-index", "991");
+      $(".preferencesimage1").css("z-index", "990");
+      $(".preferencesimage2").css("z-index", "990");
+      $(".preferencesimage3").css("z-index", "990");
+      $(".preferencesimage4").css("z-index", "990");
+      $(".preferencesimage5").css("z-index", "990");
+    }
+  );
+  $(".color4choices").hover(
+    function () {
+      $(".preferencesimage4").css("z-index", "998");
+    },
+    function () {
+      $(".preferencesimage0").css("z-index", "991");
+      $(".preferencesimage1").css("z-index", "990");
+      $(".preferencesimage2").css("z-index", "990");
+      $(".preferencesimage3").css("z-index", "990");
+      $(".preferencesimage4").css("z-index", "990");
+      $(".preferencesimage5").css("z-index", "990");
+    }
+  );
+  $(".color5choices").hover(
+    function () {
+      $(".preferencesimage5").css("z-index", "998");
+    },
+    function () {
+      $(".preferencesimage0").css("z-index", "991");
+      $(".preferencesimage1").css("z-index", "990");
+      $(".preferencesimage2").css("z-index", "990");
+      $(".preferencesimage3").css("z-index", "990");
+      $(".preferencesimage4").css("z-index", "990");
+      $(".preferencesimage5").css("z-index", "990");
+    }
+  );
+
+  $(".modal").on("click", function () {
+    $(".mainModalBody").css("display", "block");
+    $(".modalBackground").css("display", "block");
+    $(".closeModal").css("display", "block");
+  });
+  $(".closeModal").on("click", function () {
+    $(".mainModalBody").css("display", "none");
+    $(".modalBackground").css("display", "none");
+    $(".closeModal").css("display", "none");
+  });
+  $(".preferencesTab").on("click", function (event) {
+    $(".preferencesTab").css("z-index", "980");
+    $(".preferences1").css("z-index", "980");
+    $(".preferences2").css("z-index", "980");
+    $(".preferences3").css("z-index", "980");
+    let target = event.target;
+    var parent = target.parentElement;
+    var parentclass = "." + $(parent).attr("class");
+    $(parentclass).css("z-index", "990");
+  });
   appPlaceHolder = $(".appPlaceHolder").html();
   appPlaceHolder2 = $(".appPlaceHolder2").html();
   appPlaceHolder3 = $(".appPlaceHolder3").html();
@@ -2220,66 +2514,80 @@ $(document).ready(function () {
     startclock();
     fillinHome(data);
 
+    // color125 = color4
+    // color123 = color3
+    // color124 = color2
     console.log(data.color.colors1[2]);
 
     let blueborder2string =
       data.color.colors1[3] + " transparent transparent transparent";
-
+    setupcolorpreferencespage(data.color.colors1);
+    addcolorstosite(data.color.colors1);
+    newcolorarray = data.color.colors1;
+    $(".individualcolor").on("click", function (event) {
+      let target = event.target;
+      let colorID = $(target).attr("id");
+      console.log("hi");
+      updatecolorarray(colorID);
+    });
     $("body").css("background-image", "url(" + logourl + ")");
-    $(".gradient").css("background", color125);
-
-    $(".teaminformationmain").css("border-color", color125);
-    $(".teaminformationmainsmall").css("border-color", color125);
-
-    $(".hometeamtitle").css("background", color125);
-    $(".teaminfosectionheader").css("background", color125);
-    $(".teaminfosectionheader").css("color", color124);
-    $(".videoAppMainTitle").css("background", color125);
-    $(".clock").css("border-color", color125);
-
-    $(".gradient").css(
-      "background",
-      "linear-gradient(180deg, " + color125 + " 0%, " + color124 + " 100%)"
-    );
-    $(".gradienthome").css(
-      "background",
-      "linear-gradient(180deg, " + color125 + " 0%, " + color124 + " 100%)"
-    );
-    $(".redback").css("background-color", data.color.colors1[1]);
-    $(".redborder").css("border-color", data.color.colors1[1]);
-    $("#theImg").css("border-color", color123);
-    $(".blueborder").css("border-color", data.color.colors1[3]);
-    $(".blueborder3").css(
-      "border-color",
-      "transparent transparent " + data.color.colors1[3] + " transparent"
-    );
-    $("#arrowbuttondiv").css(
-      "border-color",
-      "transparent transparent " + data.color.colors1[3] + " transparent"
-    );
-    $(".buttonright").css(
-      "background",
-      "radial-gradient(circle at 55px 10px," + color125 + ", rgb(63, 63, 63))"
-    );
-    $(".buttonleft").css(
-      "background",
-      "radial-gradient(circle at 15px 10px," + color125 + ", rgb(63, 63, 63)"
-    );
-    $("#arrowbuttondiv2").css("border-color", blueborder2string);
-    $("#leftbutton").css(
-      "border-color",
-      "transparent " + color125 + " transparent transparent"
-    );
-    $("#rightbutton").css(
-      "border-color",
-      "transparent transparent transparent " + color125
-    );
-    $(".blueborder2").css("border-color", blueborder2string);
-    $(".blueborder1").css(
-      "border-color",
-      "transparent " + data.color.colors1[3] + " transparent transparent"
-    );
-    $(".blueback").css("background-color", data.color.colors1[3]);
+    // $(".gradient").css("background", color4);
+    // $(".teaminformationmain").css("border-color", color4);
+    // $(".teaminformationmainsmall").css("border-color", color4);
+    // $(".hometeamtitle").css("background", color4);
+    // $(".teaminfosectionheader").css("background", color4);
+    // $(".teaminfosectionheader").css("color", color2);
+    // $(".videoAppMainTitle").css("background", color4);
+    // $(".clock").css("border-color", color4);
+    // $(".gradient").css(
+    //   "background",
+    //   "linear-gradient(180deg, " + color4 + " 0%, " + color2 + " 100%)"
+    // );
+    // $(".gradienthome").css(
+    //   "background",
+    //   "linear-gradient(180deg, " + color4 + " 0%, " + color2 + " 100%)"
+    // );
+    // $(".redback").css("background-color", color2);
+    // $(".redborder").css("border-color", color2);
+    // $("#theImg").css("border-color", color3);
+    // $(".blueborder").css("border-color", color4);
+    // $(".blueborder3").css(
+    //   "border-color",
+    //   "transparent transparent " + color4 + " transparent"
+    // );
+    // $("#arrowbuttondiv").css(
+    //   "border-color",
+    //   "transparent transparent " + color4 + " transparent"
+    // );
+    // $(".buttonright").css(
+    //   "background",
+    //   "radial-gradient(circle at 55px 10px," + color4 + ", rgb(63, 63, 63))"
+    // );
+    // $(".buttonleft").css(
+    //   "background",
+    //   "radial-gradient(circle at 15px 10px," + color4 + ", rgb(63, 63, 63)"
+    // );
+    // $("#arrowbuttondiv2").css(
+    //   "border-color",
+    //   color4 + " transparent transparent transparent"
+    // );
+    // $("#leftbutton").css(
+    //   "border-color",
+    //   "transparent " + color4 + " transparent transparent"
+    // );
+    // $("#rightbutton").css(
+    //   "border-color",
+    //   "transparent transparent transparent " + color4
+    // );
+    // $(".blueborder2").css(
+    //   "border-color",
+    //   color4 + " transparent transparent transparent"
+    // );
+    // $(".blueborder1").css(
+    //   "border-color",
+    //   "transparent " + color4 + " transparent transparent"
+    // );
+    // $(".blueback").css("background-color", color4);
 
     $(".shadowright")
       .mouseup(function () {
@@ -2320,88 +2628,101 @@ $(document).ready(function () {
         $(".shadowbottom2").css("display", "block");
         $(".shadowbottom3").css("display", "block");
       });
+    $(".preferencebuttonclick")
+      .mouseup(function () {
+        $(".preferencesbutton").css("border-style", "outset");
+        $(".preferencesbutton").css("filter", "brightness(0.7)");
+      })
+      .mousedown(function () {
+        $(".preferencesbutton").css("border-style", "inset");
+        $(".preferencesbutton").css("filter", "brightness(0.6)");
+      });
 
-    $(".header").css("background-color", color2);
-    $(".header").css("color", color4);
     $(".smallimage").attr("src", logourl);
-    $(".header").css("background-color", color2);
-    $(".smallcolor1").css("background-color", color1);
-    $(".smallcentraldiv").css("border-color", color125);
-    $(".innersmalldiv2").css("border-color", color125);
-    $(".innersmalldiv1").css("border-color", color125);
-    $(".innersmalldiv").css("border-color", color125);
-    $(".smallscreentitle").css("background-color", color125);
 
-    $(".appPlaceHolderinside").css("border-color", color4);
-    $(".appPlaceHolderinside2").css("border-color", color4);
-    $(".appPlaceHolderinside4").css("border-color", color4);
-    $(".smallcolor2").css("background-color", color2);
-    $(".smallcolor3").css("background-color", color3);
-    $(".smallcolor4").css("background-color", color4);
-    $(".smallcolor5").css("background-color", color5);
-    $(".leftBoxArrow").css("background-color", color3);
-    $(".leftBoxArrow").css("border-right-color", color2);
-    $(".rightBoxArrow").css("background-color", color3);
-    $(".rightBoxArrow").css("border-left-color", color2);
-    $(".downmenu").css("background-color", color3);
-    $(".downmenu").css("border-top-color", color2);
-    $(".downmenu").css("border-bottom-color", color3);
-    $(".smallimage").css("border-color", color3);
-    $(".outsideimagemargin").css("background-color", color2);
-    $(".backgroundifuser").css(
-      "background",
-      "linear-gradient(180deg, rgba(255, 255, 255, .6) 0%, " + color2 + " 100%)"
-    );
-    $(".shadowleft2").css(
-      "border-color",
-      "transparent " + color3 + " transparent transparent"
-    );
-    $(".blueoverlay1R").css(
-      "border-color",
-      "transparent transparent " + color2 + " transparent"
-    );
-    $(".blueoverlay1L").css(
-      "border-color",
-      "transparent transparent transparent " + color2
-    );
-    $(".blueoverlay2L").css("background-color", color2);
-    $(".blueoverlay2R").css("background-color", color2);
-    $(".brownoverlay1R").css(
-      "border-color",
-      "transparent transparent transparent " + color3
-    );
-    $(".brownoverlay1L").css(
-      "border-color",
-      "transparent " + color3 + " transparent transparent"
-    );
-    $(".blueoverlay3L").css("border-bottom-color", color2);
-    $(".blueoverlay3R").css("border-bottom-color", color2);
-    $(".blueoverlay4R").css(
-      "border-color",
-      "transparent transparent " + color2 + " transparent"
-    );
-    $(".blueoverlay4L").css(
-      "border-color",
-      "transparent transparent transparent " + color2
-    );
-    $(".redoverlay1R").css(
-      "border-color",
-      "transparent transparent " + color4 + " transparent"
-    );
-    $(".redoverlay1L").css(
-      "border-color",
-      "transparent transparent transparent " + color4
-    );
-    $(".redoverlay2L").css("border-bottom-color", color4);
-    $(".redoverlay2R").css("border-bottom-color", color4);
-    $(".redoverlay3R").css(
-      "border-color",
-      "transparent transparent " + color4 + " transparent"
-    );
-    $(".redoverlay3L").css(
-      "border-color",
-      "transparent transparent transparent " + color4
-    );
+    // $(".header").css("background-color", color2);
+    // $(".header").css("color", color4);
+    // $(".header").css("background-color", color2);
+    // $(".preferencesbuttonbackground").css("background-color", color4);
+    // $(".preferencesbutton").css("background-color", color4);
+    // $(".preferencesbuttonbackground").css("border-color", color4);
+    // $(".preferencesbutton").css("border-color", color4);
+    // $(".smallcolor1").css("background-color", color1);
+    // $(".smallcentraldiv").css("border-color", color4);
+    // $(".innersmalldiv2").css("border-color", color4);
+    // $(".innersmalldiv1").css("border-color", color4);
+    // $(".innersmalldiv").css("border-color", color4);
+    // $(".smallscreentitle").css("background-color", color4);
+    // $(".appPlaceHolderinside").css("border-color", color4);
+    // $(".appPlaceHolderinside2").css("border-color", color4);
+    // $(".appPlaceHolderinside4").css("border-color", color4);
+    // $(".smallcolor2").css("background-color", color2);
+    // $(".smallcolor3").css("background-color", color3);
+    // $(".smallcolor4").css("background-color", color4);
+    // $(".smallcolor5").css("background-color", color5);
+    // $(".leftBoxArrow").css("background-color", color3);
+    // $(".leftBoxArrow").css("border-right-color", color2);
+    // $(".rightBoxArrow").css("background-color", color3);
+    // $(".rightBoxArrow").css("border-left-color", color2);
+    // $(".downmenu").css("background-color", color3);
+    // $(".downmenu").css("border-top-color", color2);
+    // $(".downmenu").css("border-bottom-color", color3);
+    // $(".smallimage").css("border-color", color3);
+    // $(".outsideimagemargin").css("background-color", color2);
+    // $(".backgroundifuser").css(
+    //   "background",
+    //   "linear-gradient(180deg, rgba(255, 255, 255, .6) 0%, " + color2 + " 100%)"
+    // );
+    // $(".shadowleft2").css(
+    //   "border-color",
+    //   "transparent " + color3 + " transparent transparent"
+    // );
+    // $(".blueoverlay1R").css(
+    //   "border-color",
+    //   "transparent transparent " + color2 + " transparent"
+    // );
+    // $(".blueoverlay1L").css(
+    //   "border-color",
+    //   "transparent transparent transparent " + color2
+    // );
+    // $(".blueoverlay2L").css("background-color", color2);
+    // $(".blueoverlay2R").css("background-color", color2);
+    // $(".brownoverlay1R").css(
+    //   "border-color",
+    //   "transparent transparent transparent " + color3
+    // );
+    // $(".brownoverlay1L").css(
+    //   "border-color",
+    //   "transparent " + color3 + " transparent transparent"
+    // );
+    // $(".blueoverlay3L").css("border-bottom-color", color2);
+    // $(".blueoverlay3R").css("border-bottom-color", color2);
+    // $(".blueoverlay4R").css(
+    //   "border-color",
+    //   "transparent transparent " + color2 + " transparent"
+    // );
+    // $(".blueoverlay4L").css(
+    //   "border-color",
+    //   "transparent transparent transparent " + color2
+    // );
+    // $(".redoverlay1R").css(
+    //   "border-color",
+    //   "transparent transparent " + color4 + " transparent"
+    // );
+    // $(".redoverlay1L").css(
+    //   "border-color",
+    //   "transparent transparent transparent " + color4
+    // );
+    // $(".redoverlay2L").css("border-bottom-color", color4);
+    // $(".redoverlay2R").css("border-bottom-color", color4);
+    // $(".redoverlay3R").css(
+    //   "border-color",
+    //   "transparent transparent " + color4 + " transparent"
+    // );
+    // $(".redoverlay3L").css(
+    //   "border-color",
+    //   "transparent transparent transparent " + color4
+    // );
     getclicks();
     getHighlightvideos(data);
     // console.log(data.db.gamestats)
