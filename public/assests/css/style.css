@@ -2020,6 +2020,9 @@ footer {
   .preferencesbutton {
     display: none;
   }
+  .preferencebuttonclick {
+    display: none;
+  }
   .greybartopbutton {
     display: none;
   }
