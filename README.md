@@ -4,6 +4,7 @@
 
 * Application Use
 * Technology Used
+* API's Used
 * Details of the Applicaiton and Challenges
 * List of future developments/features
 * Link to the Live Project on Heroku
