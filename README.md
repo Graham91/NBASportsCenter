@@ -23,6 +23,11 @@ The intention here was to create a sports-center onestop dashboard for following
 * [Axios](https://www.axios.com/)
 * [Cheerio](https://www.npmjs.com/package/cheerio)
 
+## API's Used
+* [balldontlie](https://www.balldontlie.io/#introduction)
+* [gnews](https://gnews.io/docs/v3#introduction)
+* [imgur](https://api.imgur.com/)
+
 
 ## Details of the Application and Challenges
  NBA logos are not all the same size nor are they the same color. In order for the design to be pleasing visually to the user, color matching software was utalized as well as an image measuring system I designed that adjusts the size and placement of the websites elements to work with different size ratios for team logos.  The site is also highly mobile responsive. 
@@ -42,7 +47,7 @@ Another Challenge I ran into was that since I used a scraper I didn't want to be
    <br>
 User preferences are adjustable. The preferences you can adjust as a user include color preferences, your username, postion, height and weight, and a personal iamge. I am utalizing the imgur API so users can upload personal images from there device to the site. I also have a fun little interactive bit where you can adjust the size and placement of the uploaded image. The entire site is colored by a 5 colors. the user can chose which colors go where, and save their unqiue personalized look to the data base.  
 <br>
-Video Preferences: https://youtu.be/TY8pyQYdPSM
+Video of Preferences: https://youtu.be/TY8pyQYdPSM
 
 ## List of future developments/features
 * I would like to ge thte user preferences working on mobile currrently they are only available in desktop mode. 
