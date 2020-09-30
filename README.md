@@ -38,12 +38,14 @@ Another API I am utalizing is the Gnews api. This api pulls up the most recent a
     <br>
    <br>
 Another Challenge I ran into was that since I used a scraper I didn't want to be making a ton of request while in testing. To fix this I created A filler system where you can indicate if you are using the product in develoment or production. If it is in dev mode the scraper won't run and filler information will be used instead. 
+    <br>
+   <br>
+User preferences are adjustable. The preferences you can adjust as a user include color preferences, your username, postion, height and weight, and a personal iamge. I am utalizing the imgur API so users can upload personal images from there device to the site. I also have a fun little interactive bit where you can adjust the size and placement of the uploaded image. The entire site is colored by a 5 colors. the user can chose which colors go where, and save their unqiue personalized look to the data base.  
+<br>
+Video Preferences: https://youtu.be/TY8pyQYdPSM
 
 ## List of future developments/features
-* Currently the Home application pulls up Team standing, conference, win loss record and the User's name. I Am planning on allowing the user to update their height and weight as well as add an picture of him or her self. 
-
-* I have the Entire site set up to adjust to the five colors offer by Jpeg.js. I would like to create a color preferences pages where you can select which color goes where in the design. I would then save this information in the user database. I have yet to added a platform for the user to interact with there preferences but that will be my next project to tackle. 
-Video of undeployed Color Preferences: https://youtu.be/_norcypejPU 
+* I would like to ge thte user preferences working on mobile currrently they are only available in desktop mode. 
 
 * One more thing I need to add is a html to screen shot system to take screen shots of the apps for the largest screen version. I have utalized this technology in the past using react but and looking for a way to implement it with jquery. I think I may have to send the html back to the server and process it there. then send it through the imgur npm package and then send the imgur Urls up to the site. the end result will be the currently white naviagtional squares on the left will have images of the apps as well as a short description underneath to give direction to the navigator. This must be done in real time because the apps are all different colors and I rather not create a huge document of urls for each team. Which bring up another idea from the inception of this site, which was that it could be used for mulitple sports leauges.
 
