@@ -23,7 +23,30 @@
         <div class="preferences3">
             <div class="preferencesTab3 preferencesTab" id=target3>Upload Image</div>
             <div class=mainColorBox>
-                <h2 class="underconstruction">UNDER CONSTRUCTION</h2>
+                <!-- <h2 class="underconstruction">UNDER CONSTRUCTION</h2> -->
+                <div class="uploadarea">
+                    <p class="uploadInstructions">Step 1: Upload Image from Device</p>
+                    <input type="file" id="file" name="file" size="100" multiple />
+                    <p class="uploadInstructions">Step 2: Save Image to Imgur</p>
+                    <div class=uploadFlexBox>
+                        <div src="" style="width: 270px;
+                    height: 220px;" id=imagepicturetest class="customerheadshot"></div>
+                        <img src="/assests/loadinggifforcolors.gif" class="imgurloadingGif" />
+                        <div id="upload">Save Imgur</div>
+                    </div>
+                    <input type="range" min="50" max="150" value="100" id=sizeRangeSlider>
+                    <div class="picturemovertoggle">
+                        <div class="upbuttonmover"></div>
+                        <div class="downbuttonmover"></div>
+                        <div class="rightbuttonmover"></div>
+                        <div class="leftbuttonmover"></div>
+                        <div class="centerbutton"></div>
+                        <div class="centerbutton2"></div>
+                    </div>
+                </div>
+                <img src="/assests/gif-arrow.gif" class="arrowgif" />
+                <div class="imageSaved">Image Saved</div>
+                <div class="submit submitNo3">Save Preferences</div>
             </div>
         </div>
         <div class="preferences2">
@@ -60,11 +83,45 @@
                 <img src="https://i.imgur.com/zvUrcrO.png" class="preferencesimage preferencesimage5">
                 <img src="https://i.imgur.com/6K5nOsu.png" class="preferencesimage preferencesimage0">
             </div>
+            <img src="/assests/loadinggifforcolors.gif" class="colorsloadingGif" />
+            <div class="colorsSaved">Colors Saved</div>
+            <div class="submit submitNo2">Save Preferences</div>
         </div>
         <div class=" preferences1">
             <div class="preferencesTab1 preferencesTab" id=target1>User Info</div>
             <div class=mainColorBox>
-                <h2 class="underconstruction">UNDER CONSTRUCTION</h2>
+                <form class=preferencesform>
+                    <div class=formsection>
+                        <div class=labelsection>
+                            <label for="fname">Username: </label>
+                        </div>
+                        <input type="text" id="fname" name="fname" class=fanInput>
+                    </div>
+                    <div class=formsection>
+                        <div class=labelsection>
+                            <label for="fanPosition">Position: </label>
+                        </div>
+                        <input type="text" id="fanPosition" name="fanPosition" class=fanInput>
+                    </div>
+                    <div class=formsection>
+                        <div class=labelsection>
+                            <label>Height: </label>
+                        </div>
+
+                        <input type="text" id="fanfeet" name="fanfeet" class=fanInputfeet>
+                        <div class=inputlabel>Feet</div>
+                        <input type="text" id="faninch" name="faninch" class=fanInputinches>
+                        <div class=inputlabel>Inches</div>
+                    </div>
+                    <div class=formsection>
+                        <div class=labelsection>
+                            <label for="fanwieght">Weight: </label>
+                        </div>
+                        <input type="text" id="fanwieght" name="fanwieght" class=fanInputfeet>
+                        <div class=inputlabel>lbs</div>
+                    </div>
+                </form>
+                <div class="submit submitNo1">Save Preferences</div>
             </div>
         </div>
     </div>

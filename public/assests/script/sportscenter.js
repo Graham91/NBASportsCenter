@@ -25,6 +25,8 @@ let appPlaceHolder3;
 let appPlaceHolder4;
 let development = false;
 let newcolorarray;
+let imageinformation;
+let personalDataImage;
 
 function myFunction(x) {
   if (x.matches) {
@@ -1022,14 +1024,28 @@ function fillinHome(data) {
   let wins = data.teamstats.win;
   let losses = data.teamstats.loss;
   let seat = data.teamstats.divRank;
-  let name = data.db.UserID;
   let favteamfinder = data.db.FavTeam;
   let teamName = TeamNameTranslator[favteamfinder];
+  let urlImageString = data.db.userImageURL;
+  if (urlImageString === null) {
+  } else {
+    let imagearray = urlImageString.split(" ");
+    personalDataImage = imagearray[0];
+    $(".customerheadshot").css(
+      "background-image",
+      "url(" + imagearray[0] + ")"
+    );
+    $(".customerheadshot").css("background-size", imagearray[1]);
+    $(".customerheadshot").css(
+      "background-position",
+      imagearray[2] + " " + imagearray[3]
+    );
+  }
 
   $(".winsLosses").html(wins + " / " + losses);
   $(".conference").html(conference);
   $(".conferenceSeat").html(seat);
-  $(".playernameForIndivcustomer").html(name);
+  // $(".playernameForIndivcustomer").html(name);
   $(".hometeamtitle").html(teamName);
 }
 function getPLayerArticles(topdata) {
@@ -1180,6 +1196,30 @@ function getPLayerArticles(topdata) {
       });
   }
 }
+function submitColorChoices(colorarray) {
+  var colordata = new Object();
+  colordata.id = outsideData.db.id;
+  colordata.array = JSON.stringify(newcolorarray);
+  $(".colorsloadingGif").css("display", "block");
+  $.ajax({
+    url: "/api/addusercolorsceme",
+    type: "PUT",
+    dataType: "json",
+    data: colordata,
+    success: function (data, textStatus, xhr) {
+      console.log(data);
+      $(".colorsloadingGif").css("display", "none");
+      $(".colorsSaved").css("display", "block");
+      setTimeout(function () {
+        $(".colorsSaved").css("display", "none");
+      }, 2000);
+    },
+    error: function (xhr, textStatus, errorThrown) {
+      console.log("Error in Operation");
+    },
+  });
+}
+
 function getteamarticles(topdata) {
   let articletitlesarray = [];
   let index = 0;
@@ -1613,6 +1653,55 @@ function getsmalltablediv() {
     }
   });
 }
+function determineWhatgoesInArray(data) {
+  let name = data.db.UserID;
+  let position;
+  let height;
+  let weight;
+  if (data.db.FanPosition === null) {
+    position = "Super Fan";
+  } else {
+    position = data.db.FanPosition;
+  }
+  if (data.db.FanHeight === null) {
+    height = "6 1";
+  } else {
+    height = data.db.FanHeight;
+  }
+  if (data.db.FanWeight === null) {
+    weight = "200";
+  } else {
+    weight = data.db.FanWeight;
+  }
+
+  let dataArray = [name, position, height, weight];
+  fillinuserinformation(dataArray);
+}
+function fillinuserinformation(informationarray) {
+  let userName = informationarray[0];
+  let position = informationarray[1];
+  let height = informationarray[2];
+  let weight = informationarray[3];
+
+  $(".playernameForIndivcustomer").html(userName);
+  $("#fname").val(userName);
+  $("#fanPosition").val(position);
+  let userPosition = "Position: " + position;
+  $(".playerpositionForIndivcustomer").html(userPosition);
+
+  let heightarray = height.split(" ");
+  $("#fanfeet").val(heightarray[0]);
+  $("#faninch").val(heightarray[1]);
+  let inchsign = '"';
+  let userheight =
+    "Height: " + heightarray[0] + "' " + heightarray[1] + inchsign;
+  $(".playerheightForIndivcustomer").html(userheight);
+
+  $("#fanwieght").val(weight);
+  let userWeight = "Weight: " + weight + "lb";
+  $(".playerwieghtForIndivcustomer").html(userWeight);
+}
+
 function populatesmalltable(data) {
   // let smplayerurl = target.getAttribute("name");
   // let smplayervalue = target.getAttribute("value");
@@ -1816,6 +1905,31 @@ function moveleft() {
   leftsidearray.shift();
   // console.log("leftsidearray: " + leftsidearray + ", central" + centraldiv + ", Rightsidearray: " + rightsidearray);
   sortimages();
+}
+function moveimage(leftmover, topmover) {
+  let currentBackGroundPosition = $(".customerheadshot").css(
+    "background-position"
+  );
+  let leftmovement;
+  let topmovement;
+  let newBackgroundPostion;
+  let backgroundPositionArray;
+  if (currentBackGroundPosition === "center") {
+    currentBackGroundPosition === "0px 0px";
+    backgroundPositionArray = currentBackGroundPosition.split(" ");
+    leftmovement =
+      parseInt(backgroundPositionArray[0].slice(0, -2)) + leftmover;
+    topmovement = parseInt(backgroundPositionArray[1].slice(0, -2)) + topmover;
+    newBackgroundPostion = leftmovement + "px " + topmovement + "px";
+    $(".customerheadshot").css("background-position", newBackgroundPostion);
+  } else {
+    backgroundPositionArray = currentBackGroundPosition.split(" ");
+    leftmovement =
+      parseInt(backgroundPositionArray[0].slice(0, -2)) + leftmover;
+    topmovement = parseInt(backgroundPositionArray[1].slice(0, -2)) + topmover;
+    newBackgroundPostion = leftmovement + "px " + topmovement + "px";
+    $(".customerheadshot").css("background-position", newBackgroundPostion);
+  }
 }
 function centerdivlocation() {
   // if(window.height())
@@ -2207,6 +2321,7 @@ function addcolorstosite(colorarray) {
   $(".currentcolor4").css("color", color4);
   $(".currentcolor5").css("color", color5);
   $(".preferences1").css("border-color", color4);
+  $(".customerheadshot").css("background-color", color4);
   $(".preferences2").css("border-color", color3);
   // $(".mainColorBox").css("border-color", color3);
   // $(".colorchoices").css("border-color", color3);
@@ -2214,6 +2329,26 @@ function addcolorstosite(colorarray) {
   $(".preferencesTab1").css("border-color", color4);
   $(".preferencesTab2").css("border-color", color3);
   $(".preferencesTab3").css("border-color", color2);
+  $(".uploadarea").css("border-color", color2);
+  $("#imagepicturetest").css("border-color", color2);
+  $("#upload").css("border-color", color2);
+  $("#upload").css("color", color2);
+  $(".upbuttonmover").css("border-color", color2);
+  $(".downbuttonmover").css("border-color", color2);
+  $(".rightbuttonmover").css("border-color", color2);
+  $(".leftbuttonmover").css("border-color", color2);
+  $("#sizeRangeSlider").css("border-color", color2);
+  $(".submitNo1").css("border-color", color4);
+  $(".submitNo2").css("border-color", color3);
+  $(".formsection").css("border-color", color4);
+  $(".colorsSaved").css("border-color", color3);
+  $(".colorsSaved").css("color", color3);
+  $(".imageSaved").css("border-color", color4);
+  $(".imageSaved").css("color", color4);
+  $(".submitNo3").css("border-color", color2);
+  $(".submitNo1").css("color", color4);
+  $(".submitNo2").css("color", color3);
+  $(".submitNo3").css("color", color2);
   $(".gradient").css("background", color4);
   $(".teaminformationmain").css("border-color", color4);
   $(".teaminformationmainsmall").css("border-color", color4);
@@ -2449,7 +2584,148 @@ $(document).ready(function () {
       $(".preferencesimage5").css("z-index", "990");
     }
   );
+  $("input[type=range]").on("input", function () {
+    let newvalm = $(this).val() + "%";
+    $(".customerheadshot").css("background-size", newvalm);
+  });
 
+  $(".upbuttonmover").on("click", function () {
+    moveimage(0, -5);
+  });
+  $(".downbuttonmover").on("click", function () {
+    moveimage(0, 5);
+  });
+  $(".rightbuttonmover").on("click", function () {
+    moveimage(5, 0);
+  });
+
+  $(".leftbuttonmover").on("click", function () {
+    moveimage(-5, 0);
+  });
+
+  $(".submitNo1").on("click", function () {
+    event.preventDefault();
+    let userName = $("#fname").val();
+    let userPosition = $("#fanPosition").val();
+    let userHeightFeet = $("#fanfeet").val();
+    let userHeightInches = $("#faninch").val();
+    let userWieght = $("#fanwieght").val();
+
+    let userheight = userHeightFeet + " " + userHeightInches;
+    let userPreferencesObject = {
+      userName: userName,
+      userPosition: userPosition,
+      userHieght: userheight,
+      userWeight: userWieght,
+      id: outsideData.db.id,
+    };
+    let arrayForTemporaryUpdate = [
+      userName,
+      userPosition,
+      userheight,
+      userWieght,
+    ];
+    console.log(userPreferencesObject);
+    $.ajax({
+      url: "/api/adduserinformation",
+      type: "PUT",
+      dataType: "json",
+      data: userPreferencesObject,
+      success: function (data, textStatus, xhr) {
+        console.log(data);
+        fillinuserinformation(arrayForTemporaryUpdate);
+      },
+      error: function (xhr, textStatus, errorThrown) {
+        console.log("Error in Operation");
+      },
+    });
+  });
+  $("#upload").on("click", function () {
+    $(".imgurloadingGif").css("display", "block");
+    console.log("cho-in");
+    var $files = $("#file").get(0).files;
+
+    if ($files.length) {
+      event.preventDefault();
+      // Reject big files
+      if ($files[0].size > $(this).data("max-size") * 1024) {
+        console.log("Please select a smaller file");
+        return false;
+      }
+
+      // Begin file upload
+      console.log("Uploading file to Imgur..");
+
+      // Replace ctrlq with your own API key
+      var apiUrl = "https://api.imgur.com/3/image/";
+      var apiKey = "e13028437db988c";
+
+      var settings = {
+        async: false,
+        crossDomain: true,
+        processData: false,
+        contentType: false,
+        type: "POST",
+        url: apiUrl,
+        headers: {
+          Authorization: "Client-ID " + apiKey,
+          Accept: "application/json",
+        },
+        mimeType: "multipart/form-data",
+      };
+
+      var formData = new FormData();
+      formData.append("image", $files[0]);
+      settings.data = formData;
+      // Response contains stringified JSON
+      // Image URL available at response.data.link
+      $.ajax(settings).done(function (response) {
+        let newdata = JSON.parse(response);
+        console.log(newdata.data.link);
+        personalDataImage = newdata.data.link;
+        $(".customerheadshot").css(
+          "background-image",
+          "url(" + newdata.data.link + ")"
+        );
+        $(".customerheadshot").css("background-size", "100%");
+      });
+      $(".imgurloadingGif").css("display", "none");
+      $(".arrowgif").css("display", "block");
+    }
+  });
+  $(".submitNo2").on("click", function () {
+    console.log("worked");
+    submitColorChoices(newcolorarray);
+  });
+  $(".submitNo3").on("click", function () {
+    let currentSize = $(".customerheadshot").css("background-size");
+    let currentlocation = $(".customerheadshot").css("background-position");
+    imageinformation =
+      personalDataImage + " " + currentSize + " " + currentlocation;
+    console.log(imageinformation);
+    let imageinfo = {
+      urlinfo: imageinformation,
+      id: outsideData.db.id,
+    };
+    $.ajax({
+      url: "/api/adduserpicture",
+      type: "PUT",
+      dataType: "json",
+      data: imageinfo,
+      success: function (data, textStatus, xhr) {
+        console.log(data);
+
+        $(".arrowgif").css("display", "none");
+        $(".imageSaved").css("display", "block");
+        setTimeout(function () {
+          $(".imageSaved").css("display", "none");
+        }, 2000);
+      },
+      error: function (xhr, textStatus, errorThrown) {
+        console.log("Error in Operation");
+      },
+    });
+  });
   $(".modal").on("click", function () {
     $(".mainModalBody").css("display", "block");
     $(".modalBackground").css("display", "block");
@@ -2516,7 +2792,7 @@ $(document).ready(function () {
     getPLayerArticles(data);
     startclock();
     fillinHome(data);
-
+    determineWhatgoesInArray(data);
     // color125 = color4
     // color123 = color3
     // color124 = color2
@@ -2525,8 +2801,14 @@ $(document).ready(function () {
     let blueborder2string =
       data.color.colors1[3] + " transparent transparent transparent";
     setupcolorpreferencespage(data.color.colors1);
-    addcolorstosite(data.color.colors1);
-    newcolorarray = data.color.colors1;
+    if (data.db.SavedColorArray === null) {
+      addcolorstosite(data.color.colors1);
+      newcolorarray = data.color.colors1;
+    } else {
+      let savedColorArray = JSON.parse(data.db.SavedColorArray);
+      addcolorstosite(savedColorArray);
+      newcolorarray = savedColorArray;
+    }
     $(".individualcolor").on("click", function (event) {
       let target = event.target;
       let colorID = $(target).attr("id");

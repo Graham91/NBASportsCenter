@@ -27,6 +27,7 @@ module.exports = function (app) {
       res.json(dbuserInfo);
     });
   });
+
   app.get("/api/login", function (req, res) {
     console.log(req.query.UserID);
     db.UserInfo.findOne({
@@ -54,6 +55,54 @@ module.exports = function (app) {
   //   res.json(dbuserinfo.id);
   //   });
   // });
+  app.put("/api/adduserpicture", function (req, res) {
+    console.log(req.body);
+    db.UserInfo.update(
+      {
+        userImageURL: req.body.urlinfo,
+      },
+      { where: { id: req.body.id } }
+    ).then(function (rowsUpdated) {
+      res.json(rowsUpdated);
+    });
+    // db.UserInfo.findOne({ where: { id: req.body.id } }).then(function (item) {
+    //   console.log(item);
+    // });
+  });
+  app.put("/api/adduserinformation", function (req, res) {
+    console.log(req.body);
+    let userName = req.body.userName;
+    let userPosition = req.body.userPosition;
+    let userHieght = req.body.userHieght;
+    let userWeight = req.body.userWeight;
+    db.UserInfo.update(
+      {
+        FanWeight: userWeight,
+        FanHeight: userHieght,
+        FanPosition: userPosition,
+        UserID: userName,
+      },
+      { where: { id: req.body.id } }
+    ).then(function (rowsUpdated) {
+      res.json(rowsUpdated);
+    });
+    // db.UserInfo.findOne({ where: { id: req.body.id } }).then(function (item) {
+    //   console.log(item);
+    // });
+  });
+  app.put("/api/addusercolorsceme", function (req, res) {
+    console.log(req.body);
+    let colorarray = req.body.array;
+    db.UserInfo.update(
+      { SavedColorArray: colorarray },
+      { where: { id: req.body.id } }
+    ).then(function (rowsUpdated) {
+      res.json(rowsUpdated);
+    });
+    // db.UserInfo.findOne({ where: { id: req.body.id } }).then(function (item) {
+    //   console.log(item)
+    // });
+  });
   app.get("/api/home/:id?", function (req, res) {
     db.UserInfo.findOne({
       where: {

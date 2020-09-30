@@ -60,11 +60,12 @@ body {
 }
 .customerheadshot {
   background-image: url("https://i.imgur.com/uEZiOub.png");
-  background-size: 100%;
+  background-size: 110%;
   background-repeat: no-repeat;
   width: 270px;
   height: 220px;
   margin: auto;
+  background-position: center;
 }
 
 .smallscreenhomecustomerinfo {
@@ -933,14 +934,21 @@ body {
 
 .closeModal {
   font-size: 40px;
-  position: absolute;
+  position: fixed;
   color: white;
   top: 20px;
   right: 40px;
   display: none;
   z-index: 991;
 }
-
+.mainColorBox2 {
+  display: flex;
+  width: 550px;
+  height: 450px;
+  margin: 15px auto;
+  border: inset 6px rgb(151, 151, 151);
+  background-color: rgb(151, 151, 151);
+}
 .mainColorBox {
   justify-content: space-around;
   display: flex;
@@ -1433,6 +1441,261 @@ footer {
   position: absolute;
   top: 64px;
   z-index: 1000;
+}
+.submit {
+  font-size: 1.5em;
+  color: white;
+  border: outset 5px white;
+  border-radius: 10px;
+  height: 40px;
+  width: 220px;
+  padding-top: 12px;
+  padding-left: 13px;
+  position: absolute;
+  right: 35px;
+  bottom: 40px;
+  background-color: rgb(114, 114, 114);
+}
+.submitNo3 {
+  bottom: 30px;
+}
+.uploadFlexBox {
+  display: flex;
+}
+.uploadInstructions {
+  font-size: 1.5em;
+  /* color: white; */
+  /* text-align: center; */
+  margin: 5px;
+}
+#upload {
+  font-size: 1.5em;
+  color: white;
+  border: outset 5px white;
+  background-color: rgb(114, 114, 114);
+  border-radius: 10px;
+  height: 40px;
+  width: 150px;
+  padding-top: 12px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 20px auto;
+  text-align: center;
+}
+#file {
+  margin: 2.5px 5px;
+}
+#upload:hover {
+  background-color: rgb(219, 218, 218);
+}
+.submit:hover {
+  background-color: rgb(219, 218, 218);
+}
+.fanInput {
+  text-align: center;
+  color: white;
+  font-size: 1.5em;
+  padding: 5px 5px;
+  border: none;
+  width: 370px;
+  background-color: rgb(134, 134, 134);
+}
+.fanInput:focus {
+  background-color: rgb(134, 134, 134);
+  border: none;
+}
+.formsection {
+  display: flex;
+  margin: 15px 10px;
+  border: inset 6px rgb(134, 134, 134);
+  background-color: rgb(134, 134, 134);
+  padding: 2px;
+}
+.uploadarea {
+  /* display: flex; */
+  margin: 10px 15px 85px 15px;
+  border: inset 6px rgb(134, 134, 134);
+  background-color: rgb(134, 134, 134);
+  padding: 2px;
+  width: 800px;
+}
+.arrowgif {
+  display: none;
+  position: absolute;
+  width: 100px;
+  transform: rotate(270deg);
+  bottom: -10px;
+  left: 150px;
+}
+#imagepicturetest {
+  margin: 4px 0px 0px 10px;
+  border: inset 6px rgb(134, 134, 134);
+  background-color: rgb(134, 134, 134);
+}
+.upbuttonmover {
+  border: solid 5px white;
+  left: 30px;
+  top: 0px;
+  background-color: grey;
+  position: absolute;
+  height: 35px;
+  width: 30px;
+  border-radius: 3px;
+}
+
+.downbuttonmover {
+  border: solid 5px white;
+  left: 30px;
+  top: 55px;
+  background-color: grey;
+  position: absolute;
+  height: 35px;
+  width: 30px;
+  border-radius: 3px;
+}
+
+.rightbuttonmover {
+  border: solid 5px white;
+  left: 55px;
+  top: 30px;
+  background-color: grey;
+  position: absolute;
+  height: 30px;
+  width: 35px;
+  border-radius: 3px;
+}
+
+.centerbutton {
+  left: 30px;
+  top: 35px;
+  background-color: grey;
+  position: absolute;
+  height: 30px;
+  width: 40px;
+}
+
+.centerbutton2 {
+  left: 35px;
+  top: 30px;
+  background-color: grey;
+  position: absolute;
+  height: 40px;
+  width: 30px;
+}
+
+.leftbuttonmover {
+  border: solid 5px white;
+  left: 0;
+  top: 30px;
+  background-color: grey;
+  position: absolute;
+  height: 30px;
+  width: 35px;
+  border-radius: 3px;
+}
+#sizeRangeSlider {
+  -webkit-appearance: none;
+  position: absolute;
+  right: 75px;
+  top: 227px;
+  background: rgb(68, 68, 68);
+  height: 15px;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  border: inset 5px white;
+}
+#sizeRangeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: rgb(99, 99, 99);
+  width: 25px;
+  height: 40px;
+}
+
+.picturemovertoggle {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  left: 350px;
+  bottom: 100px;
+}
+.fanInputfeet {
+  color: white;
+  text-align: center;
+  padding: 5px 5px;
+  font-size: 1.5em;
+  border: none;
+  background-color: rgb(134, 134, 134);
+  width: 100px;
+  margin: 0 10px 0 0;
+}
+.fanInputinches {
+  color: white;
+  text-align: center;
+  padding: 5px 5px;
+  font-size: 1.5em;
+  border: none;
+  background-color: rgb(134, 134, 134);
+  width: 100px;
+  margin: 0 10px;
+}
+.inputlabel {
+  font-size: 1.5em;
+  padding: 10px 0;
+}
+
+.labelsection {
+  font-size: 1.5em;
+  width: 140px;
+  padding: 10px 0;
+  background-color: rgb(163, 163, 163);
+  /* border: solid 2px black; */
+}
+.colorsloadingGif {
+  display: none;
+  position: absolute;
+  right: 140px;
+  bottom: 120px;
+  width: 40px;
+}
+.imgurloadingGif {
+  display: none;
+  z-index: 999;
+  position: absolute;
+  left: 180px;
+  top: 220px;
+  width: 40px;
+}
+.colorsSaved {
+  font-size: 1.5em;
+  color: white;
+  border: solid 5px white;
+  border-radius: 10px;
+  height: 40px;
+  width: 220px;
+  padding-top: 12px;
+  padding-left: 13px;
+  text-align: center;
+  position: absolute;
+  right: 35px;
+  bottom: 110px;
+  display: none;
+}
+.imageSaved {
+  font-size: 1.5em;
+  color: white;
+  border: solid 5px white;
+  border-radius: 10px;
+  height: 40px;
+  width: 220px;
+  padding-top: 12px;
+  padding-left: 13px;
+  text-align: center;
+  position: absolute;
+  left: 35px;
+  bottom: 30px;
+  display: none;
 }
 .shadowfortitle2 {
   width: 21px;
