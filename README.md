@@ -27,6 +27,7 @@ The intention here was to create a sports-center onestop dashboard for following
 * [balldontlie](https://www.balldontlie.io/#introduction)
 * [gnews](https://gnews.io/docs/v3#introduction)
 * [imgur](https://api.imgur.com/)
+* [youtube](https://developers.google.com/youtube/v3)
 
 
 ## Details of the Application and Challenges
@@ -50,7 +51,7 @@ User preferences are adjustable. The preferences you can adjust as a user includ
 Video of Preferences: https://youtu.be/TY8pyQYdPSM
 
 ## List of future developments/features
-* I would like to ge thte user preferences working on mobile currrently they are only available in desktop mode. 
+* I would like to get the user preferences working on mobile. Currrently they are only available in desktop mode. 
 
 * One more thing I need to add is a html to screen shot system to take screen shots of the apps for the largest screen version. I have utalized this technology in the past using react but and looking for a way to implement it with jquery. I think I may have to send the html back to the server and process it there. then send it through the imgur npm package and then send the imgur Urls up to the site. the end result will be the currently white naviagtional squares on the left will have images of the apps as well as a short description underneath to give direction to the navigator. This must be done in real time because the apps are all different colors and I rather not create a huge document of urls for each team. Which bring up another idea from the inception of this site, which was that it could be used for mulitple sports leauges.
 
